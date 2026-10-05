@@ -6,7 +6,7 @@
 <title>Rapport de maturité IA</title>
 <style>:root { --report-primary: var(--primary, #2f6fed); --report-primary-dark: var(--primary-dark, #1e4fc7); --report-accent: #d45b37; --report-ink: var(--text, #1f2a37); --report-muted: #64748b; --report-line: #d8e2ef; --report-soft: var(--bg, #edf4ff); }
 * { box-sizing: border-box; }
-body { margin: 0px; background: var(--report-soft); color: var(--report-ink); font-family: Roboto, Arial, sans-serif; line-height: 1.55; }
+body { margin: 0px; background: var(--report-soft); color: var(--report-ink); font-family: "Roboto", Arial, sans-serif; line-height: 1.55; }
 .rapport { max-width: 900px; margin: 0px auto; padding: 28px 18px 40px; }
 .bandeau { background: linear-gradient(125deg, var(--report-primary-dark), var(--report-primary) 68%, var(--report-accent)); color: rgb(255, 255, 255); border-radius: 18px; padding: 32px 34px; }
 .surtitre { display: flex; justify-content: space-between; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(199, 210, 254); }
@@ -36,6 +36,10 @@ svg.radar { max-width: 420px; width: 100%; height: auto; }
 .barre-fond { flex: 1 1 0%; height: 14px; background: rgb(229, 231, 235); border-radius: 999px; overflow: hidden; display: block; }
 .barre-valeur { height: 100%; display: block; border-radius: 999px; }
 .score-note { flex: 0 0 70px; text-align: right; font-variant-numeric: tabular-nums; color: rgb(55, 65, 81); }
+.axe-score-detail { margin-bottom: 14px; }
+.scores-questions-axe { display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 8px; margin-top: -5px; }
+.scores-questions-axe span { color: var(--report-muted); font-size: 0.82rem; text-align: center; }
+.scores-questions-axe strong { color: var(--report-ink); }
 ol.liste { margin: 0px; padding-left: 22px; }
 ol.liste li { margin: 9px 0px; }
 ol.liste strong { color: var(--report-primary-dark); }
@@ -45,14 +49,31 @@ details.axe summary .note { margin-left: 8px; color: var(--report-primary-dark);
 table.roadmap { width: 100%; border-collapse: collapse; margin: 6px 0px 12px; font-size: 0.94rem; }
 table.roadmap th { width: 15%; text-align: left; padding: 8px 10px; background: var(--report-soft); color: var(--report-primary-dark); vertical-align: top; border: 1px solid rgb(229, 231, 235); }
 table.roadmap td { padding: 8px 10px; border: 1px solid rgb(229, 231, 235); vertical-align: top; }
+.niveau-acquis { max-width: 700px; margin: 12px 0px 0px; color: rgb(255, 255, 255); }
+.reponse-detail > p { margin: 6px 0px; }
+.analyse-lignes { margin: 12px 0px 0px; }
+.analyse-lignes > div { display: grid; grid-template-columns: minmax(50px, 1fr) 8fr; gap: 12px; padding: 8px 0px; border-top: 1px solid var(--report-line); }
+.analyse-lignes dt { padding: 8px; border-radius: 4px; background: rgb(234, 243, 255); color: var(--report-primary-dark); font-weight: 700; }
+.analyse-lignes dd { margin: 0px; }
+.analyse-fusionnee { margin: 0px; padding-left: 18px; }
+.analyse-fusionnee li + li { margin-top: 6px; }
+.analyse-fusionnee strong { color: var(--report-primary-dark); }
+.classement li { display: grid; gap: 3px; padding: 10px 0px; border-bottom: 1px solid var(--report-line); }
+.classement li > span, .classement li > small { color: var(--report-muted); }
+.priorites { margin-top: 24px; }
+.plan-axe h3 { margin: 14px 0px 4px; color: var(--report-primary-dark); font-size: 1rem; }
 p.vide { color: rgb(156, 163, 175); font-style: italic; margin: 8px 0px; }
 .conclusion p { margin: 0px; }
 footer { margin-top: 26px; text-align: center; color: rgb(156, 163, 175); font-size: 0.8rem; }
 @media print {
   body { background: rgb(255, 255, 255); }
   .rapport { max-width: none; padding: 0px; }
-  section.carte { box-shadow: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; break-inside: avoid; }
+  section.carte { box-shadow: none; border: medium; break-inside: avoid; }
   .bandeau { border-radius: 0px; print-color-adjust: exact; }
+  details.axe:not([open]) > :not(summary) { display: block; }
+}
+@media (max-width: 600px) {
+  .analyse-lignes > div { grid-template-columns: 1fr; gap: 3px; }
 }
 </style>
 </head>
@@ -64,8 +85,9 @@ footer { margin-top: 26px; text-align: center; color: rgb(156, 163, 175); font-s
     
     <header class="bandeau">
       <div class="surtitre"><span>Rapport de maturité IA</span><span>04/10/2026 18:38:00</span></div>
-      <h1 class="niveau-titre">Niveau 2 : Émergent</h1>
-      <p class="niveau-texte">Des usages et capacités commencent à se mettre en place. Il est utile de formaliser les priorités et de rendre les initiatives reproductibles.</p>
+      <h1 class="niveau-titre">Niveau 2 : En exploration</h1>
+      <p class="niveau-texte">A pris conscience du potentiel offert par les données. Commence à s'interroger, à tester, est à la recherche de solutions.</p>
+      <p class="niveau-acquis">A pris conscience du potentiel. Certains collaborateurs utilisent des outils individuellement (souvent sans supervision). La direction commence à s'interroger et à tester quelques outils sur étagère, sans stratégie définie.</p>
       <div class="niveau-moyenne">Note moyenne : 1,8 / 5</div>
     </header>
 
@@ -106,179 +128,423 @@ footer { margin-top: 26px; text-align: center; color: rgb(156, 163, 175); font-s
 
     <section class="carte">
       <h2>Scores détaillés par axe</h2>
-      <p class="sous-titre">Note de chaque axe sur une échelle de 5.</p>
+      <p class="sous-titre">Moyenne de chaque axe et note de ses trois questions.</p>
       
+      <div class="axe-score-detail">
         <div class="score-ligne">
           <span class="score-nom">Potentiel</span>
           <span class="barre-fond"><span class="barre-valeur" style="width:26.666666666666664%;background:#d45b37"></span></span>
           <span class="score-note">1,3 / 5</span>
         </div>
-      
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Potentiel">
+          
+            <span><strong>Émergence</strong> 3,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 1,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 0,0 / 5</span>
+          
+        </div>
+      </div>
+    
+      <div class="axe-score-detail">
         <div class="score-ligne">
           <span class="score-nom">Stratégie</span>
           <span class="barre-fond"><span class="barre-valeur" style="width:33.333333333333336%;background:#d45b37"></span></span>
           <span class="score-note">1,7 / 5</span>
         </div>
-      
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Stratégie">
+          
+            <span><strong>Émergence</strong> 1,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 1,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 3,0 / 5</span>
+          
+        </div>
+      </div>
+    
+      <div class="axe-score-detail">
         <div class="score-ligne">
           <span class="score-nom">Culture</span>
           <span class="barre-fond"><span class="barre-valeur" style="width:20%;background:#d45b37"></span></span>
           <span class="score-note">1,0 / 5</span>
         </div>
-      
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Culture">
+          
+            <span><strong>Émergence</strong> 1,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 0,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 2,0 / 5</span>
+          
+        </div>
+      </div>
+    
+      <div class="axe-score-detail">
         <div class="score-ligne">
           <span class="score-nom">Compétences</span>
           <span class="barre-fond"><span class="barre-valeur" style="width:66.66666666666667%;background:#75a3ff"></span></span>
           <span class="score-note">3,3 / 5</span>
         </div>
-      
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Compétences">
+          
+            <span><strong>Émergence</strong> 1,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 4,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 5,0 / 5</span>
+          
+        </div>
+      </div>
+    
+      <div class="axe-score-detail">
         <div class="score-ligne">
           <span class="score-nom">Gouvernance</span>
           <span class="barre-fond"><span class="barre-valeur" style="width:33.333333333333336%;background:#d45b37"></span></span>
           <span class="score-note">1,7 / 5</span>
         </div>
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Gouvernance">
+          
+            <span><strong>Émergence</strong> 0,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 1,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 4,0 / 5</span>
+          
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="carte">
+      <div class="duo">
+        <div>
+          <h2>Forces identifiées</h2>
+          <p class="sous-titre">Les trois réponses les mieux notées, tous axes et stades confondus.</p>
+          <ol class="liste classement">
+      <li>
+        <strong>Compétences · Industrialisation</strong>
+        <span>Gestion dynamique des capacités</span>
+        <p>L'entreprise a une gestion dynamique de ses ressources, en anticipant ses besoins en compétences et en ajustant continuellement le mix entre développement interne, recrutement, mobilité et recours à l'écosystème externe.</p>
+      </li>
+    
+      <li>
+        <strong>Compétences · Structuration</strong>
+        <span>Gestion des compétences</span>
+        <p>L'entreprise possède une gestion de compétences de ses collaborateurs où les savoir faire en IA sont identifiées, évaluées et développées en fonction des rôles et des besoins de l'entreprise.</p>
+      </li>
+    
+      <li>
+        <strong>Gouvernance · Industrialisation</strong>
+        <span>Suivi continu</span>
+        <p>Le suivi continu de l'entreprise couvre notamment performance, qualité, sécurité, coûts, dérive des modèles et retours utilisateurs, avec des mécanismes d'alerte et d'action.</p>
+      </li>
+    </ol>
+        </div>
+        <div>
+          <h2>Points de vigilance</h2>
+          <p class="sous-titre">Les trois réponses les moins bien notées, tous axes et stades confondus.</p>
+          <ol class="liste classement">
+      <li>
+        <strong>Gouvernance · Emergence</strong>
+        <span>Aucun cadre</span>
+        <p>L'entreprise manque de cadrage informel pour commencer à définir certaines taches et responsabilités pour l'utilisation de l'IA.</p>
+      </li>
+    
+      <li>
+        <strong>Culture · Structuration</strong>
+        <span>Résistance</span>
+        <p>Manque de confiance et de légitimité managériale provoquant une forte résistance sur la mise en place de l'IA au sein de l'entreprise.</p>
+      </li>
+    
+      <li>
+        <strong>Potentiel · Industrialisation</strong>
+        <span>Aucun potentiel identifié</span>
+        <p>Absence d'identification de cas d'usage IA</p>
+      </li>
+    </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="carte">
+      <h2>Plan d’action à court terme</h2>
+      <ol class="liste classement">
+      <li>
+        <strong>Gouvernance</strong>
+        <p>Identifier les principaux risques et besoins de contrôle liés aux usages de l'IA ; définir premières règles et responsabilités ; sensibiliser les équipes.</p>
+      </li>
+    
+      <li>
+        <strong>Culture</strong>
+        <p>Expliquer enjeux et bénéfices ; partager la vision entreprise sur l'IA.</p>
+      </li>
+    
+      <li>
+        <strong>Potentiel</strong>
+        <p>Identifier les activités et processus susceptibles de bénéficier de l’IA ; recueillir les besoins métiers et documenter les opportunités.</p>
+      </li>
+    </ol>
+    </section>
+
+    <section class="carte">
+      <h2>Plan d’action à moyen terme</h2>
       
+      <div class="plan-axe">
+        <h3>Potentiel</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Identifier les activités et processus susceptibles de bénéficier de l’IA ; recueillir les besoins métiers et documenter les opportunités. <span>(score cible question Q03 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Identifier des sources pertinentes, leurs propriétaires et les règles d’accès ; définir les premières règles de qualité. <span>(score cible question Q02 : 1)</span></p>
+          </li>
+        </ol>
+      </div>
+    
+      <div class="plan-axe">
+        <h3>Stratégie</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Sensibiliser les dirigeants aux possibilités et enjeux de l’IA ; organiser une première réflexion sur les ambitions possibles. <span>(score cible question Q04 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Recenser initiatives et besoins IA ; définir premières étapes, responsables et échéances ; formaliser une trajectoire initiale. <span>(score cible question Q05 : 1)</span></p>
+          </li>
+        </ol>
+      </div>
+    
+      <div class="plan-axe">
+        <h3>Culture</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Expliquer enjeux et bénéfices ; partager la vision entreprise sur l'IA. <span>(score cible question Q08 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Sensibiliser dirigeants et managers aux enjeux IA ; identifier les premiers sponsors et clarifier leur rôle. <span>(score cible question Q07 : 1)</span></p>
+          </li>
+        </ol>
+      </div>
+    
+      <div class="plan-axe">
+        <h3>Compétences</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Identifier les compétences IA nécessaires ; recenser les compétences existantes et els personnes cibles ; définir les besoins de développement ou recrutement. <span>(score cible question Q10 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Construire une GPEC (La Gestion prévisionnelle des emplois et des compétences) au seind e l'entrepise ; construire des parcours par catégories ; définir niveaux, objectifs et modalités ; suivre la progression. <span>(score cible question Q11 : 4)</span></p>
+          </li>
+        </ol>
+      </div>
+    
+      <div class="plan-axe">
+        <h3>Gouvernance</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Identifier les principaux risques et besoins de contrôle liés aux usages de l'IA ; définir premières règles et responsabilités ; sensibiliser les équipes. <span>(score cible question Q13 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Définir des critères minimaux ; identifier les projets soumis à validation ; formaliser une première revue avant mise en production. <span>(score cible question Q14 : 1)</span></p>
+          </li>
+        </ol>
+      </div>
+    
     </section>
 
     <section class="carte">
       <h2>Profil de l’entreprise</h2>
       <p class="sous-titre">Informations déclarées dans le questionnaire.</p>
-      <ol class="liste">
-    <li class="profil-ligne"><strong>Motif de l’évaluation :</strong> J'aimerais connaître mon niveau avant de mettre en place de l'IA.</li>
-  
-    <li class="profil-ligne"><strong>Effectif :</strong> 251 à 1000</li>
-  
-    <li class="profil-ligne"><strong>Secteur d’activité :</strong> Santé et social</li>
-  
-    <li class="profil-ligne"><strong>Département :</strong> 94</li>
-  
-    <li class="profil-ligne"><strong>Rôle :</strong> Directeur Commercial</li>
-  
-    <li class="profil-ligne"><strong>Objectifs prioritaires :</strong> Réduire les coûts</li>
-  </ol>
+      <ol class="liste"><li class="profil-ligne"><strong>Motif de l’évaluation :</strong> J'aimerais connaître mon niveau avant de mettre en place de l'IA.</li><li class="profil-ligne"><strong>Effectif :</strong> 251 à 1000</li><li class="profil-ligne"><strong>Secteur d’activité :</strong> Santé et social</li><li class="profil-ligne"><strong>Département :</strong> 94</li><li class="profil-ligne"><strong>Rôle :</strong> Directeur Commercial</li><li class="profil-ligne"><strong>Objectifs prioritaires :</strong> Réduire les coûts</li></ol>
     </section>
 
     <section class="carte">
-      <h2>Analyse détaillée par axe</h2>
-      <p class="sous-titre">Réponses et scores ayant contribué à chaque moyenne.</p>
+      <h2>Analyse détaillée</h2>
+      <p class="sous-titre">Acquis, blocages, capacités à développer, actions et résultats attendus par axe.</p>
       
         <details class="axe">
-          <summary>Potentiel<span class="note">1,3 / 5</span></summary>
-          
-    <div class="reponse-detail">
-      <strong>Q01 · Quelles sont les infrastructures technologiques en place pour soutenir des projets d’IA ?</strong>
-      <small>Emergence · 3,0 / 5 · Standardisée</small>
-      Des environnements dédiés à l'IA sont standardisés, avec des capacités de calcul adaptées et des processus structurés de développement et de déploiement.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q02 · Dans quelle mesure l’entreprise dispose-t-elle de données accessibles, fiables et exploitables pour ses usages d’IA ?</strong>
-      <small>Structuration · 1,0 / 5 · Fragmentée</small>
-      Données dispersées, difficilement accessibles et de qualité incertaine.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q03 · Dans quelle mesure les activités de l’entreprise présentent-elles un potentiel d’application de l’IA ?</strong>
-      <small>Industrialisation · 0,0 / 5 · Aucun potentiel identifié</small>
-      Aucun cas d'usage IA pertinent identifié.
-    </div>
-  
+          <summary>Potentiel</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>Des environnements dédiés et processus standardisés sont acquis au sein de l'entreprise</li>
+              
+                <li>L'entreprise possède des données de qualités incertaines présentes et dispersées.</li>
+              
+                <li>Aucun cas d'usage pertinent.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>L'insuffisance d'automatisation, de monitoring et d'optimisation des environnement IA freinant le renforcement la performance des infrastructure.</li>
+              
+                <li>L'entreprise n'a pas proposé de données pertinentes pour une exploitation IA.</li>
+              
+                <li>Absence d'identification de cas d'usage IA</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir des environnements IA dédiés avec des capacités de calcul adaptées et des processus structurés de développement et de déploiement (MLOps/LLMOps).</li>
+              
+                <li>Acquérir la capacité à rendre les données pertinentes accessibles et à améliorer leur qualité.</li>
+              
+                <li>Acquérir la capacité à identifier les opportunités dans lesquelles l’IA pourrait présenter un cas d’usage pertinent.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Automatiser la mise à disposition des environnements ; industrialiser développement et déploiement ; renforcer sécurité et gestion des accès.</li>
+              
+                <li>Cartographier les données dispersées ; traiter les principales incohérences ; définir des règles communes de qualité et de documentation.</li>
+              
+                <li>Identifier les activités et processus susceptibles de bénéficier de l’IA ; recueillir les besoins métiers et documenter les opportunités.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>Les projets IA peuvent être développés et déployés dans des environnements industrialisés et sécurisés.</li>
+              
+                <li>Les principales données nécessaires sont identifiées, documentées et progressivement accessibles.</li>
+              
+                <li>Un premier ensemble de cas d’usage IA pertinents est identifié.</li>
+              </ul></dd></div></dl>
         </details>
       
         <details class="axe">
-          <summary>Stratégie<span class="note">1,7 / 5</span></summary>
-          
-    <div class="reponse-detail">
-      <strong>Q04 · Quel est le niveau d’ambition de l’entreprise concernant l’IA ?</strong>
-      <small>Emergence · 1,0 / 5 · Exploratoire</small>
-      L'entreprise commence à explorer les possibilités offertes par l'IA.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q05 · Dans quelle mesure l’entreprise dispose-t-elle d’une feuille de route pour mettre en œuvre son ambition IA ?</strong>
-      <small>Structuration · 1,0 / 5 · Initiatives ponctuelles</small>
-      Quelques initiatives existent sans trajectoire commune.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q06 · Dans quelle mesure les initiatives et cas d’usage IA sont-ils priorisés en fonction des enjeux de l’entreprise ?</strong>
-      <small>Industrialisation · 3,0 / 5 · Priorisation</small>
-      Les cas d'usage sont priorisés selon des critères explicites tels que valeur, faisabilité, risques ou effort.
-    </div>
-  
+          <summary>Stratégie</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>Les exploration des possibilités de l'IA sont en cours dans l'entreprise.</li>
+              
+                <li>Des initiatives ponctuelles existent au sein de l'entreprise sans avoir pour autant une trajectoire commune.</li>
+              
+                <li>L'entreprise a priorisé les cas d’usage identifiés selon des critères explicites tels que valeur, faisabilité, risques ou effort.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>Une ambition d'entreprise non traduite en choix de quelques initiatives ciblées.</li>
+              
+                <li>Manque d'une trajectoire commune au sein de l'entreprise pour les nouveaux projets IA.</li>
+              
+                <li>L'entreprise ne fait pas de gestion des projets IA, pourtant priorisés, au sein d'un portefeuille projet permettant de faire l'allocation et le suivit de l'investissements IA.</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir la capacité à définir une vision des possibilités offertes par l’IA.</li>
+              
+                <li>Acquérir la capacité à coordonner les initiatives IA existantes autour d’une trajectoire commune.</li>
+              
+                <li>Acquérir la capacité à gérer au sein d'un portefeuille les cas d’usage IA pour contrôller leur progression et leur cout.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Structurer l’exploration des opportunités ; sélectionner des domaines d’intérêt et documenter les enseignements.</li>
+              
+                <li>Regrouper les initiatives ; identifier dépendances et priorités ; construire une trajectoire commune.</li>
+              
+                <li>Collecter l'ensemble des cas dusage IA au sein d'un portefeuille ; Mettre en place un processus de priorisation sur les critères de valeur apportée, faisabilité, risques et efforts ; arbitrer les investissements et suivre les cas sélectionnés.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>L’entreprise dispose d’une compréhension initiale des opportunités IA et de domaines d’exploration identifiés.</li>
+              
+                <li>Les principales initiatives IA sont coordonnées dans une trajectoire commune.</li>
+              
+                <li>Un portefeuile est disponible auprès des parties prenantes des projets IA ; les initiatives IA sont priorisées et suivies selon des critères explicites.</li>
+              </ul></dd></div></dl>
         </details>
       
         <details class="axe">
-          <summary>Culture<span class="note">1,0 / 5</span></summary>
-          
-    <div class="reponse-detail">
-      <strong>Q07 · Dans quelle mesure les dirigeants et managers favorisent-ils l’adoption de l’IA dans l’entreprise ?</strong>
-      <small>Emergence · 1,0 / 5 · Sensibilisation</small>
-      Le sujet est connu des dirigeants et managers, mais sans implication concrète.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q08 · Dans quelle mesure les collaborateurs sont-ils prêts à adopter et utiliser l’IA dans leur activité ?</strong>
-      <small>Structuration · 0,0 / 5 · Résistance</small>
-      L'IA suscite principalement de la crainte, de la méfiance ou une résistance à son utilisation.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q09 · Dans quelle mesure l’entreprise favorise-t-elle l’apprentissage, l’expérimentation et le partage autour de l’IA ?</strong>
-      <small>Industrialisation · 2,0 / 5 · Initiatives ponctuelles</small>
-      Des ateliers, formations, communautés ou expérimentations sont organisés ponctuellement.
-    </div>
-  
+          <summary>Culture</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>Le leadership de l'entreprise est sensibilisé aux sujets IA</li>
+              
+                <li>Pas d'implication réelle.</li>
+              
+                <li>L'entreprise favorise des ateliers, formations, communautés ou expérimentations sont organisés ponctuellement.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>la hiérarchie de l'entreprise ne soutien pas les initiatives IA de ses collaborateurs.</li>
+              
+                <li>Manque de confiance et de légitimité managériale provoquant une forte résistance sur la mise en place de l'IA au sein de l'entreprise.</li>
+              
+                <li>L'entreprise ne met pas en place des initiatives régulières de formations et de capitalisation sur l'IA.</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir la capacité du leadership à soutenir et à rendre visibles les premières initiatives IA portées par les collaborateurs.</li>
+              
+                <li>Acquérir la capacité à créer les conditions permettant aux collaborateurs d’accepter progressivement l’utilisation de l’IA.</li>
+              
+                <li>Acquérir la capacité à organiser périodiquement la gestion des connaissances au sein d'ateliers, formations, communautés ou expérimentations  autour de l’IA.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Nommer des sponsors ; communiquer les objectifs IA ; donner de la visibilité aux initiatives des collaborateurs.</li>
+              
+                <li>Expliquer enjeux et bénéfices ; partager la vision entreprise sur l'IA.</li>
+              
+                <li>Planifier ateliers, formations, communautés ou expérimentations ; définir le socle de connaissace nécessaire à l'entreprise ; définir publics et objectifs ; capitaliser les retours.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>Le leadership IA devient visible et les initiatives bénéficient d’un soutien identifié.</li>
+              
+                <li>Les résistances sont identifiées et les collaborateurs disposent de premiers repères pour envisager l’IA.</li>
+              
+                <li>Des dispositifs réguliers permettent d’apprendre, expérimenter et partager autour de l’IA. Un socle de connaissance IA est débutée.</li>
+              </ul></dd></div></dl>
         </details>
       
         <details class="axe">
-          <summary>Compétences<span class="note">3,3 / 5</span></summary>
-          
-    <div class="reponse-detail">
-      <strong>Q10 · Dans quelle mesure l’entreprise dispose-t-elle des compétences internes nécessaires pour concevoir, développer, déployer et exploiter des solutions d’IA ?</strong>
-      <small>Emergence · 1,0 / 5 · Très limitées</small>
-      Quelques personnes possèdent des connaissances ou compétences IA, sans capacité collective structurée.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q11 · Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?</strong>
-      <small>Structuration · 4,0 / 5 · Gestion des compétences</small>
-      Les compétences IA sont identifiées, évaluées et développées en fonction des rôles et des besoins de l'entreprise.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q12 · Dans quelle mesure l’entreprise sait-elle identifier et combler ses lacunes en compétences IA ?</strong>
-      <small>Industrialisation · 5,0 / 5 · Gestion dynamique des capacités</small>
-      L'entreprise anticipe ses besoins en compétences et ajuste continuellement le mix entre développement interne, recrutement, mobilité et recours à l'écosystème externe.
-    </div>
-  
+          <summary>Compétences</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>L'entreprise a identifiée quelques personnes possédant des connaissances ou compétences IA, sans capacité collective structurée.</li>
+              
+                <li>L'entreprise possède une gestion de compétences de ses collaborateurs où les savoir faire en IA sont identifiées, évaluées et développées en fonction des rôles et des besoins de l'entreprise.</li>
+              
+                <li>L'entreprise a une gestion dynamique de ses ressources, en anticipant ses besoins en compétences et en ajustant continuellement le mix entre développement interne, recrutement, mobilité et recours à l'écosystème externe.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>L'entreprise dispose trop peu de compétences internes identifiées en IA et n'a pas de capacité collective et possède une couverture insuffisantes des compétences.</li>
+              
+                <li>L'entreprise manque d'une gouvernance complète des compétences en IA afin d'anticiper et actualiser les ressources des projets IA.</li>
+              
+                <li>Bien que l'industrialisation des compétences IA est présente dans l'entreprise avec une stratégie make/nuy/partners établie, une optimisation de sa dynamique de ces dernières doit être adapté aux technologies de l'IA en évolution permanente pour répondre aux besoins de l'entreprise.</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir une capacité collective permettant de réaliser des projets IA au-delà de quelques connaissances individuelles.</li>
+              
+                <li>Acquérir la capacité à d'entretenir les complétences IA -  évaluer les acquis et adapter régulièrement les parcours de développement - en fonction des besoins de l'entreprise.</li>
+              
+                <li>Acquérir la capacité à mobiliser rapidement un réseau structuré pour faire face aux évolutions technologiques et de contexte économique de l'entreprise.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Constituer une première équipe ou communauté de compétences ; compléter les connaissances individuelles ; sécuriser les expertises.</li>
+              
+                <li>Cartographier compétences à maintenir par rôle au sein de la GPEC ; évaluer niveaux ; relier écarts aux plans de développement.</li>
+              
+                <li>Mettre en place une veille des partenariats pro-active ; mettre en place une gouvernance dynamique à l'écoute de l'ecosystème économique de l'entreprise ; ajuster continuellement recrutement, développement, mobilité et externe.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>Une capacité collective initiale permet de contribuer à des projets IA ciblés.</li>
+              
+                <li>La GPEC IA est à jour. Les compétences IA sont identifiées, évaluées et développées selon les besoins.</li>
+              
+                <li>L’entreprise anticipe ses besoins et ajuste continuellement son mix de compétences.</li>
+              </ul></dd></div></dl>
         </details>
       
         <details class="axe">
-          <summary>Gouvernance<span class="note">1,7 / 5</span></summary>
-          
-    <div class="reponse-detail">
-      <strong>Q13 · Dans quelle mesure l’entreprise dispose-t-elle d’un cadre de gouvernance pour encadrer l’utilisation de l’IA ?</strong>
-      <small>Emergence · 0,0 / 5 · Aucun cadre</small>
-      Aucun principe, règle ou responsabilité n'est défini pour l'utilisation de l'IA.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q14 · Dans quelle mesure les projets et usages d’IA font-ils l’objet d’une évaluation et d’une validation avant leur mise en production ?</strong>
-      <small>Structuration · 1,0 / 5 · Évaluation ponctuelle</small>
-      Certains projets font l'objet d'une évaluation informelle avant leur déploiement.
-    </div>
-  
-    <div class="reponse-detail">
-      <strong>Q15 · Dans quelle mesure les solutions IA déployées sont-elles surveillées et réévaluées pendant leur cycle de vie ?</strong>
-      <small>Industrialisation · 4,0 / 5 · Suivi continu</small>
-      Le suivi couvre notamment performance, qualité, sécurité, coûts, dérive des modèles et retours utilisateurs, avec des mécanismes d'alerte et d'action.
-    </div>
-  
+          <summary>Gouvernance</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>L'entreprise n'a aucun principe, règle ou responsabilité n'est défini pour l'utilisation de l'IA.</li>
+              
+                <li>L'entreprise met en place ponctuellement une évaluation informelle avant leur déploiement de certains projets font l'objet</li>
+              
+                <li>Le suivi continu de l'entreprise couvre notamment performance, qualité, sécurité, coûts, dérive des modèles et retours utilisateurs, avec des mécanismes d'alerte et d'action.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>L'entreprise manque de cadrage informel pour commencer à définir certaines taches et responsabilités pour l'utilisation de l'IA.</li>
+              
+                <li>L'entreprise manque d'approche systématique dans l'évaluation de certains projets et d'usages IA.</li>
+              
+                <li>L'entreprise ne réévalue pas les solutions IA déployées permettant de les adapter au contexte de l'entreprise et/ou de les retirer lors d'une élévation des risques de leurs usages</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir la capacité à définir les premiers principes de la gouvernance IA avec des règles et responsabilités encadrant l’utilisation de l’IA.</li>
+              
+                <li>Acquérir la capacité à appliquer de manière systématique certain critères d'évaluation avant le déploiement des projets IA.</li>
+              
+                <li>Acquérir la capacité à surveiller et réévaluer les solutions IA sur l’ensemble de leur cycle de vie et à les adapter, suspendre ou retirer lorsque les conditions ou les risques évoluent.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Identifier les principaux risques et besoins de contrôle liés aux usages de l'IA ; définir premières règles et responsabilités ; sensibiliser les équipes.</li>
+              
+                <li>Formaliser les évaluations ; définir responsabilités de validation ; conserver décisions et éléments d’analyse.</li>
+              
+                <li>Étendre le suivi à performance, qualité, sécurité, coûts, dérive et retours utilisateurs ; mettre en place alertes.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>Un premier cadre de principes, règles et responsabilités encadre les usages IA prioritaires.</li>
+              
+                <li>Les projets concernés sont évalués selon un processus identifiable avant production.</li>
+              
+                <li>L’entreprise dispose d’un suivi continu permettant de détecter les dérives et d’agir rapidement.</li>
+              </ul></dd></div></dl>
         </details>
       
     </section>
 
-    <footer>Rapport généré à partir de vos réponses au questionnaire de maturité IA.</footer>
+    <footer>Rapport généré à partir du référentiel V3-d99683108e78 et de vos réponses au questionnaire de maturité IA.</footer>
   </main></body>
 </html>

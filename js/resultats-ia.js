@@ -56,31 +56,6 @@ function radarMarkup(axes) {
   return `<svg class="radar" viewBox="0 0 380 330" role="img" aria-label="Diagramme radar des cinq axes">${rings}${spokes}<polygon points="${valuePoints}" fill="rgba(47,111,237,0.2)" stroke="#2f6fed" stroke-width="2" stroke-linejoin="round"></polygon>${values}</svg>`;
 }
 
-function profileMarkup(profile) {
-  const labels = {
-    intention: 'Motif de l’évaluation',
-    effectif: 'Effectif',
-    secteur: 'Secteur d’activité',
-    departement: 'Département',
-    role: 'Rôle',
-    objectifs: 'Objectifs prioritaires'
-  };
-  return Object.entries(profile).map(([key, values]) => `
-    <li class="profil-ligne"><strong>${escapeHtml(labels[key] || key)} :</strong> ${values.map(escapeHtml).join(', ')}</li>
-  `).join('');
-}
-
-function answerDetailsMarkup(axisName) {
-  const relevantAnswers = report.answers.filter((answer) => answer.axe.toLowerCase() === axisName.toLowerCase());
-  return relevantAnswers.map((answer) => `
-    <div class="reponse-detail">
-      <strong>${escapeHtml(answer.id)} · ${escapeHtml(answer.question)}</strong>
-      <small>${escapeHtml(answer.type)} · ${formatScore(answer.score)} / 5 · ${escapeHtml(answer.label)}</small>
-      ${escapeHtml(answer.description)}
-    </div>
-  `).join('');
-}
-
 function archiveMarkup() {
   if (!archivedReports.length) return '';
 
@@ -173,7 +148,7 @@ async function saveReportToDirectory() {
     ).join(' · ');
     status.innerHTML = `<strong>Rapport enregistré dans votre espace :</strong> ${fileLinks}`;
   } catch (error) {
-    status.textContent = `Sauvegarde automatique impossible. Lancez start-server.bat puis ouvrez http://127.0.0.1:8765. (${error.message})`;
+    status.textContent = `Sauvegarde automatique impossible. Lancez start-server.command sur Mac ou start-server.bat sur Windows, puis ouvrez http://127.0.0.1:8765. (${error.message})`;
     status.classList.add('error');
   }
 }
@@ -189,16 +164,21 @@ function renderMissingReport() {
 }
 
 function renderReport() {
-  const level = Math.max(0, Math.min(5, Math.round(report.overall)));
-  const levelNames = ['À initier', 'En friche', 'Émergent', 'Structuré', 'Industrialisé', 'Optimisé'];
+  const level = report.maturity?.score ?? Math.max(0, Math.min(5, Math.round(report.overall)));
+  const levelNames = ['À initier', 'En friche', 'En exploration', 'En chantier', 'En exploitation', 'En pilotage'];
   const levelDescriptions = [
-    'Les pratiques et capacités IA restent à définir. Une première évaluation des besoins et des opportunités aidera à lancer la démarche.',
-    'Les premières initiatives IA sont ponctuelles. La priorité est de structurer les expérimentations, les responsabilités et les compétences.',
-    'Des usages et capacités commencent à se mettre en place. Il est utile de formaliser les priorités et de rendre les initiatives reproductibles.',
-    'La démarche IA est structurée sur plusieurs dimensions. Le prochain enjeu est d’améliorer le pilotage et d’étendre les pratiques éprouvées.',
-    'Les capacités IA sont largement intégrées et industrialisées. L’entreprise peut renforcer l’optimisation continue et la mesure de valeur.',
-    'La maturité IA est élevée et intégrée aux pratiques de l’entreprise. L’enjeu est de maintenir les capacités et d’adapter la démarche aux évolutions.'
+    'Aucun niveau de maturité défini dans le référentiel V3.',
+    'N’a entrepris aucune démarche et n’a pas de projet à court terme.',
+    'A pris conscience du potentiel offert par les données et commence à tester des solutions.',
+    'A entrepris des actions ciblées, sans démarche encore structurée.',
+    'Est engagé dans une approche structurée et a déployé des outils ou une infrastructure.',
+    'Dispose d’une architecture data, de compétences internalisées et d’une culture data ancrée.'
   ];
+  const maturity = report.maturity || {
+    name: levelNames[level],
+    description: levelDescriptions[level],
+    acquired: ''
+  };
   const generatedDate = new Date(report.savedAt).toLocaleString('fr-FR');
   const axes = Object.entries(report.axes);
   const stages = [
@@ -218,8 +198,9 @@ function renderReport() {
     <p id="directory-save-status" class="directory-save-status" aria-live="polite"></p>
     <header class="bandeau">
       <div class="surtitre"><span>Rapport de maturité IA</span><span>${escapeHtml(generatedDate)}</span></div>
-      <h1 class="niveau-titre">Niveau ${level} : ${levelNames[level]}</h1>
-      <p class="niveau-texte">${levelDescriptions[level]}</p>
+      <h1 class="niveau-titre">Niveau ${level} : ${escapeHtml(maturity.name)}</h1>
+      <p class="niveau-texte">${escapeHtml(maturity.description)}</p>
+      ${maturity.acquired ? `<p class="niveau-acquis">${escapeHtml(maturity.acquired)}</p>` : ''}
       <div class="niveau-moyenne">Note moyenne : ${formatScore(report.overall)} / 5</div>
     </header>
 
@@ -248,34 +229,48 @@ function renderReport() {
 
     <section class="carte">
       <h2>Scores détaillés par axe</h2>
-      <p class="sous-titre">Note de chaque axe sur une échelle de 5.</p>
-      ${axes.map(([name, score]) => `
-        <div class="score-ligne">
-          <span class="score-nom">${escapeHtml(name)}</span>
-          <span class="barre-fond"><span class="barre-valeur" style="width:${score * 20}%;background:${scoreColor(score)}"></span></span>
-          <span class="score-note">${formatScore(score)} / 5</span>
+      <p class="sous-titre">Moyenne de chaque axe et note de ses trois questions.</p>
+      ${window.scoresAxesMarkup(axes, report.answers)}
+    </section>
+
+    <section class="carte">
+      <div class="duo">
+        <div>
+          <h2>Forces identifiées</h2>
+          <p class="sous-titre">Les trois réponses les mieux notées, tous axes et stades confondus.</p>
+          ${window.forcesMarkup(report.strengths)}
         </div>
-      `).join('')}
+        <div>
+          <h2>Points de vigilance</h2>
+          <p class="sous-titre">Les trois réponses les moins bien notées, tous axes et stades confondus.</p>
+          ${window.vigilancesMarkup(report.watchPoints)}
+        </div>
+      </div>
+    </section>
+
+    <section class="carte">
+      <h2>Plan d’action à court terme</h2>
+      ${window.planCourtTermeMarkup(report.priorityActions)}
+    </section>
+
+    <section class="carte">
+      <h2>Plan d’action à moyen terme</h2>
+      ${window.planMoyenTermeMarkup(report.mediumTermActions)}
     </section>
 
     <section class="carte">
       <h2>Profil de l’entreprise</h2>
       <p class="sous-titre">Informations déclarées dans le questionnaire.</p>
-      <ol class="liste">${profileMarkup(report.profile)}</ol>
+      ${window.profilEntrepriseMarkup(report.profile)}
     </section>
 
     <section class="carte">
-      <h2>Analyse détaillée par axe</h2>
-      <p class="sous-titre">Réponses et scores ayant contribué à chaque moyenne.</p>
-      ${axes.map(([name, score]) => `
-        <details class="axe">
-          <summary>${escapeHtml(name)}<span class="note">${formatScore(score)} / 5</span></summary>
-          ${answerDetailsMarkup(name)}
-        </details>
-      `).join('')}
+      <h2>Analyse détaillée</h2>
+      <p class="sous-titre">Acquis, blocages, capacités à développer, actions et résultats attendus par axe.</p>
+      ${window.analyseDetailleeMarkup(report.axisAnalysis, report.answers)}
     </section>
 
-    <footer>Rapport généré à partir de vos réponses au questionnaire de maturité IA.</footer>
+    <footer>Rapport généré à partir du référentiel ${escapeHtml(report.analysisVersion || 'historique')} et de vos réponses au questionnaire de maturité IA.</footer>
   `;
 
   document.getElementById('print-report').addEventListener('click', () => window.print());

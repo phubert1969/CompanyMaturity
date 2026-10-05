@@ -15,16 +15,19 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
 
+from maturity_config import enrich_report, load_maturity_config
+
 
 ROOT = Path(__file__).resolve().parent
 REPORTS = ROOT / 'Rapports'
 PRIVATE = ROOT / '.private'
 USERS_FILE = PRIVATE / 'users.json'
-PORT = 8765
+PORT = int(os.environ.get('COMPANY_MATURITY_PORT', '8765'))
 MAX_REQUEST_BYTES = 5 * 1024 * 1024
 PASSWORD_ITERATIONS = 310_000
 SESSIONS = {}
 LOCK = threading.RLock()
+MATURITY_CONFIG = load_maturity_config()
 
 
 def find_browser():
@@ -142,6 +145,10 @@ class ReportHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             return
 
+        if route == '/api/analysis-config':
+            self._send_json(200, MATURITY_CONFIG)
+            return
+
         if route == '/api/session':
             if not user:
                 self._send_json(401, {'error': 'Session absente.'})
@@ -185,6 +192,11 @@ class ReportHandler(SimpleHTTPRequestHandler):
                     return
                 _, report = self._authorized_report(report_id, user)
                 if report:
+                    if not report.get('analysisVersion'):
+                        try:
+                            report = enrich_report(report, MATURITY_CONFIG)
+                        except ValueError:
+                            pass
                     self._send_json(200, {'report': report})
                 return
 
@@ -364,6 +376,7 @@ class ReportHandler(SimpleHTTPRequestHandler):
                 html = payload.get('html')
                 if not isinstance(report, dict):
                     raise ValueError('Les résultats du formulaire sont manquants.')
+                report = enrich_report(report, MATURITY_CONFIG)
                 if html is not None and (not isinstance(html, str) or '<html' not in html.lower()):
                     raise ValueError('Le rapport HTML est invalide.')
 
@@ -379,6 +392,10 @@ class ReportHandler(SimpleHTTPRequestHandler):
                     if stored_report.get('owner') != user['username'] and not user.get('admin'):
                         self._send_json(403, {'error': 'Ce rapport appartient à un autre compte.'})
                         return
+                    stored_report.update({
+                        key: value for key, value in report.items()
+                        if key not in {'id', 'owner', 'savedAt', 'files'}
+                    })
                 else:
                     report_id = uuid.uuid4().hex
                     timestamp = datetime.now().astimezone()

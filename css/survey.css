@@ -110,8 +110,16 @@
 }
 
 .option-row input {
-    margin-top: 0.1rem;
+    margin: 0;
     accent-color: var(--primary);
+}
+
+.option-choice {
+    display: flex;
+    flex: 0 0 2rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
 }
 
 .score-pill {
@@ -120,6 +128,7 @@
     justify-content: center;
     width: 2rem;
     height: 2rem;
+    flex: 0 0 2rem;
     border-radius: 50%;
     background: var(--primary);
     color: var(--white);

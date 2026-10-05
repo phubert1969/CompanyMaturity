@@ -433,8 +433,10 @@ function renderIaQuestions() {
       const optionRow = document.createElement('label');
       optionRow.className = 'option-row';
       optionRow.innerHTML = `
-        <input type="radio" name="${question.id}" value="${option.value}" required>
-        <span class="score-pill">${option.value}</span>
+        <span class="option-choice">
+          <input type="radio" name="${question.id}" value="${option.value}" required>
+          <span class="score-pill">${option.value}</span>
+        </span>
         <span class="option-text">
           <strong>${option.label}</strong>
           <small>${option.description}</small>
@@ -559,5 +561,33 @@ form.addEventListener('submit', async (event) => {
   }
 });
 
+async function loadIaQuestionsFromWorkbook() {
+  const response = await fetch('/api/analysis-config');
+  if (!response.ok) throw new Error('Le référentiel V3 est indisponible.');
+  const config = await response.json();
+  if (!Array.isArray(config.questions) || config.questions.length !== 15) {
+    throw new Error('Le référentiel V3 ne contient pas les 15 questions attendues.');
+  }
+
+  iaQuestions.splice(0, iaQuestions.length, ...config.questions.map((question) => ({
+    ...question,
+    options: question.options.map((option) => ({
+      value: option.score,
+      label: option.label,
+      description: option.description
+    }))
+  })));
+}
+
 renderIntroQuestions();
-renderIaQuestions();
+const submitButton = form.querySelector('button[type="submit"]');
+submitButton.disabled = true;
+loadIaQuestionsFromWorkbook()
+  .then(() => {
+    renderIaQuestions();
+    submitButton.disabled = false;
+  })
+  .catch((error) => {
+    resultBox.textContent = `${error.message} Redémarrez le serveur après avoir vérifié le classeur.`;
+    resultBox.classList.add('error');
+  });

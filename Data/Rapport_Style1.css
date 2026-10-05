@@ -249,6 +249,27 @@ svg.radar {
   color: #374151;
 }
 
+.axe-score-detail {
+  margin-bottom: 14px;
+}
+
+.scores-questions-axe {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: -5px;
+}
+
+.scores-questions-axe span {
+  color: var(--report-muted);
+  font-size: .82rem;
+  text-align: center;
+}
+
+.scores-questions-axe strong {
+  color: var(--report-ink);
+}
+
 /* --------------------------------------------------------------------------
    7. Listes numérotées
    -------------------------------------------------------------------------- */
@@ -318,6 +339,75 @@ table.roadmap td {
   vertical-align: top;
 }
 
+.niveau-acquis {
+  max-width: 700px;
+  margin: 12px 0 0;
+  color: #fff;
+}
+
+.reponse-detail > p {
+  margin: 6px 0;
+}
+
+.analyse-lignes {
+  margin: 12px 0 0;
+}
+
+.analyse-lignes > div {
+  display: grid;
+  grid-template-columns: minmax(50px, 1fr) 8fr;
+  gap: 12px;
+  padding: 8px 0;
+  border-top: 1px solid var(--report-line);
+}
+
+.analyse-lignes dt {
+  padding: 8px;
+  border-radius: 4px;
+  background: #eaf3ff;
+  color: var(--report-primary-dark);
+  font-weight: 700;
+}
+
+.analyse-lignes dd {
+  margin: 0;
+}
+
+.analyse-fusionnee {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.analyse-fusionnee li + li {
+  margin-top: 6px;
+}
+
+.analyse-fusionnee strong {
+  color: var(--report-primary-dark);
+}
+
+.classement li {
+  display: grid;
+  gap: 3px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--report-line);
+}
+
+.classement li > span,
+.classement li > small {
+  color: var(--report-muted);
+}
+
+.priorites {
+  margin-top: 24px;
+}
+
+.plan-axe h3 {
+  margin: 14px 0 4px;
+  color: var(--report-primary-dark);
+  font-size: 1rem;
+}
+
 /* --------------------------------------------------------------------------
    10. Conclusion et pied de page
    -------------------------------------------------------------------------- */
@@ -364,5 +454,16 @@ footer {
     border-radius: 0;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+
+  details.axe:not([open]) > :not(summary) {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .analyse-lignes > div {
+    grid-template-columns: 1fr;
+    gap: 3px;
   }
 }
