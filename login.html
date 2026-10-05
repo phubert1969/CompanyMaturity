@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | Diagnostic IA</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="auth-body">
+
+        <nav class="menu" aria-label="Menu principal">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="maturityIA.html">Maturité IA</a></li>
+            <li><a href="resultatsIA.html">Résultats IA</a></li>
+            <li><a href="espace.html" class="active">Mon espace</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="auth-panel">
+        <a class="auth-brand" href="login.html">Diagnostic IA</a>
+        <p class="eyebrow">Espace sécurisé</p>
+        <h1>Connexion</h1>
+        <p id="login-intro" class="auth-intro">Accédez à vos formulaires et à vos résultats.</p>
+        <section id="result-preview" class="result-preview" aria-labelledby="preview-title" hidden>
+            <div class="preview-heading">
+                <p class="eyebrow">Première lecture</p>
+                <h2 id="preview-title">Un aperçu de vos résultats</h2>
+                <p>Les analyses et recommandations détaillées seront disponibles après connexion.</p>
+            </div>
+            <div class="preview-grid">
+                <div class="preview-chart">
+                    <h3>Vue radar des axes</h3>
+                    <div id="preview-radar"></div>
+                </div>
+                <div class="preview-chart">
+                    <h3>Moyennes par stades</h3>
+                    <div id="preview-stages"></div>
+                </div>
+            </div>
+        </section>
+        <form id="login-form" class="auth-form">
+            <label for="username">Login</label>
+            <input id="username" name="username" autocomplete="username" required>
+            <label for="password">Mot de passe</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required>
+            <button class="primary-btn" type="submit">Se connecter</button>
+            <p id="login-message" class="auth-message" role="alert" aria-live="polite"></p>
+        </form>
+
+        <section id="register-section" class="register-section" hidden>
+            <h2>Créer mon compte</h2>
+            <p class="auth-intro">Pas encore de compte ? Créez-le pour enregistrer ce diagnostic.</p>
+            <form id="register-form" class="auth-form">
+                <label for="register-username">Login souhaité</label>
+                <input id="register-username" name="username" autocomplete="username" minlength="3" maxlength="32" required>
+                <label for="register-password">Mot de passe (8 caractères minimum)</label>
+                <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+                <label for="register-password-confirm">Confirmer le mot de passe</label>
+                <input id="register-password-confirm" name="passwordConfirmation" type="password" autocomplete="new-password" minlength="8" required>
+                <button class="secondary-btn" type="submit">Créer mon compte et enregistrer</button>
+                <p id="register-message" class="auth-message" role="alert" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+    <script src="js/login.js" defer></script>
+</body>
+</html>

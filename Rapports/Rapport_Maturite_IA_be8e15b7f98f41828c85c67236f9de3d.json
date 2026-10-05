@@ -1,0 +1,181 @@
+{
+  "overall": 4.4,
+  "profile": {
+    "intention": [
+      "J'aimerais connaître mon niveau avant de mettre en place de l'IA."
+    ],
+    "effectif": [
+      "251 à 1000"
+    ],
+    "secteur": [
+      "Éducation et formation"
+    ],
+    "departement": [
+      "94"
+    ],
+    "role": [
+      "Directeur Commercial"
+    ],
+    "objectifs": [
+      "Réduire les coûts"
+    ]
+  },
+  "axes": {
+    "Potentiel": 4.666666666666667,
+    "Stratégie": 4,
+    "Culture": 4,
+    "Compétences": 5,
+    "Gouvernance": 4.333333333333333
+  },
+  "stages": {
+    "Emergence": 4.8,
+    "Structuration": 4.4,
+    "Industrialisation": 4
+  },
+  "answers": [
+    {
+      "id": "Q01",
+      "question": "Quelles sont les infrastructures technologiques en place pour soutenir des projets d’IA ?",
+      "axe": "POTENTIEL",
+      "type": "Emergence",
+      "score": 4,
+      "label": "Optimisée",
+      "description": "L'infrastructure est scalable, automatisée, sécurisée et optimisée pour les performances et les coûts des workloads IA."
+    },
+    {
+      "id": "Q02",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle de données accessibles, fiables et exploitables pour ses usages d’IA ?",
+      "axe": "Potentiel",
+      "type": "Structuration",
+      "score": 5,
+      "label": "Data-ready",
+      "description": "Environnement data industrialisé permettant d'alimenter, à grande échelle, différents usages IA avec qualité, traçabilité, automatisation et réutilisabilité."
+    },
+    {
+      "id": "Q03",
+      "question": "Dans quelle mesure les activités de l’entreprise présentent-elles un potentiel d’application de l’IA ?",
+      "axe": "Potentiel",
+      "type": "Industrialisation",
+      "score": 5,
+      "label": "Potentiel stratégique",
+      "description": "L'IA est susceptible de transformer en profondeur le modèle opérationnel, les produits/services ou les sources de valeur de l'entreprise."
+    },
+    {
+      "id": "Q04",
+      "question": "Quel est le niveau d’ambition de l’entreprise concernant l’IA ?",
+      "axe": "Stratégie",
+      "type": "Emergence",
+      "score": 5,
+      "label": "Ambition stratégique",
+      "description": "L'IA est considérée comme un levier majeur d'évolution du positionnement et/ou du modèle économique de l'entreprise."
+    },
+    {
+      "id": "Q05",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle d’une feuille de route pour mettre en œuvre son ambition IA ?",
+      "axe": "Stratégie",
+      "type": "Structuration",
+      "score": 4,
+      "label": "Roadmap pilotée",
+      "description": "La feuille de route est intégrée aux plans de l'entreprise et régulièrement pilotée avec des indicateurs."
+    },
+    {
+      "id": "Q06",
+      "question": "Dans quelle mesure les initiatives et cas d’usage IA sont-ils priorisés en fonction des enjeux de l’entreprise ?",
+      "axe": "Stratégie",
+      "type": "Industrialisation",
+      "score": 3,
+      "label": "Priorisation",
+      "description": "Les cas d'usage sont priorisés selon des critères explicites tels que valeur, faisabilité, risques ou effort."
+    },
+    {
+      "id": "Q07",
+      "question": "Dans quelle mesure les dirigeants et managers favorisent-ils l’adoption de l’IA dans l’entreprise ?",
+      "axe": "Culture",
+      "type": "Emergence",
+      "score": 5,
+      "label": "Leadership exemplaire",
+      "description": "Le leadership IA est visible dans les pratiques managériales et les dirigeants incarnent eux-mêmes l'utilisation et l'adoption de l'IA."
+    },
+    {
+      "id": "Q08",
+      "question": "Dans quelle mesure les collaborateurs sont-ils prêts à adopter et utiliser l’IA dans leur activité ?",
+      "axe": "Culture",
+      "type": "Structuration",
+      "score": 4,
+      "label": "Appropriation",
+      "description": "Les collaborateurs utilisent spontanément l'IA pour améliorer leurs activités et partagent leurs expériences."
+    },
+    {
+      "id": "Q09",
+      "question": "Dans quelle mesure l’entreprise favorise-t-elle l’apprentissage, l’expérimentation et le partage autour de l’IA ?",
+      "axe": "Culture",
+      "type": "Industrialisation",
+      "score": 3,
+      "label": "Dispositifs réguliers",
+      "description": "Des dispositifs réguliers permettent aux collaborateurs d'apprendre, expérimenter et partager autour de l'IA."
+    },
+    {
+      "id": "Q10",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle des compétences internes nécessaires pour concevoir, développer, déployer et exploiter des solutions d’IA ?",
+      "axe": "Compétences",
+      "type": "Emergence",
+      "score": 5,
+      "label": "Multidisciplinaires",
+      "description": "L'entreprise dispose d'une capacité interne multidisciplinaire permettant de concevoir, industrialiser et faire évoluer des solutions IA de manière autonome."
+    },
+    {
+      "id": "Q11",
+      "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
+      "axe": "Compétences",
+      "type": "Structuration",
+      "score": 5,
+      "label": "Développement continu",
+      "description": "L'entreprise dispose d'un dispositif continu permettant d'anticiper les évolutions des compétences IA, d'évaluer les acquis et d'adapter régulièrement les parcours."
+    },
+    {
+      "id": "Q12",
+      "question": "Dans quelle mesure l’entreprise sait-elle identifier et combler ses lacunes en compétences IA ?",
+      "axe": "Compétences",
+      "type": "Industrialisation",
+      "score": 5,
+      "label": "Gestion dynamique des capacités",
+      "description": "L'entreprise anticipe ses besoins en compétences et ajuste continuellement le mix entre développement interne, recrutement, mobilité et recours à l'écosystème externe."
+    },
+    {
+      "id": "Q13",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle d’un cadre de gouvernance pour encadrer l’utilisation de l’IA ?",
+      "axe": "Gouvernance",
+      "type": "Emergence",
+      "score": 5,
+      "label": "Gouvernance intégrée",
+      "description": "La gouvernance IA est intégrée aux processus de l'entreprise et évolue régulièrement en fonction des risques, des usages, des réglementations et des pratiques de référence."
+    },
+    {
+      "id": "Q14",
+      "question": "Dans quelle mesure les projets et usages d’IA font-ils l’objet d’une évaluation et d’une validation avant leur mise en production ?",
+      "axe": "Gouvernance",
+      "type": "Structuration",
+      "score": 4,
+      "label": "Évaluation multidimensionnelle",
+      "description": "L'évaluation couvre systématiquement les dimensions pertinentes : performance, sécurité, données, risques, conformité, impacts et responsabilités."
+    },
+    {
+      "id": "Q15",
+      "question": "Dans quelle mesure les solutions IA déployées sont-elles surveillées et réévaluées pendant leur cycle de vie ?",
+      "axe": "Gouvernance",
+      "type": "Industrialisation",
+      "score": 4,
+      "label": "Suivi continu",
+      "description": "Le suivi couvre notamment performance, qualité, sécurité, coûts, dérive des modèles et retours utilisateurs, avec des mécanismes d'alerte et d'action."
+    }
+  ],
+  "id": "be8e15b7f98f41828c85c67236f9de3d",
+  "savedAt": "2026-10-04T23:16:08+02:00",
+  "owner": "admin",
+  "directorySavedAt": "2026-10-04T23:16:08+02:00",
+  "files": {
+    "json": "Rapport_Maturite_IA_be8e15b7f98f41828c85c67236f9de3d.json",
+    "html": "Rapport_Maturite_IA_be8e15b7f98f41828c85c67236f9de3d.html",
+    "pdf": "Rapport_Maturite_IA_be8e15b7f98f41828c85c67236f9de3d.pdf"
+  }
+}

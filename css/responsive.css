@@ -1,0 +1,39 @@
+@media (max-width: 760px) {
+    .menu {
+        margin-top: 1.5rem;
+    }
+
+    .about-hero,
+    .about-grid,
+    .stats,
+    .home-hero,
+    .home-section {
+        grid-template-columns: 1fr;
+    }
+
+    .about-hero {
+        padding: 2rem 1.2rem;
+    }
+
+    .home-page {
+        margin-top: 2rem;
+        padding: 0 1rem;
+    }
+
+    .home-hero {
+        gap: 2rem;
+        padding: 2.2rem 1.4rem;
+    }
+
+    .home-section {
+        gap: 1.2rem;
+        padding: 2.5rem 0.25rem;
+    }
+
+    .home-cta {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 2rem 1.4rem;
+    }
+}
+

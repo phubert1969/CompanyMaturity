@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon espace | Diagnostic IA</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="auth-body">
+
+    <nav class="menu" aria-label="Menu principal">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="maturityIA.html">Maturité IA</a></li>
+            <li><a href="resultatsIA.html">Résultats IA</a></li>
+            <li><a href="espace.html" class="active">Mon espace</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <main class="account-page">
+        <header class="account-header">
+            <div>
+                <a class="auth-brand" href="index.html">Diagnostic IA</a>
+                <p class="eyebrow">Espace personnel</p>
+                <h1>Bonjour, <span id="account-name"></span></h1>
+            </div>
+            <button id="logout-button" class="secondary-btn" type="button">Se déconnecter</button>
+        </header>
+
+        <section class="account-section">
+            <div class="account-section-heading">
+                <div>
+                    <p class="eyebrow">Vos évaluations</p>
+                    <h2>Formulaires et résultats</h2>
+                </div>
+                <a class="primary-btn" href="maturityIA.html">Nouveau formulaire</a>
+            </div>
+            <ul id="account-reports" class="account-list" aria-live="polite"></ul>
+            <p id="account-message" class="auth-message" aria-live="polite"></p>
+        </section>
+
+        <section id="admin-section" class="account-section" hidden>
+            <p class="eyebrow">Administration</p>
+            <h2>Créer un compte utilisateur</h2>
+            <form id="create-user-form" class="account-form">
+                <label for="new-username">Login</label>
+                <input id="new-username" name="username" autocomplete="off" minlength="3" maxlength="32" required>
+                <label for="new-password">Mot de passe temporaire</label>
+                <input id="new-password" name="password" type="password" minlength="8" autocomplete="new-password" required>
+                <button class="primary-btn" type="submit">Créer le compte</button>
+                <p id="admin-message" class="auth-message" role="status" aria-live="polite"></p>
+            </form>
+            <h3>Comptes existants</h3>
+            <ul id="account-users" class="account-list"></ul>
+        </section>
+
+        <section class="account-section">
+            <p class="eyebrow">Sécurité</p>
+            <h2>Modifier mon mot de passe</h2>
+            <form id="password-form" class="account-form">
+                <label for="old-password">Mot de passe actuel</label>
+                <input id="old-password" name="oldPassword" type="password" autocomplete="current-password" required>
+                <label for="new-password-own">Nouveau mot de passe</label>
+                <input id="new-password-own" name="newPassword" type="password" minlength="8" autocomplete="new-password" required>
+                <button class="secondary-btn" type="submit">Mettre à jour</button>
+                <p id="password-message" class="auth-message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+    <script src="js/espace.js" defer></script>
+</body>
+</html>

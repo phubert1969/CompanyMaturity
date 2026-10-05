@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang='fr'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Rapport de Maturité IA de l'entreprise EntrepriseA</title>
+<style>
+/* ==========================================================================
+   Rapport_Style.css — Feuille de style du rapport
+   (mise en forme : une déclaration par ligne, sections commentées)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Base
+   -------------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #eef1f5;
+  color: #111827;
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+  line-height: 1.55;
+}
+
+.rapport {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 18px 40px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Bandeau d'en-tête
+   -------------------------------------------------------------------------- */
+
+.bandeau {
+/*  background: linear-gradient(135deg, #312e81, #4f46e5 60%, #7c3aed); */
+ background: linear-gradient(135deg, #2e814b, #4f46e5 60%, #323034);
+
+  color: #fff;
+  border-radius: 18px;
+  padding: 32px 34px;
+}
+
+.surtitre {
+  display: flex;
+  justify-content: space-between;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #c7d2fe;
+}
+
+.niveau-titre {
+  margin: 14px 0 8px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.niveau-titre .niveau-symbole {
+  height: 44px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+.niveau-texte {
+  max-width: 640px;
+  color: #e0e7ff;
+  margin: 0;
+}
+
+.niveau-moyenne {
+  margin-top: 18px;
+  display: inline-block;
+  background: rgba(255, 255, 255, .16);
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   3. Cartes (sections)
+   -------------------------------------------------------------------------- */
+
+section.carte {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-top: 22px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .06);
+}
+
+h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  color: #1e1b4b;
+}
+
+.sous-titre {
+  margin: 0 0 18px;
+  color: #6b7280;
+  font-size: .92rem;
+}
+
+/* Mise en page : deux colonnes côte à côte */
+
+.duo {
+  display: flex;
+  gap: 34px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.duo > div {
+  flex: 1 1 320px;
+  min-width: 280px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Diagramme en barres
+   -------------------------------------------------------------------------- */
+
+.barchart {
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.barre-col {
+  flex: 1 1 90px;
+  max-width: 150px;
+  text-align: center;
+}
+
+.barre-note {
+  font-weight: 700;
+  color: #374151;
+  font-size: .9rem;
+  margin-bottom: 4px;
+}
+
+.barre-v-cadre {
+  height: 190px;
+  background: #e5e7eb;
+  border-radius: 10px 10px 4px 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.barre-v-valeur {
+  width: 100%;
+  display: block;
+  border-radius: 10px 10px 0 0;
+}
+
+.barre-lib {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #374151;
+  font-size: .9rem;
+}
+
+.dim-desc {
+  display: block;
+  font-weight: 400;
+  font-size: .8rem;
+  color: #6b7280;
+  margin-top: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Radar (SVG)
+   -------------------------------------------------------------------------- */
+
+.radar-cadre {
+  text-align: center;
+}
+
+svg.radar {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+}
+
+.radar-niveau {
+  font-size: 9px;
+  fill: #9ca3af;
+}
+
+.radar-libelle {
+  font-size: 12px;
+  fill: #374151;
+  font-weight: 600;
+}
+
+.radar-valeur {
+  font-size: 10px;
+  fill: #4f46e5;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   6. Lignes de score (barres horizontales)
+   -------------------------------------------------------------------------- */
+
+.score-ligne {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.score-nom {
+  flex: 0 0 150px;
+  font-weight: 600;
+}
+
+.barre-fond {
+  flex: 1;
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  display: block;
+}
+
+.barre-valeur {
+  height: 100%;
+  display: block;
+  border-radius: 999px;
+}
+
+.score-note {
+  flex: 0 0 70px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #374151;
+}
+
+/* --------------------------------------------------------------------------
+   7. Listes numérotées
+   -------------------------------------------------------------------------- */
+
+ol.liste {
+  margin: 0;
+  padding-left: 22px;
+}
+
+ol.liste li {
+  margin: 9px 0;
+}
+
+ol.liste strong {
+  color: #1e1b4b;
+}
+
+/* --------------------------------------------------------------------------
+   8. Détails dépliables (axes)
+   -------------------------------------------------------------------------- */
+
+details.axe {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  margin-top: 12px;
+  padding: 2px 16px;
+  background: #fafafa;
+}
+
+details.axe summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px 0;
+  color: #1e1b4b;
+}
+
+details.axe summary .note {
+  margin-left: 8px;
+  color: #4f46e5;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   9. Tableau « roadmap »
+   -------------------------------------------------------------------------- */
+
+table.roadmap {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 12px;
+  font-size: .94rem;
+}
+
+table.roadmap th {
+  width: 15%;
+  text-align: left;
+  padding: 8px 10px;
+  background: #eef2ff;
+  color: #3730a3;
+  vertical-align: top;
+  border: 1px solid #e5e7eb;
+}
+
+table.roadmap td {
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+/* --------------------------------------------------------------------------
+   10. Conclusion et pied de page
+   -------------------------------------------------------------------------- */
+
+p.vide {
+  color: #9ca3af;
+  font-style: italic;
+  margin: 8px 0;
+}
+
+.conclusion p {
+  margin: 0;
+}
+
+footer {
+  margin-top: 26px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: .8rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. Impression
+   -------------------------------------------------------------------------- */
+
+@media print {
+
+  body {
+    background: #fff;
+  }
+
+  .rapport {
+    max-width: none;
+    padding: 0;
+  }
+
+  section.carte {
+    box-shadow: none;
+    border: none;
+    page-break-inside: avoid;
+  }
+
+  .bandeau {
+    border-radius: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+<div class='rapport'>
+<header class='bandeau'>
+<div class='surtitre'><span>Rapport de Maturité IA de l'entreprise EntrepriseA</span><span>01/10/2026</span></div>
+<h1 class='niveau-titre'>Niveau 1 : En friche</h1>
+<p class='niveau-texte'>L'entreprise initie des expérimentations techniques et informelles autour de l'IA, portées par un leadership sensibilisé et des compétences externes ponctuelles. Cependant, la démarche manque encore de stratégie globale, de gouvernance des données et d'adhésion collective pour structurer ces opportunités.</p>
+<div class='niveau-moyenne'>Note moyenne : 1 / 5</div>
+</header>
+<section class='carte'>
+<div class='duo'>
+<div>
+<h2>Vue radar des axes</h2>
+<p class='sous-titre'>Moyennes des cinq axes.</p>
+<div class='radar-cadre'>
+<svg class='radar' viewBox='0 0 380 330' role='img' aria-label='Radar des axes'>
+<polygon points='190,142 210,156.5 202.3,180 177.7,180 170,156.5' fill='none' stroke='#d1d5db' stroke-width='1'/>
+<text x='194' y='145' class='radar-niveau'>1</text>
+<polygon points='190,121 229.9,150 214.7,197 165.3,197 150.1,150' fill='none' stroke='#d1d5db' stroke-width='1'/>
+<text x='194' y='124' class='radar-niveau'>2</text>
+<polygon points='190,100 249.9,143.5 227,214 153,214 130.1,143.5' fill='none' stroke='#d1d5db' stroke-width='1'/>
+<text x='194' y='103' class='radar-niveau'>3</text>
+<polygon points='190,79 269.9,137 239.4,231 140.6,231 110.1,137' fill='none' stroke='#d1d5db' stroke-width='1'/>
+<text x='194' y='82' class='radar-niveau'>4</text>
+<polygon points='190,58 289.9,130.6 251.7,247.9 128.3,247.9 90.1,130.6' fill='#f8fafc' stroke='#d1d5db' stroke-width='1'/>
+<text x='194' y='61' class='radar-niveau'>5</text>
+<line x1='190' y1='163' x2='190' y2='58' stroke='#d1d5db' stroke-width='1'/>
+<text x='190' y='38' text-anchor='middle' class='radar-libelle'>Potentiel</text>
+<line x1='190' y1='163' x2='289.9' y2='130.6' stroke='#d1d5db' stroke-width='1'/>
+<text x='307' y='123' text-anchor='start' class='radar-libelle'>Stratégie</text>
+<line x1='190' y1='163' x2='251.7' y2='247.9' stroke='#d1d5db' stroke-width='1'/>
+<text x='262.3' y='276.5' text-anchor='start' class='radar-libelle'>Culture</text>
+<line x1='190' y1='163' x2='128.3' y2='247.9' stroke='#d1d5db' stroke-width='1'/>
+<text x='117.7' y='276.5' text-anchor='end' class='radar-libelle'>Compétences</text>
+<line x1='190' y1='163' x2='90.1' y2='130.6' stroke='#d1d5db' stroke-width='1'/>
+<text x='73' y='123' text-anchor='end' class='radar-libelle'>Gouvernance</text>
+<polygon points='190,142 210,156.5 202.3,180 177.7,180 170,156.5' fill='rgba(79,70,229,0.22)' stroke='#4f46e5' stroke-width='2' stroke-linejoin='round'/>
+<circle cx='190' cy='142' r='4' fill='#e74c3c'/>
+<text x='196' y='136' class='radar-valeur'>1</text>
+<circle cx='210' cy='156.5' r='4' fill='#e74c3c'/>
+<text x='216' y='150.5' class='radar-valeur'>1</text>
+<circle cx='202.3' cy='180' r='4' fill='#e74c3c'/>
+<text x='208.3' y='174' class='radar-valeur'>1</text>
+<circle cx='177.7' cy='180' r='4' fill='#e74c3c'/>
+<text x='183.7' y='174' class='radar-valeur'>1</text>
+<circle cx='170' cy='156.5' r='4' fill='#e74c3c'/>
+<text x='176' y='150.5' class='radar-valeur'>1</text>
+</svg>
+</div>
+</div>
+<div>
+<h2>Moyennes par stade</h2>
+<p class='sous-titre'>Moyennes des stades de maturité.</p>
+<div class='barchart'>
+<div class='barre-col'>
+<div class='barre-note'>1 / 5</div>
+<div class='barre-v-cadre'><div class='barre-v-valeur' style='height:20%;background:#e74c3c'></div></div>
+<div class='barre-lib'>Émergence</div>
+</div>
+<div class='barre-col'>
+<div class='barre-note'>1 / 5</div>
+<div class='barre-v-cadre'><div class='barre-v-valeur' style='height:20%;background:#e74c3c'></div></div>
+<div class='barre-lib'>Structuration</div>
+</div>
+<div class='barre-col'>
+<div class='barre-note'>1 / 5</div>
+<div class='barre-v-cadre'><div class='barre-v-valeur' style='height:20%;background:#e74c3c'></div></div>
+<div class='barre-lib'>Industrialisation</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class='carte'>
+<h2>Scores détaillés par axe</h2>
+<p class='sous-titre'>Note de chaque axe sur une échelle de 5.</p>
+<div class='score-ligne'>
+<span class='score-nom'>Potentiel</span>
+<span class='barre-fond'><span class='barre-valeur' style='width:20%;background:#e74c3c'></span></span>
+<span class='score-note'>1 / 5</span>
+</div>
+<div class='score-ligne'>
+<span class='score-nom'>Stratégie</span>
+<span class='barre-fond'><span class='barre-valeur' style='width:20%;background:#e74c3c'></span></span>
+<span class='score-note'>1 / 5</span>
+</div>
+<div class='score-ligne'>
+<span class='score-nom'>Culture</span>
+<span class='barre-fond'><span class='barre-valeur' style='width:20%;background:#e74c3c'></span></span>
+<span class='score-note'>1 / 5</span>
+</div>
+<div class='score-ligne'>
+<span class='score-nom'>Compétences</span>
+<span class='barre-fond'><span class='barre-valeur' style='width:20%;background:#e74c3c'></span></span>
+<span class='score-note'>1 / 5</span>
+</div>
+<div class='score-ligne'>
+<span class='score-nom'>Gouvernance</span>
+<span class='barre-fond'><span class='barre-valeur' style='width:20%;background:#e74c3c'></span></span>
+<span class='score-note'>1 / 5</span>
+</div>
+</section>
+<section class='carte'>
+<h2>Analyse détaillée par axe</h2>
+<p class='sous-titre'>Cliquez sur un axe pour dérouler son analyse détaillée.</p>
+<details class='axe'>
+<summary>Potentiel<span class='note'>1 / 5</span></summary>
+<table class='roadmap'>
+<tr><th><span class='dim-desc'>ce qui est déjà acquis</span></th><td>L'entreprise à mis en place des ressources IT/cloud pour des expérimentations. L'entreprise possède des données de qualités incertaines présentes et dispersées. L'entreprise a identifié quelques opportunités ponctuelles avec des impacts limités..</td></tr>
+<tr><th><span class='dim-desc'>ce qui bloque l'étape suivante</span></th><td>L'entreprise manque d'environnements dédiés pour quelques projets sans viser une forte reproductibilité. L'entreprise n'a pas proposé de données pertinentes pour une exploitation IA. Le nombre de cas d'usage est insuffisant et limite la vision du potentiel et de la valeur de l'IA.</td></tr>
+<tr><th><span class='dim-desc'>les capacités à construire</span></th><td>Acquérir la capacité à utiliser de manière reproductible des environnements IA pour expérimenter l’IA. Acquérir la capacité à rendre les données pertinentes accessibles et à améliorer leur qualité. Acquérir la capacité d'augmenter le nombre d'opportunités d’application de l’IA au-delà des expérimentations ponctuelles.</td></tr>
+<tr><th><span class='dim-desc'>les actions prioritaires</span></th><td>Mettre en place un environnement d’expérimentation dédié à l'IA ; définir des configurations reproductibles et les modalités d’accès aux ressources. Cartographier les données dispersées ; traiter les principales incohérences ; définir des règles communes de qualité et de documentation. Élargir l’analyse à plusieurs activités ; qualifier les opportunités selon bénéfices, faisabilité et contraintes.</td></tr>
+<tr><th><span class='dim-desc'>les résultats attendus</span></th><td>Les expérimentations IA peuvent être réalisées de façon reproductible dans des environnements partagés. Les principales données nécessaires sont identifiées, documentées et progressivement accessibles. Plusieurs opportunités IA sont identifiées et leur intérêt est caractérisé.</td></tr>
+</table>
+</details>
+<details class='axe'>
+<summary>Stratégie<span class='note'>1 / 5</span></summary>
+<table class='roadmap'>
+<tr><th><span class='dim-desc'>ce qui est déjà acquis</span></th><td>Les exploration des possibilités de l'IA sont en cours dans l'entreprise. Des initiatives ponctuelles existent au sein de l'entreprise sans avoir pour autant une trajectoire commune. L'entreprise présente quelques cas d’usage identifiés sans véritable priorisation.</td></tr>
+<tr><th><span class='dim-desc'>ce qui bloque l'étape suivante</span></th><td>Une ambition d'entreprise non traduite en choix de quelques initiatives ciblées. Manque d'une trajectoire commune au sein de l'entreprise pour les nouveaux projets IA. Manque de cas d'usage IA permettant de débuter des analyses de priorisation par l'entreprise.</td></tr>
+<tr><th><span class='dim-desc'>les capacités à construire</span></th><td>Acquérir la capacité à définir une vision des possibilités offertes par l’IA. Acquérir la capacité à coordonner les initiatives IA existantes autour d’une trajectoire commune. Acquérir la capacité à recenser les cas d’usage IA et à commencer à les comparer.</td></tr>
+<tr><th><span class='dim-desc'>les actions prioritaires</span></th><td>Structurer l’exploration des opportunités ; sélectionner des domaines d’intérêt et documenter les enseignements. Regrouper les initiatives ; identifier dépendances et priorités ; construire une trajectoire commune. Complèter les cas d'usage IA de l'entreprise ; définir des critères de comparaison ; analyser les cas selon intérêt, faisabilité et effort.</td></tr>
+<tr><th><span class='dim-desc'>les résultats attendus</span></th><td>L’entreprise dispose d’une compréhension initiale des opportunités IA et de domaines d’exploration identifiés. Les principales initiatives IA sont coordonnées dans une trajectoire commune. Les cas d’usage commencent à être comparés sur une base commune.</td></tr>
+</table>
+</details>
+<details class='axe'>
+<summary>Culture<span class='note'>1 / 5</span></summary>
+<table class='roadmap'>
+<tr><th><span class='dim-desc'>ce qui est déjà acquis</span></th><td>Le leadership de l'entreprise est sensibilisé aux sujets IA Les collaborateurs de l'entreprise connaissent le sujet mais restent largement indifférents ou peu concernés. L'entreprise note des échanges ou expérimentations de manière informelle entre quelques collaborateurs.</td></tr>
+<tr><th><span class='dim-desc'>ce qui bloque l'étape suivante</span></th><td>la hiérarchie de l'entreprise ne soutien pas les initiatives IA de ses collaborateurs. L'entreprise n'est pas curieuse sur les initiatives de ses collaborateurs par le manque de relais actifs sur l'IA. L'entreprise ne soutient pas des initiatives ponctuelles d'ateliers ou de formations auprès de ses collaborateurs</td></tr>
+<tr><th><span class='dim-desc'>les capacités à construire</span></th><td>Acquérir la capacité du leadership à soutenir et à rendre visibles les premières initiatives IA portées par les collaborateurs. Acquérir la capacité à susciter l’intérêt des collaborateurs et leur implication dans les usages de l’IA. Acquérir la capacité à favoriser les échanges et expérimentations, au sein de communautés IA au-delà des initiatives individuelles.</td></tr>
+<tr><th><span class='dim-desc'>les actions prioritaires</span></th><td>Nommer des sponsors ; communiquer les objectifs IA ; donner de la visibilité aux initiatives des collaborateurs. Proposer des ateliers pouvant fare naitre des usages simples et sécurisés pour une première expérience ; identifier les collaborateurs intéressés. Structurer les échanges formels au sein de communauté ; identifier les initiatives ; organiser des premiers ateliers et espaces de partage réguliers.</td></tr>
+<tr><th><span class='dim-desc'>les résultats attendus</span></th><td>Le leadership IA devient visible et les initiatives bénéficient d’un soutien identifié. Les collaborateurs perçoivent mieux l’intérêt concret de l’IA et certains expérimentent. Les initiatives commencent à être coordonnées et accessibles à un public plus large. Une comunauté IA existe au sein de l'entreprise.</td></tr>
+</table>
+</details>
+<details class='axe'>
+<summary>Compétences<span class='note'>1 / 5</span></summary>
+<table class='roadmap'>
+<tr><th><span class='dim-desc'>ce qui est déjà acquis</span></th><td>L'entreprise a identifiée quelques personnes possédant des connaissances ou compétences IA, sans capacité collective structurée. L'entreprise propose des actions ponctuelles de sensibilisation ou d'initiation autour de l'IA. L'entreprise traite les compétences manquantes au cas par cas principalement par recours à des prestataires ou experts externes.</td></tr>
+<tr><th><span class='dim-desc'>ce qui bloque l'étape suivante</span></th><td>L'entreprise dispose trop peu de compétences internes identifiées en IA et n'a pas de capacité collective et possède une couverture insuffisantes des compétences. L'entreprise a peu de dispositif permettant des actions de progression des compétences en IA. L'entreprise a du mal à faire appel régulièrement à des sociétés externes pour compléter ses développements de projets IA répondant aux besoins de l'entreprise.</td></tr>
+<tr><th><span class='dim-desc'>les capacités à construire</span></th><td>Acquérir une capacité collective permettant de réaliser des projets IA au-delà de quelques connaissances individuelles. Acquérir la capacité à proposer des actions ciblées de développement des compétences adaptées aux besoins IA identifiés. Acquérir la capacité à traiter de manière structurée les compétences manquantes au-delà des recours ponctuels à des experts externes.</td></tr>
+<tr><th><span class='dim-desc'>les actions prioritaires</span></th><td>Constituer une première équipe ou communauté de compétences ; compléter les connaissances individuelles ; sécuriser les expertises. Identifier populations et compétences prioritaires ; recueillir les besoins ; Organiser els premières formations. Formaliser le recours aux experts et prestataires ; capitaliser les compétences apportées ; identifier les besoins récurrents.</td></tr>
+<tr><th><span class='dim-desc'>les résultats attendus</span></th><td>Une capacité collective initiale permet de contribuer à des projets IA ciblés. Les collaborateurs prioritaires disposent d’une première formation aux compétences IA. Les compétences manquantes sont traitées de façon moins ponctuelle et les besoins récurrents sont visibles.</td></tr>
+</table>
+</details>
+<details class='axe'>
+<summary>Gouvernance<span class='note'>1 / 5</span></summary>
+<table class='roadmap'>
+<tr><th><span class='dim-desc'>ce qui est déjà acquis</span></th><td>L'entreprise donne des principes ou consignes qui restent informels et peu diffusés. L'entreprise met en place ponctuellement une évaluation informelle avant leur déploiement de certains projets font l'objet Le fonctionnement des solutions est vérifié ponctuellement, généralement en cas de problème par l'entreprise.</td></tr>
+<tr><th><span class='dim-desc'>ce qui bloque l'étape suivante</span></th><td>L'entreprise manque de définition de règles non formalisées néanmoins diffusées pour certains usages. L'entreprise manque d'approche systématique dans l'évaluation de certains projets et d'usages IA. Le fonctionnement des solutions est vérifié insuffisamment, sans metrique et inégalement, et les problèmes sont détectés tardivement.</td></tr>
+<tr><th><span class='dim-desc'>les capacités à construire</span></th><td>Acquérir la capacité à formaliser et diffuser les principes et consignes applicables à l’utilisation de l’IA. Acquérir la capacité à appliquer de manière systématique certain critères d'évaluation avant le déploiement des projets IA. Acquérir la capacité à vérifier régulièrement des solutions IA avec certaines metriques et à déclenchées des interventrion lors de problèmes.</td></tr>
+<tr><th><span class='dim-desc'>les actions prioritaires</span></th><td>Formaliser les principes ; les diffuser ; définir responsabilités et règles applicables aux premiers usages. Formaliser les évaluations ; définir responsabilités de validation ; conserver décisions et éléments d’analyse. Planifier des vérifications régulières ; définir seuils d’alerte ; documenter incidents et actions correctives (ouvir un portail de ticketing).</td></tr>
+<tr><th><span class='dim-desc'>les résultats attendus</span></th><td>Les principes et consignes IA sont formalisés et connus des populations concernées. Les projets concernés sont évalués selon un processus identifiable avant production. Le fonctionnement des solutions IA est vérifié régulièrement et les problèmes sont tracés. Les premires tickets sont traités.</td></tr>
+</table>
+</details>
+</section>
+<section class='carte'>
+<h2>Forces identifiées</h2>
+<p class='sous-titre'>Les 3 points forts dégagés lors de l'évaluation.</p>
+<ol class='liste'>
+<li><strong>Potentiel - Émergence</strong> &mdash; L'entreprise à mis en place des ressources IT/cloud pour des expérimentations.</li>
+<li><strong>Stratégie - Émergence</strong> &mdash; Les exploration des possibilités de l'IA sont en cours dans l'entreprise.</li>
+<li><strong>Culture - Émergence</strong> &mdash; Le leadership de l'entreprise est sensibilisé aux sujets IA</li>
+</ol>
+</section>
+<section class='carte'>
+<h2>Points de vigilance</h2>
+<p class='sous-titre'>Les 3 points de vigilance dégagés lors de l'évaluation.</p>
+<ol class='liste'>
+<li><strong>Potentiel - Émergence</strong> &mdash; L'entreprise manque d'environnements dédiés pour quelques projets sans viser une forte reproductibilité.</li>
+<li><strong>Stratégie - Émergence</strong> &mdash; Une ambition d'entreprise non traduite en choix de quelques initiatives ciblées.</li>
+<li><strong>Culture - Émergence</strong> &mdash; la hiérarchie de l'entreprise ne soutien pas les initiatives IA de ses collaborateurs.</li>
+</ol>
+</section>
+<section class='carte'>
+<h2>Plan à court terme</h2>
+<p class='sous-titre'>Les 3 actions dégagées lors de l'évaluation.</p>
+<ol class='liste'>
+<li><strong>Potentiel - Émergence</strong> &mdash; Mettre en place un environnement d’expérimentation dédié à l'IA ; définir des configurations reproductibles et les modalités d’accès aux ressources.</li>
+<li><strong>Stratégie - Émergence</strong> &mdash; Structurer l’exploration des opportunités ; sélectionner des domaines d’intérêt et documenter les enseignements.</li>
+<li><strong>Culture - Émergence</strong> &mdash; Nommer des sponsors ; communiquer les objectifs IA ; donner de la visibilité aux initiatives des collaborateurs.</li>
+</ol>
+</section>
+<section class='carte'>
+<h2>Plan à moyen terme</h2>
+<p class='sous-titre'>Les actions structurantes retenues, par axe.</p>
+<ol class='liste'>
+<li><strong>Potentiel :</strong> <br>a. Définir une architecture IA cible ; standardiser les environnements de développement et de déploiement et les capacités de calcul.<br>b. Structurer l’exploration des opportunités ; sélectionner des domaines d’intérêt et documenter les enseignements.</li>
+<li><strong>Stratégie :</strong> <br>a. Définir une architecture IA cible ; standardiser les environnements de développement et de déploiement et les capacités de calcul.<br>b. Structurer l’exploration des opportunités ; sélectionner des domaines d’intérêt et documenter les enseignements.</li>
+<li><strong>Culture :</strong> <br>a. Définir une architecture IA cible ; standardiser les environnements de développement et de déploiement et les capacités de calcul.<br>b. Structurer l’exploration des opportunités ; sélectionner des domaines d’intérêt et documenter les enseignements.</li>
+<li><strong>Compétences :</strong> <br>a. Mettre en place un environnement d’expérimentation dédié à l'IA ; définir des configurations reproductibles et les modalités d’accès aux ressources.<br>b. Structurer l’exploration des opportunités ; sélectionner des domaines d’intérêt et documenter les enseignements.</li>
+<li><strong>Gouvernance :</strong> <br>a. Mettre en place un environnement d’expérimentation dédié à l'IA ; définir des configurations reproductibles et les modalités d’accès aux ressources.<br>b. Structurer l’exploration des opportunités ; sélectionner des domaines d’intérêt et documenter les enseignements.</li>
+</ol>
+</section>
+<section class='carte conclusion'>
+<h2>Conclusion</h2>
+<p>Avec une note moyenne de 1 sur 5, l'organisation se situe au «Niveau 1 : En friche» de l'échelle de maturité IA. Le point d'appui le plus solide se trouve sur l'axe «Potentiel». En s'appuyant sur ses forces et en traitant en priorité ses points de vigilance, l'organisation peut franchir le niveau suivant de l'échelle.</p>
+</section>
+<footer>Rapport généré à partir du classeur Matrice_Roadmap_Maturite_IA_V2.xlsm (feuille 'MatriceEntreprise') &mdash; export HTML automatique.</footer>
+<script>
+window.addEventListener('beforeprint',function(){
+document.querySelectorAll('details').forEach(function(d){d.open=true});});
+</script>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maturité IA</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/survey.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <nav class="menu" aria-label="Menu principal">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="maturityIA.html" class="active">Maturité IA</a></li>
+            <li><a href="resultatsIA.html">Résultats IA</a></li>
+            <li><a href="espace.html">Mon espace</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-shell">
+        <section class="survey-header">
+            <p class="eyebrow">Évaluation stratégique</p>
+            <h1>Formulaire IA</h1>
+            <p>
+                Répondez au questionnaire sans compte. À la fin, connectez-vous pour enregistrer
+                votre diagnostic et le retrouver dans votre espace personnel.
+            </p>
+        </section>
+
+        <form id="formulaire-ia" class="survey-form">
+            <div id="questions-container"></div>
+
+            <div class="form-actions">
+                <button type="submit">Enregistrer et afficher les résultats</button>
+            </div>
+
+            <div id="form-result" class="form-result" aria-live="polite"></div>
+        </form>
+    </main>
+
+    <script src="js/formulaire-ia.js"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapport de maturité IA</title>
+<style>* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 245); color: rgb(17, 24, 39); font-family: "Segoe UI", system-ui, Arial, sans-serif; line-height: 1.55; }
+.rapport { max-width: 900px; margin: 0px auto; padding: 28px 18px 40px; }
+.bandeau { background: linear-gradient(135deg, rgb(46, 129, 75), rgb(79, 70, 229) 60%, rgb(50, 48, 52)); color: rgb(255, 255, 255); border-radius: 18px; padding: 32px 34px; }
+.surtitre { display: flex; justify-content: space-between; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(199, 210, 254); }
+.niveau-titre { margin: 14px 0px 8px; font-size: 2rem; font-weight: 700; }
+.niveau-titre .niveau-symbole { height: 44px; width: auto; vertical-align: middle; margin-right: 12px; }
+.niveau-texte { max-width: 640px; color: rgb(224, 231, 255); margin: 0px; }
+.niveau-moyenne { margin-top: 18px; display: inline-block; background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 999px; padding: 6px 16px; font-weight: 600; }
+section.carte { background: rgb(255, 255, 255); border: 1px solid rgb(229, 231, 235); border-radius: 14px; padding: 26px 30px; margin-top: 22px; box-shadow: rgba(15, 23, 42, 0.06) 0px 1px 2px; }
+h2 { margin: 0px 0px 4px; font-size: 1.25rem; color: rgb(30, 27, 75); }
+.sous-titre { margin: 0px 0px 18px; color: rgb(107, 114, 128); font-size: 0.92rem; }
+.duo { display: flex; gap: 34px; flex-wrap: wrap; align-items: flex-start; }
+.duo > div { flex: 1 1 320px; min-width: 280px; }
+.barchart { display: flex; gap: 18px; align-items: flex-end; justify-content: center; margin-top: 8px; flex-wrap: wrap; }
+.barre-col { flex: 1 1 90px; max-width: 150px; text-align: center; }
+.barre-note { font-weight: 700; color: rgb(55, 65, 81); font-size: 0.9rem; margin-bottom: 4px; }
+.barre-v-cadre { height: 190px; background: rgb(229, 231, 235); border-radius: 10px 10px 4px 4px; overflow: hidden; display: flex; align-items: flex-end; }
+.barre-v-valeur { width: 100%; display: block; border-radius: 10px 10px 0px 0px; }
+.barre-lib { margin-top: 8px; font-weight: 600; color: rgb(55, 65, 81); font-size: 0.9rem; }
+.dim-desc { display: block; font-weight: 400; font-size: 0.8rem; color: rgb(107, 114, 128); margin-top: 3px; }
+.radar-cadre { text-align: center; }
+svg.radar { max-width: 420px; width: 100%; height: auto; }
+.radar-niveau { font-size: 9px; fill: rgb(156, 163, 175); }
+.radar-libelle { font-size: 12px; fill: rgb(55, 65, 81); font-weight: 600; }
+.radar-valeur { font-size: 10px; fill: rgb(79, 70, 229); font-weight: 700; }
+.score-ligne { display: flex; align-items: center; gap: 14px; margin: 12px 0px; }
+.score-nom { flex: 0 0 150px; font-weight: 600; }
+.barre-fond { flex: 1 1 0%; height: 14px; background: rgb(229, 231, 235); border-radius: 999px; overflow: hidden; display: block; }
+.barre-valeur { height: 100%; display: block; border-radius: 999px; }
+.score-note { flex: 0 0 70px; text-align: right; font-variant-numeric: tabular-nums; color: rgb(55, 65, 81); }
+ol.liste { margin: 0px; padding-left: 22px; }
+ol.liste li { margin: 9px 0px; }
+ol.liste strong { color: rgb(30, 27, 75); }
+details.axe { border: 1px solid rgb(229, 231, 235); border-radius: 10px; margin-top: 12px; padding: 2px 16px; background: rgb(250, 250, 250); }
+details.axe summary { cursor: pointer; font-weight: 600; padding: 10px 0px; color: rgb(30, 27, 75); }
+details.axe summary .note { margin-left: 8px; color: rgb(79, 70, 229); font-weight: 700; }
+table.roadmap { width: 100%; border-collapse: collapse; margin: 6px 0px 12px; font-size: 0.94rem; }
+table.roadmap th { width: 15%; text-align: left; padding: 8px 10px; background: rgb(238, 242, 255); color: rgb(55, 48, 163); vertical-align: top; border: 1px solid rgb(229, 231, 235); }
+table.roadmap td { padding: 8px 10px; border: 1px solid rgb(229, 231, 235); vertical-align: top; }
+p.vide { color: rgb(156, 163, 175); font-style: italic; margin: 8px 0px; }
+.conclusion p { margin: 0px; }
+footer { margin-top: 26px; text-align: center; color: rgb(156, 163, 175); font-size: 0.8rem; }
+@media print {
+  body { background: rgb(255, 255, 255); }
+  .rapport { max-width: none; padding: 0px; }
+  section.carte { box-shadow: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; break-inside: avoid; }
+  .bandeau { border-radius: 0px; print-color-adjust: exact; }
+}
+
+        .rapport-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .rapport-actions button,
+        .rapport-actions a {
+            border: 0;
+            border-radius: 8px;
+            padding: 0.7rem 1rem;
+            background: #166534;
+            color: #fff;
+            font: inherit;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .rapport-actions a {
+            background: #374151;
+        }
+        .rapport-archives {
+            margin: 0 0 1rem;
+            padding: 1rem 1.25rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .rapport-archives h2 {
+            margin-bottom: 0.65rem;
+        }
+        .rapport-archives ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0;
+            list-style: none;
+        }
+        .rapport-archives a {
+            display: inline-block;
+            padding: 0.4rem 0.65rem;
+            border-radius: 6px;
+            background: #f3f4f6;
+            color: #1f2937;
+            text-decoration: none;
+        }
+        .rapport-archives a[aria-current="page"] {
+            background: #166534;
+            color: #fff;
+        }
+        .rapport-vide {
+            max-width: 720px;
+            margin: 12vh auto;
+            padding: 2rem;
+            text-align: center;
+        }
+        .profil-ligne {
+            padding: 0.45rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .reponse-detail {
+            margin: 0.65rem 0;
+            padding: 0.8rem 1rem;
+            border-left: 3px solid #4f46e5;
+            background: #f9fafb;
+        }
+        .reponse-detail small {
+            display: block;
+            color: #6b7280;
+        }
+        @media print {
+            .rapport-actions { display: none; }
+        }
+    </style>
+</head>
+<body><main class="rapport">
+    
+    
+    
+  
+    
+    <header class="bandeau">
+      <div class="surtitre"><span>Rapport de maturité IA</span><span>04/10/2026 18:38:00</span></div>
+      <h1 class="niveau-titre">Niveau 2 : Émergent</h1>
+      <p class="niveau-texte">Des usages et capacités commencent à se mettre en place. Il est utile de formaliser les priorités et de rendre les initiatives reproductibles.</p>
+      <div class="niveau-moyenne">Note moyenne : 1,8 / 5</div>
+    </header>
+
+    <section class="carte">
+      <div class="duo">
+        <div>
+          <h2>Vue radar des axes</h2>
+          <p class="sous-titre">Moyennes des cinq axes.</p>
+          <div class="radar-cadre"><svg class="radar" viewBox="0 0 380 330" role="img" aria-label="Diagramme radar des cinq axes"><polygon points="190,144 209.97218684219823,158.5106431181261 202.34349029814194,181.9893568818739 177.65650970185806,181.9893568818739 170.02781315780177,158.5106431181261" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><polygon points="190,123 229.94437368439645,152.0212862362522 214.68698059628386,198.9787137637478 165.31301940371614,198.9787137637478 150.05562631560355,152.02128623625222" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><polygon points="190,102 249.91656052659468,145.53192935437832 227.0304708944258,215.96807064562168 152.9695291055742,215.96807064562168 130.08343947340532,145.53192935437832" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><polygon points="190,81 269.8887473687929,139.04257247250442 239.37396119256775,232.95742752749558 140.62603880743228,232.95742752749558 110.1112526312071,139.04257247250442" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><polygon points="190,60 289.8609342109911,132.55321559063051 251.71745149070966,249.94678440936949 128.28254850929034,249.94678440936949 90.13906578900887,132.55321559063054" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><line x1="190" y1="165" x2="190" y2="60" stroke="#d1d5db"></line><text x="190" y="35.849999999999994" text-anchor="middle" class="radar-libelle">Potentiel</text><line x1="190" y1="165" x2="289.8609342109911" y2="132.55321559063051" stroke="#d1d5db"></line><text x="312.8289490795191" y="125.09045517647554" text-anchor="middle" class="radar-libelle">Stratégie</text><line x1="190" y1="165" x2="251.71745149070966" y2="249.94678440936949" stroke="#d1d5db"></line><text x="265.9124653335729" y="269.48454482352446" text-anchor="middle" class="radar-libelle">Culture</text><line x1="190" y1="165" x2="128.28254850929034" y2="249.94678440936949" stroke="#d1d5db"></line><text x="114.0875346664271" y="269.48454482352446" text-anchor="middle" class="radar-libelle">Compétences</text><line x1="190" y1="165" x2="90.13906578900887" y2="132.55321559063054" stroke="#d1d5db"></line><text x="67.17105092048091" y="125.09045517647556" text-anchor="middle" class="radar-libelle">Gouvernance</text><polygon points="190,137 223.28697807033038,154.18440519687684 202.34349029814194,181.9893568818739 148.85503233952687,221.63118960624632 156.71302192966962,154.18440519687684" fill="rgba(79,70,229,0.22)" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round"></polygon><circle cx="190" cy="137" r="4" fill="#e74c3c"></circle><text x="196" y="131" class="radar-valeur">1,3</text><circle cx="223.28697807033038" cy="154.18440519687684" r="4" fill="#e74c3c"></circle><text x="229.28697807033038" y="148.18440519687684" class="radar-valeur">1,7</text><circle cx="202.34349029814194" cy="181.9893568818739" r="4" fill="#e74c3c"></circle><text x="208.34349029814194" y="175.9893568818739" class="radar-valeur">1,0</text><circle cx="148.85503233952687" cy="221.63118960624632" r="4" fill="#e74c3c"></circle><text x="154.85503233952687" y="215.63118960624632" class="radar-valeur">3,3</text><circle cx="156.71302192966962" cy="154.18440519687684" r="4" fill="#e74c3c"></circle><text x="162.71302192966962" y="148.18440519687684" class="radar-valeur">1,7</text></svg></div>
+        </div>
+        <div>
+          <h2>Moyennes par stade</h2>
+          <p class="sous-titre">Moyennes des stades de maturité.</p>
+          <div class="barchart">
+            
+              <div class="barre-col">
+                <div class="barre-note">1,2 / 5</div>
+                <div class="barre-v-cadre"><div class="barre-v-valeur" style="height:24%;background:#e74c3c"></div></div>
+                <div class="barre-lib">Émergence</div>
+              </div>
+            
+              <div class="barre-col">
+                <div class="barre-note">1,4 / 5</div>
+                <div class="barre-v-cadre"><div class="barre-v-valeur" style="height:28%;background:#e74c3c"></div></div>
+                <div class="barre-lib">Structuration</div>
+              </div>
+            
+              <div class="barre-col">
+                <div class="barre-note">2,8 / 5</div>
+                <div class="barre-v-cadre"><div class="barre-v-valeur" style="height:56%;background:#f39c12"></div></div>
+                <div class="barre-lib">Industrialisation</div>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="carte">
+      <h2>Scores détaillés par axe</h2>
+      <p class="sous-titre">Note de chaque axe sur une échelle de 5.</p>
+      
+        <div class="score-ligne">
+          <span class="score-nom">Potentiel</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:26.666666666666664%;background:#e74c3c"></span></span>
+          <span class="score-note">1,3 / 5</span>
+        </div>
+      
+        <div class="score-ligne">
+          <span class="score-nom">Stratégie</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:33.333333333333336%;background:#e74c3c"></span></span>
+          <span class="score-note">1,7 / 5</span>
+        </div>
+      
+        <div class="score-ligne">
+          <span class="score-nom">Culture</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:20%;background:#e74c3c"></span></span>
+          <span class="score-note">1,0 / 5</span>
+        </div>
+      
+        <div class="score-ligne">
+          <span class="score-nom">Compétences</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:66.66666666666667%;background:#eab308"></span></span>
+          <span class="score-note">3,3 / 5</span>
+        </div>
+      
+        <div class="score-ligne">
+          <span class="score-nom">Gouvernance</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:33.333333333333336%;background:#e74c3c"></span></span>
+          <span class="score-note">1,7 / 5</span>
+        </div>
+      
+    </section>
+
+    <section class="carte">
+      <h2>Profil de l’entreprise</h2>
+      <p class="sous-titre">Informations déclarées dans le questionnaire.</p>
+      <ol class="liste">
+    <li class="profil-ligne"><strong>Motif de l’évaluation :</strong> J'aimerais connaître mon niveau avant de mettre en place de l'IA.</li>
+  
+    <li class="profil-ligne"><strong>Effectif :</strong> 251 à 1000</li>
+  
+    <li class="profil-ligne"><strong>Secteur d’activité :</strong> Santé et social</li>
+  
+    <li class="profil-ligne"><strong>Département :</strong> 94</li>
+  
+    <li class="profil-ligne"><strong>Rôle :</strong> Directeur Commercial</li>
+  
+    <li class="profil-ligne"><strong>Objectifs prioritaires :</strong> Réduire les coûts</li>
+  </ol>
+    </section>
+
+    <section class="carte">
+      <h2>Analyse détaillée par axe</h2>
+      <p class="sous-titre">Réponses et scores ayant contribué à chaque moyenne.</p>
+      
+        <details class="axe">
+          <summary>Potentiel<span class="note">1,3 / 5</span></summary>
+          
+    <div class="reponse-detail">
+      <strong>Q01 · Quelles sont les infrastructures technologiques en place pour soutenir des projets d’IA ?</strong>
+      <small>Emergence · 3,0 / 5 · Standardisée</small>
+      Des environnements dédiés à l'IA sont standardisés, avec des capacités de calcul adaptées et des processus structurés de développement et de déploiement.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q02 · Dans quelle mesure l’entreprise dispose-t-elle de données accessibles, fiables et exploitables pour ses usages d’IA ?</strong>
+      <small>Structuration · 1,0 / 5 · Fragmentée</small>
+      Données dispersées, difficilement accessibles et de qualité incertaine.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q03 · Dans quelle mesure les activités de l’entreprise présentent-elles un potentiel d’application de l’IA ?</strong>
+      <small>Industrialisation · 0,0 / 5 · Aucun potentiel identifié</small>
+      Aucun cas d'usage IA pertinent identifié.
+    </div>
+  
+        </details>
+      
+        <details class="axe">
+          <summary>Stratégie<span class="note">1,7 / 5</span></summary>
+          
+    <div class="reponse-detail">
+      <strong>Q04 · Quel est le niveau d’ambition de l’entreprise concernant l’IA ?</strong>
+      <small>Emergence · 1,0 / 5 · Exploratoire</small>
+      L'entreprise commence à explorer les possibilités offertes par l'IA.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q05 · Dans quelle mesure l’entreprise dispose-t-elle d’une feuille de route pour mettre en œuvre son ambition IA ?</strong>
+      <small>Structuration · 1,0 / 5 · Initiatives ponctuelles</small>
+      Quelques initiatives existent sans trajectoire commune.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q06 · Dans quelle mesure les initiatives et cas d’usage IA sont-ils priorisés en fonction des enjeux de l’entreprise ?</strong>
+      <small>Industrialisation · 3,0 / 5 · Priorisation</small>
+      Les cas d'usage sont priorisés selon des critères explicites tels que valeur, faisabilité, risques ou effort.
+    </div>
+  
+        </details>
+      
+        <details class="axe">
+          <summary>Culture<span class="note">1,0 / 5</span></summary>
+          
+    <div class="reponse-detail">
+      <strong>Q07 · Dans quelle mesure les dirigeants et managers favorisent-ils l’adoption de l’IA dans l’entreprise ?</strong>
+      <small>Emergence · 1,0 / 5 · Sensibilisation</small>
+      Le sujet est connu des dirigeants et managers, mais sans implication concrète.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q08 · Dans quelle mesure les collaborateurs sont-ils prêts à adopter et utiliser l’IA dans leur activité ?</strong>
+      <small>Structuration · 0,0 / 5 · Résistance</small>
+      L'IA suscite principalement de la crainte, de la méfiance ou une résistance à son utilisation.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q09 · Dans quelle mesure l’entreprise favorise-t-elle l’apprentissage, l’expérimentation et le partage autour de l’IA ?</strong>
+      <small>Industrialisation · 2,0 / 5 · Initiatives ponctuelles</small>
+      Des ateliers, formations, communautés ou expérimentations sont organisés ponctuellement.
+    </div>
+  
+        </details>
+      
+        <details class="axe">
+          <summary>Compétences<span class="note">3,3 / 5</span></summary>
+          
+    <div class="reponse-detail">
+      <strong>Q10 · Dans quelle mesure l’entreprise dispose-t-elle des compétences internes nécessaires pour concevoir, développer, déployer et exploiter des solutions d’IA ?</strong>
+      <small>Emergence · 1,0 / 5 · Très limitées</small>
+      Quelques personnes possèdent des connaissances ou compétences IA, sans capacité collective structurée.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q11 · Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?</strong>
+      <small>Structuration · 4,0 / 5 · Gestion des compétences</small>
+      Les compétences IA sont identifiées, évaluées et développées en fonction des rôles et des besoins de l'entreprise.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q12 · Dans quelle mesure l’entreprise sait-elle identifier et combler ses lacunes en compétences IA ?</strong>
+      <small>Industrialisation · 5,0 / 5 · Gestion dynamique des capacités</small>
+      L'entreprise anticipe ses besoins en compétences et ajuste continuellement le mix entre développement interne, recrutement, mobilité et recours à l'écosystème externe.
+    </div>
+  
+        </details>
+      
+        <details class="axe">
+          <summary>Gouvernance<span class="note">1,7 / 5</span></summary>
+          
+    <div class="reponse-detail">
+      <strong>Q13 · Dans quelle mesure l’entreprise dispose-t-elle d’un cadre de gouvernance pour encadrer l’utilisation de l’IA ?</strong>
+      <small>Emergence · 0,0 / 5 · Aucun cadre</small>
+      Aucun principe, règle ou responsabilité n'est défini pour l'utilisation de l'IA.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q14 · Dans quelle mesure les projets et usages d’IA font-ils l’objet d’une évaluation et d’une validation avant leur mise en production ?</strong>
+      <small>Structuration · 1,0 / 5 · Évaluation ponctuelle</small>
+      Certains projets font l'objet d'une évaluation informelle avant leur déploiement.
+    </div>
+  
+    <div class="reponse-detail">
+      <strong>Q15 · Dans quelle mesure les solutions IA déployées sont-elles surveillées et réévaluées pendant leur cycle de vie ?</strong>
+      <small>Industrialisation · 4,0 / 5 · Suivi continu</small>
+      Le suivi couvre notamment performance, qualité, sécurité, coûts, dérive des modèles et retours utilisateurs, avec des mécanismes d'alerte et d'action.
+    </div>
+  
+        </details>
+      
+    </section>
+
+    <footer>Rapport généré à partir de vos réponses au questionnaire de maturité IA.</footer>
+  </main></body>
+</html>

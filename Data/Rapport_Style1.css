@@ -1,0 +1,368 @@
+/* ==========================================================================
+   Rapport_Style.css — Feuille de style du rapport
+   (mise en forme : une déclaration par ligne, sections commentées)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Base
+   -------------------------------------------------------------------------- */
+
+:root {
+  --report-primary: var(--primary, #2f6fed);
+  --report-primary-dark: var(--primary-dark, #1e4fc7);
+  --report-accent: #d45b37;
+  --report-ink: var(--text, #1f2a37);
+  --report-muted: #64748b;
+  --report-line: #d8e2ef;
+  --report-soft: var(--bg, #edf4ff);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--report-soft);
+  color: var(--report-ink);
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.55;
+}
+
+.rapport {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 18px 40px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Bandeau d'en-tête
+   -------------------------------------------------------------------------- */
+
+.bandeau {
+  background: linear-gradient(125deg, var(--report-primary-dark), var(--report-primary) 68%, var(--report-accent));
+
+  color: #fff;
+  border-radius: 18px;
+  padding: 32px 34px;
+}
+
+.surtitre {
+  display: flex;
+  justify-content: space-between;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #c7d2fe;
+}
+
+.niveau-titre {
+  margin: 14px 0 8px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.niveau-titre .niveau-symbole {
+  height: 44px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+.niveau-texte {
+  max-width: 640px;
+  color: #e0e7ff;
+  margin: 0;
+}
+
+.niveau-moyenne {
+  margin-top: 18px;
+  display: inline-block;
+  background: rgba(255, 255, 255, .16);
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   3. Cartes (sections)
+   -------------------------------------------------------------------------- */
+
+section.carte {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-top: 22px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .06);
+}
+
+h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  color: var(--report-ink);
+}
+
+.sous-titre {
+  margin: 0 0 18px;
+  color: var(--report-muted);
+  font-size: .92rem;
+}
+
+/* Mise en page : deux colonnes côte à côte */
+
+.duo {
+  display: flex;
+  gap: 34px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.duo > div {
+  flex: 1 1 320px;
+  min-width: 280px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Diagramme en barres
+   -------------------------------------------------------------------------- */
+
+.barchart {
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.barre-col {
+  flex: 1 1 90px;
+  max-width: 150px;
+  text-align: center;
+}
+
+.barre-note {
+  font-weight: 700;
+  color: #374151;
+  font-size: .9rem;
+  margin-bottom: 4px;
+}
+
+.barre-v-cadre {
+  height: 190px;
+  background: #e5e7eb;
+  border-radius: 10px 10px 4px 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.barre-v-valeur {
+  width: 100%;
+  display: block;
+  border-radius: 10px 10px 0 0;
+}
+
+.barre-lib {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #374151;
+  font-size: .9rem;
+}
+
+.dim-desc {
+  display: block;
+  font-weight: 400;
+  font-size: .8rem;
+  color: #6b7280;
+  margin-top: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Radar (SVG)
+   -------------------------------------------------------------------------- */
+
+.radar-cadre {
+  text-align: center;
+}
+
+svg.radar {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+}
+
+.radar-niveau {
+  font-size: 9px;
+  fill: var(--report-muted);
+}
+
+.radar-libelle {
+  font-size: 12px;
+  fill: var(--report-ink);
+  font-weight: 600;
+}
+
+.radar-valeur {
+  font-size: 10px;
+  fill: var(--report-primary-dark);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   6. Lignes de score (barres horizontales)
+   -------------------------------------------------------------------------- */
+
+.score-ligne {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.score-nom {
+  flex: 0 0 150px;
+  font-weight: 600;
+}
+
+.barre-fond {
+  flex: 1;
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  display: block;
+}
+
+.barre-valeur {
+  height: 100%;
+  display: block;
+  border-radius: 999px;
+}
+
+.score-note {
+  flex: 0 0 70px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #374151;
+}
+
+/* --------------------------------------------------------------------------
+   7. Listes numérotées
+   -------------------------------------------------------------------------- */
+
+ol.liste {
+  margin: 0;
+  padding-left: 22px;
+}
+
+ol.liste li {
+  margin: 9px 0;
+}
+
+ol.liste strong {
+  color: var(--report-primary-dark);
+}
+
+/* --------------------------------------------------------------------------
+   8. Détails dépliables (axes)
+   -------------------------------------------------------------------------- */
+
+details.axe {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  margin-top: 12px;
+  padding: 2px 16px;
+  background: #fafafa;
+}
+
+details.axe summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px 0;
+  color: var(--report-ink);
+}
+
+details.axe summary .note {
+  margin-left: 8px;
+  color: var(--report-primary-dark);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   9. Tableau « roadmap »
+   -------------------------------------------------------------------------- */
+
+table.roadmap {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 12px;
+  font-size: .94rem;
+}
+
+table.roadmap th {
+  width: 15%;
+  text-align: left;
+  padding: 8px 10px;
+  background: var(--report-soft);
+  color: var(--report-primary-dark);
+  vertical-align: top;
+  border: 1px solid #e5e7eb;
+}
+
+table.roadmap td {
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+/* --------------------------------------------------------------------------
+   10. Conclusion et pied de page
+   -------------------------------------------------------------------------- */
+
+p.vide {
+  color: #9ca3af;
+  font-style: italic;
+  margin: 8px 0;
+}
+
+.conclusion p {
+  margin: 0;
+}
+
+footer {
+  margin-top: 26px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: .8rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. Impression
+   -------------------------------------------------------------------------- */
+
+@media print {
+
+  body {
+    background: #fff;
+  }
+
+  .rapport {
+    max-width: none;
+    padding: 0;
+  }
+
+  section.carte {
+    box-shadow: none;
+    border: none;
+    page-break-inside: avoid;
+  }
+
+  .bandeau {
+    border-radius: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
