@@ -1,4 +1,5 @@
 (() => {
+  // Ce bloc transforme le profil renseigné dans le questionnaire en liste lisible dans le rapport.
   function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, (character) => ({
       '&': '&amp;',
@@ -9,6 +10,7 @@
     })[character]);
   }
 
+  // Libellés lisibles utilisés pour chaque champ du profil d’entreprise.
   const labels = {
     intention: 'Motif de l’évaluation',
     effectif: 'Effectif',
@@ -18,6 +20,7 @@
     objectifs: 'Objectifs prioritaires'
   };
 
+  // Rendu HTML d’un profil à partir d’un objet clé/valeur.
   window.profilEntrepriseMarkup = (profile) => {
     const entries = Object.entries(profile || {});
     if (!entries.length) return '<p class="vide">Aucune information de profil disponible.</p>';

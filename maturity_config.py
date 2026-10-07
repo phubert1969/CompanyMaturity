@@ -1,3 +1,5 @@
+# Ce module lit le classeur Excel V3, extrait les 15 questions et les niveaux de maturité,
+# puis enrichit les rapports soumis par l’utilisateur avec les moyennes, analyses et plans d’action.
 import hashlib
 import zipfile
 import xml.etree.ElementTree as ET
@@ -10,6 +12,7 @@ NAMESPACE = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'
 RELATIONSHIP_NAMESPACE = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
 
 
+# Construit le nom XML complet d’une balise dans le format Office Open XML.
 def _tag(name):
     return f'{{{NAMESPACE}}}{name}'
 
@@ -41,6 +44,8 @@ def _read_cells(archive, path, shared_strings):
     return cells
 
 
+# Charge le référentiel complet depuis le classeur Excel.
+# Il retourne les questions, leurs options de score, les niveaux de maturité et leurs axes/stades.
 def load_maturity_config(workbook_path=WORKBOOK):
     workbook_path = Path(workbook_path)
     with zipfile.ZipFile(workbook_path) as archive:
@@ -122,6 +127,8 @@ def load_maturity_config(workbook_path=WORKBOOK):
     }
 
 
+# Enrichit un rapport brut avec les calculs métier utiles à l’affichage :
+# moyenne par axe, moyenne par stade, niveau de maturité, forces, vigilance, plans d’action.
 def enrich_report(report, config):
     submitted_answers = report.get('answers')
     if not isinstance(submitted_answers, list):
@@ -168,14 +175,40 @@ def enrich_report(report, config):
     level_score = max(1, min(5, int(overall + 0.5)))
     maturity = next(item for item in config['maturityLevels'] if item['score'] == level_score)
 
+    # On construit une liste avec un élément par couple (axe, stade). Le stade est
+    # stocké dans la clé `type` de chaque réponse. L’ordre d’origine suit les stades,
+    # puis les axes, tels qu’ils apparaissent dans le classeur.
     ranked_answers = [
         next(answer for answer in answers if answer['axe'] == axis and answer['type'] == stage)
         for stage in config['stages']
         for axis in config['axes']
     ]
-    strengths = sorted(ranked_answers, key=lambda answer: -answer['score'])[:3]
-    watch_points = sorted(ranked_answers, key=lambda answer: answer['score'])[:3]
+
+    # Chaque stade reçoit un rang numérique selon l’ordre déclaré dans le classeur.
+    # Cela permet de comparer les stades sans supposer que leur nom est un nombre.
+    stage_order = {stage: index for index, stage in enumerate(config['stages'])}
+
+    # Les tris utilisent deux critères, dans cet ordre :
+    # 1) le score, pour trouver les meilleures ou les moins bonnes réponses ;
+    # 2) le rang du stade pour départager les scores identiques.
+    # Pour une force, un stade plus avancé est prioritaire ; pour une vigilance,
+    # un stade plus précoce l’est. Si le score et le stade sont tous deux égaux,
+    # le tri stable conserve l’ordre des axes issu du classeur.
+    strengths = sorted(
+        ranked_answers,
+        key=lambda answer: (-answer['score'], -stage_order[answer['type']]),
+    )[:3]
+    watch_points = sorted(
+        ranked_answers,
+        key=lambda answer: (answer['score'], stage_order[answer['type']]),
+    )[:3]
     watch_point_ids = {answer['id'] for answer in watch_points}
+
+    # Pour le plan à moyen terme, on sélectionne les deux questions les moins bien notées
+    # de chaque axe. Les points déjà classés parmi les 3 vigilances globales (ainsi que
+    # les scores à zéro) reçoivent une cible un point au-dessus, plafonnée à 5.
+    # Pour les autres réponses sélectionnées, la cible reste leur niveau actuel : l’action
+    # provient dans tous les cas du palier immédiatement inférieur à cette cible.
     medium_term_actions = []
     for axis in config['axes']:
         axis_answers = [answer for answer in answers if answer['axe'] == axis]

@@ -1,3 +1,8 @@
+// Ce fichier construit le questionnaire complet de maturité IA :
+// - questions d’introduction sur le profil de l’entreprise,
+// - 15 questions métier par axe/stade,
+// - validation avant envoi,
+// - calcul du rapport et sauvegarde en session ou via l’API.
 const introQuestions = [
   {
     id: 'intention',
@@ -318,6 +323,7 @@ const questionsContainer = document.getElementById('questions-container');
 const form = document.getElementById('formulaire-ia');
 const resultBox = document.getElementById('form-result');
 
+// Remplit un bloc d’options de réponse à partir d’un tableau de choix.
 function renderAnswerOptions(question, optionsList) {
   question.options.forEach((option) => {
     const optionRow = document.createElement('label');
@@ -343,6 +349,7 @@ function renderAnswerOptions(question, optionsList) {
   });
 }
 
+// Génère les cartes de questions d’introduction à partir du tableau `introQuestions`.
 function renderIntroQuestions() {
   introQuestions.forEach((question) => {
     const card = document.createElement('article');
@@ -410,6 +417,7 @@ function renderIntroQuestions() {
   });
 }
 
+// Dynamise les 15 questions métier en fonction du référentiel V3 chargé depuis le backend.
 function renderIaQuestions() {
   iaQuestions.forEach((question) => {
     const card = document.createElement('article');
@@ -452,6 +460,7 @@ function renderIaQuestions() {
   });
 }
 
+// Vérifie que l’utilisateur a bien répondu à chaque champ obligatoire avant soumission.
 function validateRequiredFields() {
   const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
 
@@ -480,6 +489,8 @@ function validateRequiredFields() {
   return true;
 }
 
+// Soumission du formulaire : validation, calcul des moyennes par axe/stade,
+// puis sauvegarde du rapport en session ou dans l’espace utilisateur.
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -561,6 +572,7 @@ form.addEventListener('submit', async (event) => {
   }
 });
 
+// Charge le référentiel V3 depuis le serveur pour remplacer les questions statiques par les données du classeur.
 async function loadIaQuestionsFromWorkbook() {
   const response = await fetch('/api/analysis-config');
   if (!response.ok) throw new Error('Le référentiel V3 est indisponible.');

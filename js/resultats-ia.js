@@ -1,3 +1,5 @@
+// Ce script charge le rapport complet, calcule les vues synthétiques et permet
+// de l’exporter en HTML ou JSON ainsi que de naviguer entre les rapports enregistrés.
 const reportRoot = document.getElementById('rapport');
 let archivedReports = [];
 let report = null;
@@ -26,6 +28,9 @@ function scoreColor(value) {
   return '#1e4fc7';
 }
 
+// Construit le radar synthétique des scores par axe.
+// Chaque axe reçoit un angle régulier autour du centre ; son score (sur 5) détermine
+// la distance du point au centre. Les polygones concentriques servent d’échelle de lecture.
 function radarMarkup(axes) {
   const names = Object.keys(axes);
   const centerX = 190;
@@ -56,6 +61,7 @@ function radarMarkup(axes) {
   return `<svg class="radar" viewBox="0 0 380 330" role="img" aria-label="Diagramme radar des cinq axes">${rings}${spokes}<polygon points="${valuePoints}" fill="rgba(47,111,237,0.2)" stroke="#2f6fed" stroke-width="2" stroke-linejoin="round"></polygon>${values}</svg>`;
 }
 
+// Crée la liste des rapports enregistrés pour permettre la navigation entre plusieurs diagnostics.
 function archiveMarkup() {
   if (!archivedReports.length) return '';
 
@@ -74,6 +80,7 @@ function archiveMarkup() {
   `;
 }
 
+// Téléchargement de fichier local côté navigateur.
 function downloadFile(content, mimeType, filename) {
   const fileUrl = URL.createObjectURL(new Blob([content], { type: mimeType }));
   const link = document.createElement('a');
@@ -97,6 +104,9 @@ function downloadJson() {
   );
 }
 
+// Assemble le contenu HTML autonome du rapport, sans dépendre du reste des pages du site.
+// On copie les styles accessibles depuis la feuille de rapport et le contenu déjà rendu,
+// puis on retire les commandes et l’archive qui n’ont pas de sens dans un export isolé.
 function createStandaloneHtml() {
   const reportStylesheet = [...document.styleSheets].find((sheet) => sheet.href?.includes('Rapport_Style1.css'));
   let reportCss = '';
@@ -127,6 +137,7 @@ function downloadStandaloneHtml() {
   downloadFile(createStandaloneHtml(), 'text/html;charset=utf-8', `rapport-maturite-IA-${filenameTimestamp()}.html`);
 }
 
+// Enregistre le rapport dans l’espace utilisateur et affiche les liens de téléchargement associés.
 async function saveReportToDirectory() {
   const status = document.getElementById('directory-save-status');
   status.textContent = 'Enregistrement des fichiers du rapport...';
@@ -163,6 +174,9 @@ function renderMissingReport() {
   `;
 }
 
+// Génère la page HTML complète du rapport avec ses sections synthétiques et ses détails.
+// Les calculs (moyennes, classement, actions) sont déjà présents dans l’objet `report` ;
+// cette fonction orchestre les composants de rendu et relie les boutons d’export/impression.
 function renderReport() {
   const level = report.maturity?.score ?? Math.max(0, Math.min(5, Math.round(report.overall)));
   const levelNames = ['À initier', 'En friche', 'En exploration', 'En chantier', 'En exploitation', 'En pilotage'];
@@ -281,6 +295,8 @@ function renderReport() {
 
 async function loadReport() {
   try {
+    // On charge d’abord l’archive pour sélectionner le rapport demandé dans l’URL,
+    // ou le rapport le plus récent si aucun identifiant n’a été fourni.
     const listResponse = await fetch('/api/reports');
     if (!listResponse.ok) throw new Error('Session expirée. Reconnectez-vous.');
     const list = await listResponse.json();
@@ -290,6 +306,8 @@ async function loadReport() {
       const response = await fetch(`/api/report?id=${encodeURIComponent(selectedId)}`);
       if (response.ok) report = (await response.json()).report;
     }
+    // Le rapport n’est rendu que s’il contient les réponses attendues ; sinon, on guide
+    // l’utilisateur vers l’espace personnel plutôt que d’afficher une page vide.
     if (report && Array.isArray(report.answers)) renderReport();
     else renderMissingReport();
   } catch (error) {

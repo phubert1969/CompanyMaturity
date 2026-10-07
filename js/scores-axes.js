@@ -1,4 +1,5 @@
 (() => {
+  // Ce script affiche le détail des scores par axe ainsi que la note de chaque question associée.
   function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, (character) => ({
       '&': '&amp;',
@@ -22,12 +23,14 @@
     return '#1e4fc7';
   }
 
+  // Labels affichés pour les trois stades de maturité dans le détail des scores.
   const stageLabels = {
     Emergence: 'Émergence',
     Structuration: 'Structuration',
     Industrialisation: 'Industrialisation'
   };
 
+  // Chaque axe affiche sa moyenne et les notes associées à ses trois questions.
   window.scoresAxesMarkup = (axes, answers) => axes.map(([axis, average]) => {
     const axisAnswers = answers.filter((answer) => answer.axe.toLowerCase() === axis.toLowerCase());
     return `

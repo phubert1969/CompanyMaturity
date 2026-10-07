@@ -17,7 +17,8 @@ from urllib.parse import parse_qs, unquote, urlparse
 
 from maturity_config import enrich_report, load_maturity_config
 
-
+# Serveur principal du projet : il sert les pages HTML, gère l’authentification,
+# la sauvegarde des diagnostics et la lecture du référentiel IA depuis le classeur Excel.
 ROOT = Path(__file__).resolve().parent
 REPORTS = ROOT / 'Rapports'
 PRIVATE = ROOT / '.private'
@@ -83,6 +84,8 @@ def report_record(report_id):
     return None, None
 
 
+# Point d’entrée des requêtes HTTP.
+# Il centralise les routes API, les vérifications de session et le service des fichiers statiques.
 class ReportHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
@@ -134,6 +137,7 @@ class ReportHandler(SimpleHTTPRequestHandler):
             return None, None
         return path, report
 
+    # Gère les requêtes de consultation : fichiers HTML, API de configuration, session, rapports et fichiers exportés.
     def do_GET(self):
         parsed_url = urlparse(self.path)
         route = parsed_url.path
@@ -275,6 +279,7 @@ class ReportHandler(SimpleHTTPRequestHandler):
                 return
         super().do_GET()
 
+    # Gère les actions utilisateur : connexion, création de compte, changement de mot de passe et sauvegarde du rapport.
     def do_POST(self):
         route = urlparse(self.path).path
         try:

@@ -1,3 +1,4 @@
+// Ce script gère la page de connexion / inscription ainsi que l’aperçu du rapport en attente.
 const loginForm = document.getElementById('login-form');
 const loginMessage = document.getElementById('login-message');
 const loginIntro = document.getElementById('login-intro');
@@ -12,6 +13,7 @@ if (hasPendingReport || query.get('reason') === 'save') {
   registerSection.hidden = false;
 }
 
+// Limite une note à l’échelle du référentiel (0 à 5).
 function previewScore(value) {
   const score = Number(value);
   return Number.isFinite(score) ? Math.max(0, Math.min(5, score)) : 0;
@@ -21,6 +23,7 @@ function formatPreviewScore(value) {
   return previewScore(value).toFixed(1).replace('.', ',');
 }
 
+// Construit un aperçu radar du rapport en attente avant la connexion.
 function renderPreview(report) {
   const axisNames = ['Potentiel', 'Stratégie', 'Culture', 'Compétences', 'Gouvernance'];
   const stageNames = [
@@ -84,6 +87,7 @@ if (hasPendingReport) {
   }
 }
 
+// Parse la réponse JSON du serveur et renvoie une erreur lisible si l’API ne répond pas comme prévu.
 async function readApiResponse(response) {
   const body = await response.text();
   let result;
@@ -96,6 +100,7 @@ async function readApiResponse(response) {
   return result;
 }
 
+// Enregistre le rapport en attente dans l’espace utilisateur après une connexion réussie.
 async function savePendingReport() {
   const pendingReport = sessionStorage.getItem('pendingMaturityReport');
   if (!pendingReport) return false;

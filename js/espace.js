@@ -1,14 +1,18 @@
+// Ce script gère la page "espace" : affichage du profil utilisateur,
+// liste des rapports enregistrés, gestion de la déconnexion et administration.
 const accountName = document.getElementById('account-name');
 const accountReports = document.getElementById('account-reports');
 const accountMessage = document.getElementById('account-message');
 const adminSection = document.getElementById('admin-section');
 
+// Sécurise les valeurs affichées dans le HTML pour éviter les injections via des chaînes saisies par l’utilisateur.
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   })[character]);
 }
 
+// Envoie une requête JSON et lève une erreur explicite si le serveur répond en erreur.
 async function requestJson(url, options) {
   const response = await fetch(url, options);
   const result = await response.json();
@@ -20,6 +24,7 @@ async function requestJson(url, options) {
   return result;
 }
 
+// Charge le compte courant, ses rapports et, si l’utilisateur est admin, la liste des comptes.
 async function loadAccount() {
   try {
     const session = await requestJson('/api/session');
@@ -47,6 +52,7 @@ async function loadAccount() {
   }
 }
 
+// Déconnexion : on demande au serveur de fermer la session puis on renvoie vers la page de login.
 document.getElementById('logout-button').addEventListener('click', async () => {
   try {
     await requestJson('/api/logout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
@@ -55,6 +61,7 @@ document.getElementById('logout-button').addEventListener('click', async () => {
   }
 });
 
+// Création d’un utilisateur par l’administrateur.
 document.getElementById('create-user-form').addEventListener('submit', async (event) => {
   event.preventDefault();
   const form = event.currentTarget;
@@ -72,6 +79,7 @@ document.getElementById('create-user-form').addEventListener('submit', async (ev
   }
 });
 
+// Mise à jour du mot de passe depuis l’espace utilisateur.
 document.getElementById('password-form').addEventListener('submit', async (event) => {
   event.preventDefault();
   const form = event.currentTarget;

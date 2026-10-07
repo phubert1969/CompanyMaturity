@@ -239,7 +239,7 @@
         "blocker": "Bien que l'émergence d'une gouvernance de l'utilisation de l'IA existe dans l'entreprise, une anticipation d'une gouvernance IA adaptés aux évolutions permanentes technologiques et  règlementaires de l'IA est nécessaire.",
         "capability": "Acquérir la capacité à couvrir de manière structurée l'ensemble des évolutions technologiques et réglementaires de l'IA.",
         "action": "Assurer une veille réglementaire, méthodologique et technologique; réviser règles et contrôles.",
-        "outcome": "La gouvernance IA est intégrée au fonctionnement de l'entreprise et bénéficie des veilles réglementaire, méthodologique et technologique"
+        "outcome": "La gouvernance IA est intégrée au fonctionnement de l'entreprise et bénéficie des veilles réglementaire, méthodologique et technologique."
       }
     },
     {
@@ -275,12 +275,12 @@
       }
     }
   ],
-  "analysisVersion": "V3-d99683108e78",
+  "analysisVersion": "V3-6676c9387c25",
   "maturity": {
     "score": 4,
-    "name": "En exploitation",
-    "description": "Est engagé dans une approche structurée. A déployé des outils ou une infrastructure.",
-    "acquired": "Est engagé dans une approche structurée. A défini des règles d'usage claires et intégré l'IA dans le quotidiens des métiers.",
+    "name": "En chantier",
+    "description": "L'entreprise a entrepris des actions ciblées mais la démarche n'est pas encore structurée (données non centralisées, commence à recruter, gouvernance peu travaillée).\nElle commence à développer ou intégrer des solutions IA et à former ses collaborateurs. La démarche n'est pas encore structurée : la gouvernance (charte IA, rôles & responsabilité, sécurité des données) est encore inexistante ou faiblement travaillée.",
+    "acquired": "",
     "symbol": ""
   },
   "axisAnalysis": [
@@ -517,7 +517,7 @@
             "blocker": "Bien que l'émergence d'une gouvernance de l'utilisation de l'IA existe dans l'entreprise, une anticipation d'une gouvernance IA adaptés aux évolutions permanentes technologiques et  règlementaires de l'IA est nécessaire.",
             "capability": "Acquérir la capacité à couvrir de manière structurée l'ensemble des évolutions technologiques et réglementaires de l'IA.",
             "action": "Assurer une veille réglementaire, méthodologique et technologique; réviser règles et contrôles.",
-            "outcome": "La gouvernance IA est intégrée au fonctionnement de l'entreprise et bénéficie des veilles réglementaire, méthodologique et technologique"
+            "outcome": "La gouvernance IA est intégrée au fonctionnement de l'entreprise et bénéficie des veilles réglementaire, méthodologique et technologique."
           }
         },
         {
@@ -779,7 +779,7 @@
       "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
       "currentScore": 4,
       "targetScore": 4,
-      "action": "Construire une GPEC (La Gestion prévisionnelle des emplois et des compétences) au seind e l'entrepise ; construire des parcours par catégories ; définir niveaux, objectifs et modalités ; suivre la progression."
+      "action": "Construire une GPEC (La Gestion prévisionnelle des emplois et des compétences) au sein de l'entreprise ; construire des parcours par catégories ; définir niveaux, objectifs et modalités ; suivre la progression."
     },
     {
       "id": "Q15",
