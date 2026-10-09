@@ -1,87 +1,86 @@
 // Ce fichier construit le questionnaire complet de maturité IA :
-// - questions d’introduction sur le profil de l’entreprise,
+// - questions d’introduction sur le profil du répondant (niveau hiérarchique, secteur, métier, intentions),
 // - 15 questions métier par axe/stade,
-// - validation avant envoi,
+// - validation avant soumission,
 // - calcul du rapport et sauvegarde en session ou via l’API.
 const introQuestions = [
-  {
-    id: 'intention',
-    title: '1- Intention : Pourquoi souhaitez-vous évaluer votre maturité data et IA ?',
-    type: 'radio',
-    description: 'Suggestions',
-    options: [
-      'J\'aimerais connaître mon niveau avant de mettre en place de l\'IA.',
-      'Je souhaite mesurer les progrès réalisés par rapport à l\'an dernier.',
-      'Je veux sensibiliser ma Direction à ces sujets data / IA.'
+ {
+   id: 'intention',
+   title: '1- Intention : Pourquoi souhaitez-vous évaluer votre maturité data et IA ?',
+   type: 'radio',
+   description: 'Suggestions',
+   options: [
+     'J\'aimerais connaître mon niveau avant de mettre en place de l\'IA.',
+     'Je souhaite mesurer les progrès réalisés par rapport à l\'an dernier.',
+     'Je veux sensibiliser ma Direction à ces sujets data / IA.'
+   ]
+ },
+ {
+   id: 'effectif',
+   title: '2- Profil de votre entreprise : Combien de collaborateurs comptez-vous dans votre entreprise ?',
+   type: 'radio',
+   description: 'Effectif total de votre entreprise',
+   options: [
+     'Moins de 10',
+     '11 à 50',
+     '51 à 250',
+     '251 à 1000',
+     'Plus de 1000',
+     'Je ne sais pas'
+   ]
+ },
+ {
+   id: 'secteur',
+   title: '3- Quel est votre secteur d\'activité ?',
+   type: 'radio',
+   description: 'Sélectionnez une option',
+   options: [
+     'Agriculture, pêche, énergie, environnement',
+     'Industrie et fabrication',
+     'Construction et immobilier',
+     'Commerce et distribution',
+     'Transport et logistique',
+     'Banque, finance et assurance',
+     'Santé et social',
+     'Éducation et formation',
+     'Tourisme, hôtellerie, restauration',
+     'Communication, marketing, médias',
+     'Informatique et technologies',
+     'Conseil et services aux entreprises',
+     'Juridique',
+     'Culture, sport et divertissement',
+     'Recherche, innovation et sciences',
+     'Autre'
     ]
   },
   {
-    id: 'effectif',
-    title: '2- Profil de votre entreprise : Combien de collaborateurs comptez-vous dans votre entreprise ?',
-    type: 'radio',
-    description: 'Effectif total de votre entreprise',
-    options: [
-      'Moins de 10',
-      '11 à 50',
-      '51 à 250',
-      '251 à 1000',
-      'Plus de 1000',
-      'Je ne sais pas'
-    ]
-  },
-  {
-    id: 'secteur',
-    title: '3- Quel est votre secteur d\'activité ?',
-    type: 'radio',
-    description: 'Sélectionnez une option',
-    options: [
-      'Agriculture, pêche, énergie, environnement',
-      'Industrie et fabrication',
-      'Construction et immobilier',
-      'Commerce et distribution',
-      'Transport et logistique',
-      'Banque, finance et assurance',
-      'Santé et social',
-      'Éducation et formation',
-      'Tourisme, hôtellerie, restauration',
-      'Communication, marketing, médias',
-      'Informatique et technologies',
-      'Conseil et services aux entreprises',
-      'Juridique',
-      'Culture, sport et divertissement',
-      'Recherche, innovation et sciences',
-      'Autre'
-    ]
-  },
-  {
-    id: 'localisation',
-    title: '4- Localisation',
-    type: 'group',
-    fields: [
-      {
-        id: 'departement',
-        label: 'Dans quel département se situe votre entreprise ?',
-        type: 'text',
-        placeholder: 'Recherchez un département (numéro ou nom)...',
-        required: true
-      },
-    ]
-  },
-  {
-    id: 'role',
-    title: '5- Quel est votre rôle dans votre entreprise ?',
+    id: 'responsabilite',
+    title: '4- Rôle : Quelles sont vos responsabilités au sein de l\'entreprise ?',
     type: 'radio',
     description: 'Sélectionnez une option',
     options: [
-        'Directeur Général / Président / Fondateur',
-        'Directeur Administratif et Financier',
-        'Directeur Marketing',
-        'Directeur Commercial',
-        'Directeur des Opérations',
-        'Directeur des Systèmes d\'Information (DSI)',
-        'Chief Data Officer (ou équivalent)',
-        'Directeur de Business Unit',
-        'Autres'
+      'Direction',
+      'Manager',
+      'Collaborateur'
+    ],
+    required: true
+  },
+  {
+    id: 'metier',
+    title: '5- Département : Quel est votre métier au sein de l\'entreprise ?',
+    type: 'radio',
+    description: 'Sélectionnez une option',
+    options: [
+      'Direction',
+      'Administratif et Financier',
+      'Marketing',
+      'Commercial',
+      'Production',
+      'Systèmes d\'Information (DSI)',
+      'Ingénierie, BE',
+      'Maintenance',
+      'Supply Chain',
+      'Autres'
     ],
     required: true
   },

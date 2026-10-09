@@ -3,7 +3,7 @@
 # que les calculs de score sont cohérents et que les plans d’action restent valides.
 import unittest
 
-from maturity_config import enrich_report, load_maturity_config
+from maturity_config import enrich_report, load_maturity_config, maturity_level_score
 
 
 class MaturityConfigTests(unittest.TestCase):
@@ -22,7 +22,17 @@ class MaturityConfigTests(unittest.TestCase):
 
     def test_workbook_contains_all_question_analyses(self):
         self.assertEqual(len(self.config['questions']), 15)
-        self.assertEqual(len(self.config['maturityLevels']), 5)
+        self.assertEqual(
+            [(level['score'], level['name']) for level in self.config['maturityLevels']],
+            [
+                (0, 'Inexistant'),
+                (1, 'En friche'),
+                (2, 'En exploration'),
+                (3, 'En chantier'),
+                (4, 'En exploitation'),
+                (5, 'En pilotage'),
+            ],
+        )
         self.assertEqual(
             {len(question['options']) for question in self.config['questions']},
             {6},
@@ -31,6 +41,42 @@ class MaturityConfigTests(unittest.TestCase):
             {key for question in self.config['questions'] for option in question['options'] for key in option['analysis']},
             {'acquired', 'blocker', 'capability', 'action', 'outcome'},
         )
+
+    def test_each_average_score_maps_to_its_maturity_level(self):
+        expected_levels = [
+            'Inexistant',
+            'En friche',
+            'En exploration',
+            'En chantier',
+            'En exploitation',
+            'En pilotage',
+        ]
+
+        for score, expected_name in enumerate(expected_levels):
+            report = enrich_report(self.make_report([score] * 15), self.config)
+
+            self.assertEqual(report['maturity']['score'], score)
+            self.assertEqual(report['maturity']['name'], expected_name)
+
+    def test_average_boundaries_round_half_up_to_report_level(self):
+        cases = [
+            (0, 0),
+            (0.49, 0),
+            (0.5, 1),
+            (1.49, 1),
+            (1.5, 2),
+            (2.49, 2),
+            (2.5, 3),
+            (3.49, 3),
+            (3.5, 4),
+            (4.49, 4),
+            (4.5, 5),
+            (5, 5),
+        ]
+
+        for average, expected_level in cases:
+            with self.subTest(average=average):
+                self.assertEqual(maturity_level_score(average), expected_level)
 
     def test_enriches_scores_and_action_plans(self):
         report = enrich_report(self.make_report([index % 6 for index in range(15)]), self.config)

@@ -44,6 +44,10 @@ def _read_cells(archive, path, shared_strings):
     return cells
 
 
+def maturity_level_score(overall):
+    return max(0, min(5, int(overall + 0.5)))
+
+
 # Charge le référentiel complet depuis le classeur Excel.
 # Il retourne les questions, leurs options de score, les niveaux de maturité et leurs axes/stades.
 def load_maturity_config(workbook_path=WORKBOOK):
@@ -104,8 +108,8 @@ def load_maturity_config(workbook_path=WORKBOOK):
         if 'NiveauMaturité' not in sheets:
             raise ValueError("L'onglet NiveauMaturité est absent du classeur V3.")
         maturity_cells = _read_cells(archive, sheets['NiveauMaturité'], shared_strings)
-        for score in range(1, 6):
-            row = score + 2
+        for score in range(6):
+            row = score + 3
             name = maturity_cells.get(f'B{row}', '').strip()
             if not name:
                 raise ValueError(f'Le niveau de maturité {score} est absent du classeur V3.')
@@ -172,7 +176,7 @@ def enrich_report(report, config):
         for stage in config['stages']
     }
     overall = sum(answer['score'] for answer in answers) / len(answers)
-    level_score = max(1, min(5, int(overall + 0.5)))
+    level_score = maturity_level_score(overall)
     maturity = next(item for item in config['maturityLevels'] if item['score'] == level_score)
 
     # On construit une liste avec un élément par couple (axe, stade). Le stade est

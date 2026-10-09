@@ -10,15 +10,15 @@
     "secteur": [
       "Santé et social"
     ],
-    "departement": [
-      "94"
-    ],
     "role": [
-      "Directeur Marketing"
+      "Marketing"
     ],
     "objectifs": [
       "Améliorer la connaissance, la satisfaction et l'expérience client",
       "Réduire les coûts"
+    ],
+    "responsabilite": [
+      "Direction"
     ]
   },
   "axes": {
@@ -275,7 +275,7 @@
       }
     }
   ],
-  "analysisVersion": "V3-6676c9387c25",
+  "analysisVersion": "V3-57df88bc3dfa",
   "maturity": {
     "score": 4,
     "name": "En chantier",

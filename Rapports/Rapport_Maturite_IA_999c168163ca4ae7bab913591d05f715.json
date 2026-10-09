@@ -10,38 +10,45 @@
     "secteur": [
       "Construction et immobilier"
     ],
-    "departement": [
-      "94"
-    ],
     "role": [
       "Chief Data Officer (ou équivalent)"
     ],
     "objectifs": [
       "Mieux anticiper (prédire les ventes, organiser les stocks, maintenance prédictive...)",
       "Optimiser notre performance opérationnelle (logistique, achats, opérations, administrative...)"
+    ],
+    "responsabilite": [
+      "Direction"
     ]
   },
   "axes": {
     "Potentiel": 3.3333333333333335,
-    "Stratégie": 4,
-    "Culture": 3,
+    "Stratégie": 4.0,
+    "Culture": 3.0,
     "Compétences": 2.3333333333333335,
     "Gouvernance": 3.3333333333333335
   },
   "stages": {
     "Emergence": 3.4,
-    "Structuration": 3,
+    "Structuration": 3.0,
     "Industrialisation": 3.2
   },
   "answers": [
     {
       "id": "Q01",
       "question": "Quelles sont les infrastructures technologiques en place pour soutenir des projets d’IA ?",
-      "axe": "POTENTIEL",
+      "axe": "Potentiel",
       "type": "Emergence",
       "score": 4,
       "label": "Optimisée",
-      "description": "L'infrastructure est scalable, automatisée, sécurisée et optimisée pour les performances et les coûts des workloads IA."
+      "description": "L'infrastructure est scalable, automatisée, sécurisée et optimisée pour les performances et les coûts des workloads IA.",
+      "analysis": {
+        "acquired": "L'entreprise a acquis des composants scalables, automatisés et sécurisés, permettant l'optimisation des ressources IA",
+        "blocker": "Le manque d'une gouvernance permettant la mutualisation et la gestion multi-usages pour renforcer la présence de l'IA comme asset industriel.",
+        "capability": "Acquérir la capacité à faire évoluer, automatiser, sécuriser et optimiser l’infrastructure IA de l'entreprise en fonction des performances et des coûts.",
+        "action": "Piloter performances et coûts ; automatiser le dimensionnement ; renforcer supervision, sécurité et optimisation des ressources.",
+        "outcome": "L’infrastructure IA s’adapte aux besoins avec performances maîtrisées, sécurité suivie et coûts optimisés."
+      }
     },
     {
       "id": "Q02",
@@ -50,7 +57,14 @@
       "type": "Structuration",
       "score": 3,
       "label": "Exploitable",
-      "description": "Données accessibles, structurées ou préparées et suffisamment fiables pour développer des solutions IA."
+      "description": "Données accessibles, structurées ou préparées et suffisamment fiables pour développer des solutions IA.",
+      "analysis": {
+        "acquired": "L'entreprise offre des données fiables et accessibles pour développer des solutions IA à ses collaborateurs.",
+        "blocker": "La présence de données fiables et accessibles ne suffit pas à mettre en place une gouvernance data dédiée IA.",
+        "capability": "Acquérir la capacité à fournir des données suffisamment structurées, accessibles et fiables, de manière automatisé, pour développer des solutions IA de manière reproductible.",
+        "action": "Industrialiser préparation et mise à disposition ; mettre en place contrôles qualité, processus reproductibles et documentation.",
+        "outcome": "Les équipes disposent de données accessibles, structurées et fiables pour développer des solutions IA de façon reproductible."
+      }
     },
     {
       "id": "Q03",
@@ -59,7 +73,14 @@
       "type": "Industrialisation",
       "score": 3,
       "label": "Potentiel significatif",
-      "description": "L'IA peut améliorer significativement plusieurs processus, produits ou services."
+      "description": "L'IA peut améliorer significativement plusieurs processus, produits ou services.",
+      "analysis": {
+        "acquired": "Identification de cas d'usage pouvant améliorer significativement plusieurs processus, produits ou services.",
+        "blocker": "Absence d'analyse de la transformation par l'AI des activités générant de la valeur pour l'entreprise.",
+        "capability": "Acquérir la capacité à identifier comment l’IA peut générer de la valeur significativement sur plusieurs processus, produits ou services.",
+        "action": "Quantifier les valeurs que l'IA peut transformer ou ajouter pour l'entreprise ; mesurer les gains et capitaliser les cas reproductibles.",
+        "outcome": "L’IA produit des améliorations mesurables sur plusieurs processus, produits ou services."
+      }
     },
     {
       "id": "Q04",
@@ -68,7 +89,14 @@
       "type": "Emergence",
       "score": 5,
       "label": "Ambition stratégique",
-      "description": "L'IA est considérée comme un levier majeur d'évolution du positionnement et/ou du modèle économique de l'entreprise."
+      "description": "L’IA est considérée comme un levier majeur d’évolution du positionnement et/ou du modèle économique de l’entreprise.",
+      "analysis": {
+        "acquired": "L'entreprise place l'IA comme levier stratégique de son positionnement et/ou modèle économique.",
+        "blocker": "L'entreprise est mature sur l'émergence d'une stratégie IA mais il doit avoir une attention particulière aux enjeux d'anticipation et de renouvellement de cette dernière.",
+        "capability": "Acquérir la capacité à intégrer l’IA comme levier majeur d’évolution du positionnement ou du modèle économique de l’entreprise (Stratégie AI-Native).",
+        "action": "Inscrire l’IA dans l’évolution du positionnement et/ou du modèle économique ; réévaluer régulièrement l’ambition.",
+        "outcome": "L’IA est intégrée aux choix stratégiques et son ambition évolue avec le contexte."
+      }
     },
     {
       "id": "Q05",
@@ -77,7 +105,14 @@
       "type": "Structuration",
       "score": 4,
       "label": "Roadmap pilotée",
-      "description": "La feuille de route est intégrée aux plans de l'entreprise et régulièrement pilotée avec des indicateurs."
+      "description": "La feuille de route est intégrée aux plans de l’entreprise et régulièrement pilotée avec des indicateurs.",
+      "analysis": {
+        "acquired": "La feuille de route IA est intégrée aux plans de l’entreprise et régulièrement pilotée avec des indicateurs.",
+        "blocker": "Absence d'une trajectoire pluriannuelle pour optimiser et adapter transversalement le pilotage de la roadmap IA",
+        "capability": "Acquérir la capacité à orchestrer une trajectoire pluriannuelle IA en adaptant les initiatives, leur passage à l’échelle en fonction des résultats des projets IA et des prioités entreprises.",
+        "action": "Construire une trajectoire pluriannuelle transversale ; coordonner investissements et passage à l’échelle au niveau de la direction de l'entreprise; adapter la roadmap aux résultats.",
+        "outcome": "La transformation IA est pilotée au niveau de la direction de l'entreprise dans la durée avec des arbitrages fondés sur résultats et priorités."
+      }
     },
     {
       "id": "Q06",
@@ -86,7 +121,14 @@
       "type": "Industrialisation",
       "score": 3,
       "label": "Priorisation",
-      "description": "Les cas d'usage sont priorisés selon des critères explicites tels que valeur, faisabilité, risques ou effort."
+      "description": "Les cas d’usage sont priorisés selon des critères explicites tels que valeur, faisabilité, risques ou effort.",
+      "analysis": {
+        "acquired": "L'entreprise a priorisé les cas d’usage identifiés selon des critères explicites tels que valeur, faisabilité, risques ou effort.",
+        "blocker": "L'entreprise ne fait pas de gestion des projets IA, pourtant priorisés, au sein d'un portefeuille projet permettant de faire l'allocation et le suivit de l'investissements IA.",
+        "capability": "Acquérir la capacité à gérer au sein d'un portefeuille les cas d’usage IA pour contrôller leur progression et leur cout.",
+        "action": "Collecter l'ensemble des cas dusage IA au sein d'un portefeuille ; Mettre en place un processus de priorisation sur les critères de valeur apportée, faisabilité, risques et efforts ; arbitrer les investissements et suivre les cas sélectionnés.",
+        "outcome": "Un portefeuile est disponible auprès des parties prenantes des projets IA ; les initiatives IA sont priorisées et suivies selon des critères explicites."
+      }
     },
     {
       "id": "Q07",
@@ -95,7 +137,14 @@
       "type": "Emergence",
       "score": 2,
       "label": "Soutien ponctuel",
-      "description": "Certains dirigeants ou managers soutiennent des initiatives IA, principalement au niveau de projets individuels."
+      "description": "Certains dirigeants ou managers soutiennent des initiatives IA, principalement au niveau de projets individuels.",
+      "analysis": {
+        "acquired": "La hiérarchie de l'entreprise soutient des initiatives IA ponctuellement",
+        "blocker": "Le leadership de l'entreprise n'encourage pas l'utilisation de l'IA au quotidien.",
+        "capability": "Acquérir la capacité des managers à encourager et accompagner l’utilisation de l’IA dans les activités quotidiennes de leurs équipes.",
+        "action": "Former les managers ; partager des cas concrets ; leur donner les moyens d’encourager et d’accompagner les expérimentations.",
+        "outcome": "Les managers soutiennent plus régulièrement les initiatives et encouragent les usages."
+      }
     },
     {
       "id": "Q08",
@@ -104,7 +153,14 @@
       "type": "Structuration",
       "score": 3,
       "label": "Acceptation",
-      "description": "L'utilisation de l'IA est globalement acceptée et commence à entrer dans les pratiques de travail."
+      "description": "L'utilisation de l'IA est globalement acceptée et commence à entrer dans les pratiques de travail.",
+      "analysis": {
+        "acquired": "Les managers encouragent l'utilisation de l'IA au sein  e l'entreprise qui est globalement acceptée et commence à entrer dans les pratiques de travail.",
+        "blocker": "L'entreprise ne s'est pas approprié l'ensemble des initiative de projets IA de ses collaborateurs permettant de renforcer son leadership transverse.",
+        "capability": "Acquérir la capacité à favoriser l’utilisation spontanée de l’IA et le partage des expériences entre collaborateurs.",
+        "action": "Identifier les usages pertinents ; formaliser les bonnes pratiques ; accompagner les équipes dans l’intégration de l’IA au quotidien.",
+        "outcome": "L’utilisation de l’IA devient une pratique acceptée et régulière dans une part croissante des activités."
+      }
     },
     {
       "id": "Q09",
@@ -113,7 +169,14 @@
       "type": "Industrialisation",
       "score": 4,
       "label": "Communautés actives",
-      "description": "Des communautés, réseaux ou espaces de collaboration structurés favorisent la diffusion des pratiques et des retours d'expérience."
+      "description": "Des communautés, réseaux ou espaces de collaboration structurés favorisent la diffusion des pratiques et des retours d'expérience.",
+      "analysis": {
+        "acquired": "L'entreprise favorise des communautés, réseaux ou espaces de collaboration structurés permettant la diffusion des pratiques et des retours d'expérience.",
+        "blocker": "L'entreprise manque d'un apprentissage continu à l'IA intégré dans ses processus de ressource humaine.",
+        "capability": "Acquérir la capacité à intégrer durablement l’apprentissage, l’expérimentation et le partage de pratiques IA dans le fonctionnement de l’entreprise.",
+        "action": "Structurer communautés, réseaux et la gestion des connaissances ; faciliter circulation des pratiques ; relier les communautés aux initiatives IA.",
+        "outcome": "Des communautés actives accélèrent diffusion et capitalisation des expériences. La gestion des connaissances IA de l'entreprise est reconnue par l'ensemble de ses collborateurs."
+      }
     },
     {
       "id": "Q10",
@@ -122,7 +185,14 @@
       "type": "Emergence",
       "score": 2,
       "label": "Partielles",
-      "description": "Une équipe ou plusieurs personnes disposent de compétences permettant de réaliser certains projets IA, mais des compétences importantes manquent."
+      "description": "Une équipe ou plusieurs personnes disposent de compétences permettant de réaliser certains projets IA, mais des compétences importantes manquent.",
+      "analysis": {
+        "acquired": "L'entreprise a définit une équipe ou plusieurs personnes disposant de compétences qui  permettent de réaliser certains projets IA, mais des compétences importantes manquent.",
+        "blocker": "L'entreprise ne dispose pas des principales compétences techniques et métier nécessaires pour développer des projets IA.",
+        "capability": "Acquérir les compétences nécessaires pour couvrir les principales dimensions des projets IA.",
+        "action": "Cartographier les compétences manquantes ; compléter les expertises nécessaires aux projets prioritaires : data, IA/ML, ingénierie, intégration ou déploiement.",
+        "outcome": "Les principales compétences nécessaires aux projets prioritaires sont couvertes."
+      }
     },
     {
       "id": "Q11",
@@ -131,7 +201,14 @@
       "type": "Structuration",
       "score": 2,
       "label": "Formation ciblée",
-      "description": "Des formations sont proposées à certaines populations ou pour certains besoins."
+      "description": "Des formations sont proposées à certaines populations ou pour certains besoins.",
+      "analysis": {
+        "acquired": "L'entreprise propose des formations IA à certaines populations ou pour certains besoins.",
+        "blocker": "L'entreprise manque de dispositif structuré et évaluable des parcours de progression des compétences en IA.",
+        "capability": "Acquérir la capacité à structurer des formations IA adaptées aux différentes populations et aux besoins de l’entreprise.",
+        "action": "Définir des parcours de formations adaptées ; structurer contenus ; suivre participation et acquis.",
+        "outcome": "Des parcours de formations ciblées développent les compétences IA sur les besoins identifiés."
+      }
     },
     {
       "id": "Q12",
@@ -140,7 +217,14 @@
       "type": "Industrialisation",
       "score": 3,
       "label": "Approche structurée",
-      "description": "Les lacunes sont identifiées et font l'objet d'une stratégie combinant recrutement, formation et recours à des partenaires externes."
+      "description": "Les lacunes sont identifiées et font l'objet d'une stratégie combinant recrutement, formation et recours à des partenaires externes.",
+      "analysis": {
+        "acquired": "L'entreprise identifie les lacunes de manière structurée en mettant en place une stratégie combinant recrutement, formation et recours à des partenaires externes.",
+        "blocker": "L'entreprise n'a pas de réseau de partenaires pour combler son déficit de compétences internes pour développer ses projets IA, répondant aux besoins de l'entreprise.",
+        "capability": "Acquérir la capacité à définir une stratégie de partenariat pour le recours de services externes pour combler les lacunes internes.",
+        "action": "Cartographier les partenariats possible suivant le domaine d'expertise de l'entreprise et/ou sa stratégie de sous-traitance ; établir une stratégie combinant recrutement, formation, mobilité et partenaires ; suivre écarts et plans de comblement.",
+        "outcome": "Cartographie des partenariats potentiels. Les lacunes sont gérées au moyen d’une stratégie structurée combinant plusieurs leviers."
+      }
     },
     {
       "id": "Q13",
@@ -149,7 +233,14 @@
       "type": "Emergence",
       "score": 4,
       "label": "Gouvernance structurée",
-      "description": "Le cadre couvre notamment les risques, la sécurité, les données, la conformité, l'éthique et les responsabilités, avec des rôles clairement définis."
+      "description": "Le cadre couvre notamment les risques, la sécurité, les données, la conformité, l'éthique et les responsabilités, avec des rôles clairement définis.",
+      "analysis": {
+        "acquired": "Le gouvernance structuré d'usage de l'IA en entreprise couvre notamment les risques, la sécurité, les données, la conformité, l'éthique et les responsabilités, avec des rôles clairement définis.",
+        "blocker": "L'entreprise n'a pas une gouvernance suffisante de l'utilisation de l'IA intégrée à ses processus permettant une évolution continue en fonction des évolutions de l'écosystème d'entreprise.",
+        "capability": "Acquérir la capacité à intégrer la gouvernance IA dans les processus de l’entreprise et à la faire évoluer en fonction des risques, usages, réglementations et pratiques de référence.",
+        "action": "Intégrer la gouvernacne IA dans les procesus d'entreprise : couvrir risques, sécurité, données, conformité, éthique et responsabilités ; mettre en place instances et contrôles.",
+        "outcome": "Une gouvernance IA intégrée aux processus d'entreprise couvre les principales dimensions de risque avec des responsabilités claires."
+      }
     },
     {
       "id": "Q14",
@@ -158,7 +249,14 @@
       "type": "Structuration",
       "score": 3,
       "label": "Processus structuré",
-      "description": "Un processus formalisé évalue les projets selon des critères définis avant leur mise en production."
+      "description": "Un processus formalisé évalue les projets selon des critères définis avant leur mise en production.",
+      "analysis": {
+        "acquired": "L'entreprise a mis en place un processus formalisé d'évaluation structurée des projets IA selon des critères définis avant leur mise en production.",
+        "blocker": "Des critères multidimensionnels tel que performance, sécurité, données, risques, conformité, impacts et responsabilités, manquent lors de l'évaluation des projets et d'usages d'IA",
+        "capability": "Acquérir la capacité à appliquer un processus formalisé évaluant les projets IA selon des critères  de performance, de sécurité, des données, des risques, de conformité, des impacts et des responsabilités avant leur mise en production.",
+        "action": "Mettre en œuvre des capacité d'audits de la mise en production des porjets IA  ; standardiser les dossiers ; assurer la traçabilité des décisions.",
+        "outcome": "Chaque projet concerné est audité selon un processus qualité avant production."
+      }
     },
     {
       "id": "Q15",
@@ -167,7 +265,14 @@
       "type": "Industrialisation",
       "score": 3,
       "label": "Suivi structuré",
-      "description": "Des indicateurs sont définis et suivis régulièrement pour les solutions IA en production."
+      "description": "Des indicateurs sont définis et suivis régulièrement pour les solutions IA en production.",
+      "analysis": {
+        "acquired": "L'entreprise a défini des indicateurs de suivi structuré régulièrement pour les solutions IA en production.",
+        "blocker": "Un monitoring multidimensionnel est manquant pour suivre performance, qualité, sécurité, coûts, dérive des modèles et retours utilisateurs, avec des mécanismes d'alerte et d'action.",
+        "capability": "Acquérir la capacité à définir et suivre régulièrement des indicateurs multidimensionels permettant de surveiller les solutions IA en exploitation, notamment sur la performance, la qualité, la sécurité, les coûts, la dérive des modèles et les retours utilisateurs, avec des mécanismes d'alerte et d'action..",
+        "action": "Définir des indicateurs structurés ; automatiser leur collecte lorsque possible ; organiser revues et traitement des écarts.",
+        "outcome": "Les solutions en production font l’objet d’un suivi régulier et structuré avec actions correctives."
+      }
     }
   ],
   "id": "999c168163ca4ae7bab913591d05f715",
@@ -178,5 +283,530 @@
     "json": "Rapport_Maturite_IA_999c168163ca4ae7bab913591d05f715.json",
     "html": "Rapport_Maturite_IA_999c168163ca4ae7bab913591d05f715.html",
     "pdf": "Rapport_Maturite_IA_999c168163ca4ae7bab913591d05f715.pdf"
-  }
+  },
+  "analysisVersion": "V3-57df88bc3dfa",
+  "maturity": {
+    "score": 3,
+    "name": "En exploration",
+    "description": "L'entreprise a pris conscience du potentiel offert par les données. Commence à s'interroger, à tester, est à la recherche de solutions.\nCertains collaborateurs utilisent des outils individuellement (souvent sans supervision). La direction commence à s'interroger et à tester quelques outils sur étagère, sans stratégie définie.",
+    "acquired": "",
+    "symbol": ""
+  },
+  "axisAnalysis": [
+    {
+      "axe": "Potentiel",
+      "score": 3.3333333333333335,
+      "answers": [
+        {
+          "id": "Q01",
+          "question": "Quelles sont les infrastructures technologiques en place pour soutenir des projets d’IA ?",
+          "axe": "Potentiel",
+          "type": "Emergence",
+          "score": 4,
+          "label": "Optimisée",
+          "description": "L'infrastructure est scalable, automatisée, sécurisée et optimisée pour les performances et les coûts des workloads IA.",
+          "analysis": {
+            "acquired": "L'entreprise a acquis des composants scalables, automatisés et sécurisés, permettant l'optimisation des ressources IA",
+            "blocker": "Le manque d'une gouvernance permettant la mutualisation et la gestion multi-usages pour renforcer la présence de l'IA comme asset industriel.",
+            "capability": "Acquérir la capacité à faire évoluer, automatiser, sécuriser et optimiser l’infrastructure IA de l'entreprise en fonction des performances et des coûts.",
+            "action": "Piloter performances et coûts ; automatiser le dimensionnement ; renforcer supervision, sécurité et optimisation des ressources.",
+            "outcome": "L’infrastructure IA s’adapte aux besoins avec performances maîtrisées, sécurité suivie et coûts optimisés."
+          }
+        },
+        {
+          "id": "Q02",
+          "question": "Dans quelle mesure l’entreprise dispose-t-elle de données accessibles, fiables et exploitables pour ses usages d’IA ?",
+          "axe": "Potentiel",
+          "type": "Structuration",
+          "score": 3,
+          "label": "Exploitable",
+          "description": "Données accessibles, structurées ou préparées et suffisamment fiables pour développer des solutions IA.",
+          "analysis": {
+            "acquired": "L'entreprise offre des données fiables et accessibles pour développer des solutions IA à ses collaborateurs.",
+            "blocker": "La présence de données fiables et accessibles ne suffit pas à mettre en place une gouvernance data dédiée IA.",
+            "capability": "Acquérir la capacité à fournir des données suffisamment structurées, accessibles et fiables, de manière automatisé, pour développer des solutions IA de manière reproductible.",
+            "action": "Industrialiser préparation et mise à disposition ; mettre en place contrôles qualité, processus reproductibles et documentation.",
+            "outcome": "Les équipes disposent de données accessibles, structurées et fiables pour développer des solutions IA de façon reproductible."
+          }
+        },
+        {
+          "id": "Q03",
+          "question": "Dans quelle mesure les activités de l’entreprise présentent-elles un potentiel d’application de l’IA ?",
+          "axe": "Potentiel",
+          "type": "Industrialisation",
+          "score": 3,
+          "label": "Potentiel significatif",
+          "description": "L'IA peut améliorer significativement plusieurs processus, produits ou services.",
+          "analysis": {
+            "acquired": "Identification de cas d'usage pouvant améliorer significativement plusieurs processus, produits ou services.",
+            "blocker": "Absence d'analyse de la transformation par l'AI des activités générant de la valeur pour l'entreprise.",
+            "capability": "Acquérir la capacité à identifier comment l’IA peut générer de la valeur significativement sur plusieurs processus, produits ou services.",
+            "action": "Quantifier les valeurs que l'IA peut transformer ou ajouter pour l'entreprise ; mesurer les gains et capitaliser les cas reproductibles.",
+            "outcome": "L’IA produit des améliorations mesurables sur plusieurs processus, produits ou services."
+          }
+        }
+      ]
+    },
+    {
+      "axe": "Stratégie",
+      "score": 4.0,
+      "answers": [
+        {
+          "id": "Q04",
+          "question": "Quel est le niveau d’ambition de l’entreprise concernant l’IA ?",
+          "axe": "Stratégie",
+          "type": "Emergence",
+          "score": 5,
+          "label": "Ambition stratégique",
+          "description": "L’IA est considérée comme un levier majeur d’évolution du positionnement et/ou du modèle économique de l’entreprise.",
+          "analysis": {
+            "acquired": "L'entreprise place l'IA comme levier stratégique de son positionnement et/ou modèle économique.",
+            "blocker": "L'entreprise est mature sur l'émergence d'une stratégie IA mais il doit avoir une attention particulière aux enjeux d'anticipation et de renouvellement de cette dernière.",
+            "capability": "Acquérir la capacité à intégrer l’IA comme levier majeur d’évolution du positionnement ou du modèle économique de l’entreprise (Stratégie AI-Native).",
+            "action": "Inscrire l’IA dans l’évolution du positionnement et/ou du modèle économique ; réévaluer régulièrement l’ambition.",
+            "outcome": "L’IA est intégrée aux choix stratégiques et son ambition évolue avec le contexte."
+          }
+        },
+        {
+          "id": "Q05",
+          "question": "Dans quelle mesure l’entreprise dispose-t-elle d’une feuille de route pour mettre en œuvre son ambition IA ?",
+          "axe": "Stratégie",
+          "type": "Structuration",
+          "score": 4,
+          "label": "Roadmap pilotée",
+          "description": "La feuille de route est intégrée aux plans de l’entreprise et régulièrement pilotée avec des indicateurs.",
+          "analysis": {
+            "acquired": "La feuille de route IA est intégrée aux plans de l’entreprise et régulièrement pilotée avec des indicateurs.",
+            "blocker": "Absence d'une trajectoire pluriannuelle pour optimiser et adapter transversalement le pilotage de la roadmap IA",
+            "capability": "Acquérir la capacité à orchestrer une trajectoire pluriannuelle IA en adaptant les initiatives, leur passage à l’échelle en fonction des résultats des projets IA et des prioités entreprises.",
+            "action": "Construire une trajectoire pluriannuelle transversale ; coordonner investissements et passage à l’échelle au niveau de la direction de l'entreprise; adapter la roadmap aux résultats.",
+            "outcome": "La transformation IA est pilotée au niveau de la direction de l'entreprise dans la durée avec des arbitrages fondés sur résultats et priorités."
+          }
+        },
+        {
+          "id": "Q06",
+          "question": "Dans quelle mesure les initiatives et cas d’usage IA sont-ils priorisés en fonction des enjeux de l’entreprise ?",
+          "axe": "Stratégie",
+          "type": "Industrialisation",
+          "score": 3,
+          "label": "Priorisation",
+          "description": "Les cas d’usage sont priorisés selon des critères explicites tels que valeur, faisabilité, risques ou effort.",
+          "analysis": {
+            "acquired": "L'entreprise a priorisé les cas d’usage identifiés selon des critères explicites tels que valeur, faisabilité, risques ou effort.",
+            "blocker": "L'entreprise ne fait pas de gestion des projets IA, pourtant priorisés, au sein d'un portefeuille projet permettant de faire l'allocation et le suivit de l'investissements IA.",
+            "capability": "Acquérir la capacité à gérer au sein d'un portefeuille les cas d’usage IA pour contrôller leur progression et leur cout.",
+            "action": "Collecter l'ensemble des cas dusage IA au sein d'un portefeuille ; Mettre en place un processus de priorisation sur les critères de valeur apportée, faisabilité, risques et efforts ; arbitrer les investissements et suivre les cas sélectionnés.",
+            "outcome": "Un portefeuile est disponible auprès des parties prenantes des projets IA ; les initiatives IA sont priorisées et suivies selon des critères explicites."
+          }
+        }
+      ]
+    },
+    {
+      "axe": "Culture",
+      "score": 3.0,
+      "answers": [
+        {
+          "id": "Q07",
+          "question": "Dans quelle mesure les dirigeants et managers favorisent-ils l’adoption de l’IA dans l’entreprise ?",
+          "axe": "Culture",
+          "type": "Emergence",
+          "score": 2,
+          "label": "Soutien ponctuel",
+          "description": "Certains dirigeants ou managers soutiennent des initiatives IA, principalement au niveau de projets individuels.",
+          "analysis": {
+            "acquired": "La hiérarchie de l'entreprise soutient des initiatives IA ponctuellement",
+            "blocker": "Le leadership de l'entreprise n'encourage pas l'utilisation de l'IA au quotidien.",
+            "capability": "Acquérir la capacité des managers à encourager et accompagner l’utilisation de l’IA dans les activités quotidiennes de leurs équipes.",
+            "action": "Former les managers ; partager des cas concrets ; leur donner les moyens d’encourager et d’accompagner les expérimentations.",
+            "outcome": "Les managers soutiennent plus régulièrement les initiatives et encouragent les usages."
+          }
+        },
+        {
+          "id": "Q08",
+          "question": "Dans quelle mesure les collaborateurs sont-ils prêts à adopter et utiliser l’IA dans leur activité ?",
+          "axe": "Culture",
+          "type": "Structuration",
+          "score": 3,
+          "label": "Acceptation",
+          "description": "L'utilisation de l'IA est globalement acceptée et commence à entrer dans les pratiques de travail.",
+          "analysis": {
+            "acquired": "Les managers encouragent l'utilisation de l'IA au sein  e l'entreprise qui est globalement acceptée et commence à entrer dans les pratiques de travail.",
+            "blocker": "L'entreprise ne s'est pas approprié l'ensemble des initiative de projets IA de ses collaborateurs permettant de renforcer son leadership transverse.",
+            "capability": "Acquérir la capacité à favoriser l’utilisation spontanée de l’IA et le partage des expériences entre collaborateurs.",
+            "action": "Identifier les usages pertinents ; formaliser les bonnes pratiques ; accompagner les équipes dans l’intégration de l’IA au quotidien.",
+            "outcome": "L’utilisation de l’IA devient une pratique acceptée et régulière dans une part croissante des activités."
+          }
+        },
+        {
+          "id": "Q09",
+          "question": "Dans quelle mesure l’entreprise favorise-t-elle l’apprentissage, l’expérimentation et le partage autour de l’IA ?",
+          "axe": "Culture",
+          "type": "Industrialisation",
+          "score": 4,
+          "label": "Communautés actives",
+          "description": "Des communautés, réseaux ou espaces de collaboration structurés favorisent la diffusion des pratiques et des retours d'expérience.",
+          "analysis": {
+            "acquired": "L'entreprise favorise des communautés, réseaux ou espaces de collaboration structurés permettant la diffusion des pratiques et des retours d'expérience.",
+            "blocker": "L'entreprise manque d'un apprentissage continu à l'IA intégré dans ses processus de ressource humaine.",
+            "capability": "Acquérir la capacité à intégrer durablement l’apprentissage, l’expérimentation et le partage de pratiques IA dans le fonctionnement de l’entreprise.",
+            "action": "Structurer communautés, réseaux et la gestion des connaissances ; faciliter circulation des pratiques ; relier les communautés aux initiatives IA.",
+            "outcome": "Des communautés actives accélèrent diffusion et capitalisation des expériences. La gestion des connaissances IA de l'entreprise est reconnue par l'ensemble de ses collborateurs."
+          }
+        }
+      ]
+    },
+    {
+      "axe": "Compétences",
+      "score": 2.3333333333333335,
+      "answers": [
+        {
+          "id": "Q10",
+          "question": "Dans quelle mesure l’entreprise dispose-t-elle des compétences internes nécessaires pour concevoir, développer, déployer et exploiter des solutions d’IA ?",
+          "axe": "Compétences",
+          "type": "Emergence",
+          "score": 2,
+          "label": "Partielles",
+          "description": "Une équipe ou plusieurs personnes disposent de compétences permettant de réaliser certains projets IA, mais des compétences importantes manquent.",
+          "analysis": {
+            "acquired": "L'entreprise a définit une équipe ou plusieurs personnes disposant de compétences qui  permettent de réaliser certains projets IA, mais des compétences importantes manquent.",
+            "blocker": "L'entreprise ne dispose pas des principales compétences techniques et métier nécessaires pour développer des projets IA.",
+            "capability": "Acquérir les compétences nécessaires pour couvrir les principales dimensions des projets IA.",
+            "action": "Cartographier les compétences manquantes ; compléter les expertises nécessaires aux projets prioritaires : data, IA/ML, ingénierie, intégration ou déploiement.",
+            "outcome": "Les principales compétences nécessaires aux projets prioritaires sont couvertes."
+          }
+        },
+        {
+          "id": "Q11",
+          "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
+          "axe": "Compétences",
+          "type": "Structuration",
+          "score": 2,
+          "label": "Formation ciblée",
+          "description": "Des formations sont proposées à certaines populations ou pour certains besoins.",
+          "analysis": {
+            "acquired": "L'entreprise propose des formations IA à certaines populations ou pour certains besoins.",
+            "blocker": "L'entreprise manque de dispositif structuré et évaluable des parcours de progression des compétences en IA.",
+            "capability": "Acquérir la capacité à structurer des formations IA adaptées aux différentes populations et aux besoins de l’entreprise.",
+            "action": "Définir des parcours de formations adaptées ; structurer contenus ; suivre participation et acquis.",
+            "outcome": "Des parcours de formations ciblées développent les compétences IA sur les besoins identifiés."
+          }
+        },
+        {
+          "id": "Q12",
+          "question": "Dans quelle mesure l’entreprise sait-elle identifier et combler ses lacunes en compétences IA ?",
+          "axe": "Compétences",
+          "type": "Industrialisation",
+          "score": 3,
+          "label": "Approche structurée",
+          "description": "Les lacunes sont identifiées et font l'objet d'une stratégie combinant recrutement, formation et recours à des partenaires externes.",
+          "analysis": {
+            "acquired": "L'entreprise identifie les lacunes de manière structurée en mettant en place une stratégie combinant recrutement, formation et recours à des partenaires externes.",
+            "blocker": "L'entreprise n'a pas de réseau de partenaires pour combler son déficit de compétences internes pour développer ses projets IA, répondant aux besoins de l'entreprise.",
+            "capability": "Acquérir la capacité à définir une stratégie de partenariat pour le recours de services externes pour combler les lacunes internes.",
+            "action": "Cartographier les partenariats possible suivant le domaine d'expertise de l'entreprise et/ou sa stratégie de sous-traitance ; établir une stratégie combinant recrutement, formation, mobilité et partenaires ; suivre écarts et plans de comblement.",
+            "outcome": "Cartographie des partenariats potentiels. Les lacunes sont gérées au moyen d’une stratégie structurée combinant plusieurs leviers."
+          }
+        }
+      ]
+    },
+    {
+      "axe": "Gouvernance",
+      "score": 3.3333333333333335,
+      "answers": [
+        {
+          "id": "Q13",
+          "question": "Dans quelle mesure l’entreprise dispose-t-elle d’un cadre de gouvernance pour encadrer l’utilisation de l’IA ?",
+          "axe": "Gouvernance",
+          "type": "Emergence",
+          "score": 4,
+          "label": "Gouvernance structurée",
+          "description": "Le cadre couvre notamment les risques, la sécurité, les données, la conformité, l'éthique et les responsabilités, avec des rôles clairement définis.",
+          "analysis": {
+            "acquired": "Le gouvernance structuré d'usage de l'IA en entreprise couvre notamment les risques, la sécurité, les données, la conformité, l'éthique et les responsabilités, avec des rôles clairement définis.",
+            "blocker": "L'entreprise n'a pas une gouvernance suffisante de l'utilisation de l'IA intégrée à ses processus permettant une évolution continue en fonction des évolutions de l'écosystème d'entreprise.",
+            "capability": "Acquérir la capacité à intégrer la gouvernance IA dans les processus de l’entreprise et à la faire évoluer en fonction des risques, usages, réglementations et pratiques de référence.",
+            "action": "Intégrer la gouvernacne IA dans les procesus d'entreprise : couvrir risques, sécurité, données, conformité, éthique et responsabilités ; mettre en place instances et contrôles.",
+            "outcome": "Une gouvernance IA intégrée aux processus d'entreprise couvre les principales dimensions de risque avec des responsabilités claires."
+          }
+        },
+        {
+          "id": "Q14",
+          "question": "Dans quelle mesure les projets et usages d’IA font-ils l’objet d’une évaluation et d’une validation avant leur mise en production ?",
+          "axe": "Gouvernance",
+          "type": "Structuration",
+          "score": 3,
+          "label": "Processus structuré",
+          "description": "Un processus formalisé évalue les projets selon des critères définis avant leur mise en production.",
+          "analysis": {
+            "acquired": "L'entreprise a mis en place un processus formalisé d'évaluation structurée des projets IA selon des critères définis avant leur mise en production.",
+            "blocker": "Des critères multidimensionnels tel que performance, sécurité, données, risques, conformité, impacts et responsabilités, manquent lors de l'évaluation des projets et d'usages d'IA",
+            "capability": "Acquérir la capacité à appliquer un processus formalisé évaluant les projets IA selon des critères  de performance, de sécurité, des données, des risques, de conformité, des impacts et des responsabilités avant leur mise en production.",
+            "action": "Mettre en œuvre des capacité d'audits de la mise en production des porjets IA  ; standardiser les dossiers ; assurer la traçabilité des décisions.",
+            "outcome": "Chaque projet concerné est audité selon un processus qualité avant production."
+          }
+        },
+        {
+          "id": "Q15",
+          "question": "Dans quelle mesure les solutions IA déployées sont-elles surveillées et réévaluées pendant leur cycle de vie ?",
+          "axe": "Gouvernance",
+          "type": "Industrialisation",
+          "score": 3,
+          "label": "Suivi structuré",
+          "description": "Des indicateurs sont définis et suivis régulièrement pour les solutions IA en production.",
+          "analysis": {
+            "acquired": "L'entreprise a défini des indicateurs de suivi structuré régulièrement pour les solutions IA en production.",
+            "blocker": "Un monitoring multidimensionnel est manquant pour suivre performance, qualité, sécurité, coûts, dérive des modèles et retours utilisateurs, avec des mécanismes d'alerte et d'action.",
+            "capability": "Acquérir la capacité à définir et suivre régulièrement des indicateurs multidimensionels permettant de surveiller les solutions IA en exploitation, notamment sur la performance, la qualité, la sécurité, les coûts, la dérive des modèles et les retours utilisateurs, avec des mécanismes d'alerte et d'action..",
+            "action": "Définir des indicateurs structurés ; automatiser leur collecte lorsque possible ; organiser revues et traitement des écarts.",
+            "outcome": "Les solutions en production font l’objet d’un suivi régulier et structuré avec actions correctives."
+          }
+        }
+      ]
+    }
+  ],
+  "strengths": [
+    {
+      "id": "Q04",
+      "question": "Quel est le niveau d’ambition de l’entreprise concernant l’IA ?",
+      "axe": "Stratégie",
+      "type": "Emergence",
+      "score": 5,
+      "label": "Ambition stratégique",
+      "description": "L’IA est considérée comme un levier majeur d’évolution du positionnement et/ou du modèle économique de l’entreprise.",
+      "analysis": {
+        "acquired": "L'entreprise place l'IA comme levier stratégique de son positionnement et/ou modèle économique.",
+        "blocker": "L'entreprise est mature sur l'émergence d'une stratégie IA mais il doit avoir une attention particulière aux enjeux d'anticipation et de renouvellement de cette dernière.",
+        "capability": "Acquérir la capacité à intégrer l’IA comme levier majeur d’évolution du positionnement ou du modèle économique de l’entreprise (Stratégie AI-Native).",
+        "action": "Inscrire l’IA dans l’évolution du positionnement et/ou du modèle économique ; réévaluer régulièrement l’ambition.",
+        "outcome": "L’IA est intégrée aux choix stratégiques et son ambition évolue avec le contexte."
+      }
+    },
+    {
+      "id": "Q09",
+      "question": "Dans quelle mesure l’entreprise favorise-t-elle l’apprentissage, l’expérimentation et le partage autour de l’IA ?",
+      "axe": "Culture",
+      "type": "Industrialisation",
+      "score": 4,
+      "label": "Communautés actives",
+      "description": "Des communautés, réseaux ou espaces de collaboration structurés favorisent la diffusion des pratiques et des retours d'expérience.",
+      "analysis": {
+        "acquired": "L'entreprise favorise des communautés, réseaux ou espaces de collaboration structurés permettant la diffusion des pratiques et des retours d'expérience.",
+        "blocker": "L'entreprise manque d'un apprentissage continu à l'IA intégré dans ses processus de ressource humaine.",
+        "capability": "Acquérir la capacité à intégrer durablement l’apprentissage, l’expérimentation et le partage de pratiques IA dans le fonctionnement de l’entreprise.",
+        "action": "Structurer communautés, réseaux et la gestion des connaissances ; faciliter circulation des pratiques ; relier les communautés aux initiatives IA.",
+        "outcome": "Des communautés actives accélèrent diffusion et capitalisation des expériences. La gestion des connaissances IA de l'entreprise est reconnue par l'ensemble de ses collborateurs."
+      }
+    },
+    {
+      "id": "Q05",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle d’une feuille de route pour mettre en œuvre son ambition IA ?",
+      "axe": "Stratégie",
+      "type": "Structuration",
+      "score": 4,
+      "label": "Roadmap pilotée",
+      "description": "La feuille de route est intégrée aux plans de l’entreprise et régulièrement pilotée avec des indicateurs.",
+      "analysis": {
+        "acquired": "La feuille de route IA est intégrée aux plans de l’entreprise et régulièrement pilotée avec des indicateurs.",
+        "blocker": "Absence d'une trajectoire pluriannuelle pour optimiser et adapter transversalement le pilotage de la roadmap IA",
+        "capability": "Acquérir la capacité à orchestrer une trajectoire pluriannuelle IA en adaptant les initiatives, leur passage à l’échelle en fonction des résultats des projets IA et des prioités entreprises.",
+        "action": "Construire une trajectoire pluriannuelle transversale ; coordonner investissements et passage à l’échelle au niveau de la direction de l'entreprise; adapter la roadmap aux résultats.",
+        "outcome": "La transformation IA est pilotée au niveau de la direction de l'entreprise dans la durée avec des arbitrages fondés sur résultats et priorités."
+      }
+    }
+  ],
+  "watchPoints": [
+    {
+      "id": "Q07",
+      "question": "Dans quelle mesure les dirigeants et managers favorisent-ils l’adoption de l’IA dans l’entreprise ?",
+      "axe": "Culture",
+      "type": "Emergence",
+      "score": 2,
+      "label": "Soutien ponctuel",
+      "description": "Certains dirigeants ou managers soutiennent des initiatives IA, principalement au niveau de projets individuels.",
+      "analysis": {
+        "acquired": "La hiérarchie de l'entreprise soutient des initiatives IA ponctuellement",
+        "blocker": "Le leadership de l'entreprise n'encourage pas l'utilisation de l'IA au quotidien.",
+        "capability": "Acquérir la capacité des managers à encourager et accompagner l’utilisation de l’IA dans les activités quotidiennes de leurs équipes.",
+        "action": "Former les managers ; partager des cas concrets ; leur donner les moyens d’encourager et d’accompagner les expérimentations.",
+        "outcome": "Les managers soutiennent plus régulièrement les initiatives et encouragent les usages."
+      }
+    },
+    {
+      "id": "Q10",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle des compétences internes nécessaires pour concevoir, développer, déployer et exploiter des solutions d’IA ?",
+      "axe": "Compétences",
+      "type": "Emergence",
+      "score": 2,
+      "label": "Partielles",
+      "description": "Une équipe ou plusieurs personnes disposent de compétences permettant de réaliser certains projets IA, mais des compétences importantes manquent.",
+      "analysis": {
+        "acquired": "L'entreprise a définit une équipe ou plusieurs personnes disposant de compétences qui  permettent de réaliser certains projets IA, mais des compétences importantes manquent.",
+        "blocker": "L'entreprise ne dispose pas des principales compétences techniques et métier nécessaires pour développer des projets IA.",
+        "capability": "Acquérir les compétences nécessaires pour couvrir les principales dimensions des projets IA.",
+        "action": "Cartographier les compétences manquantes ; compléter les expertises nécessaires aux projets prioritaires : data, IA/ML, ingénierie, intégration ou déploiement.",
+        "outcome": "Les principales compétences nécessaires aux projets prioritaires sont couvertes."
+      }
+    },
+    {
+      "id": "Q11",
+      "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
+      "axe": "Compétences",
+      "type": "Structuration",
+      "score": 2,
+      "label": "Formation ciblée",
+      "description": "Des formations sont proposées à certaines populations ou pour certains besoins.",
+      "analysis": {
+        "acquired": "L'entreprise propose des formations IA à certaines populations ou pour certains besoins.",
+        "blocker": "L'entreprise manque de dispositif structuré et évaluable des parcours de progression des compétences en IA.",
+        "capability": "Acquérir la capacité à structurer des formations IA adaptées aux différentes populations et aux besoins de l’entreprise.",
+        "action": "Définir des parcours de formations adaptées ; structurer contenus ; suivre participation et acquis.",
+        "outcome": "Des parcours de formations ciblées développent les compétences IA sur les besoins identifiés."
+      }
+    }
+  ],
+  "priorityActions": [
+    {
+      "id": "Q07",
+      "question": "Dans quelle mesure les dirigeants et managers favorisent-ils l’adoption de l’IA dans l’entreprise ?",
+      "axe": "Culture",
+      "type": "Emergence",
+      "score": 2,
+      "label": "Soutien ponctuel",
+      "description": "Certains dirigeants ou managers soutiennent des initiatives IA, principalement au niveau de projets individuels.",
+      "analysis": {
+        "acquired": "La hiérarchie de l'entreprise soutient des initiatives IA ponctuellement",
+        "blocker": "Le leadership de l'entreprise n'encourage pas l'utilisation de l'IA au quotidien.",
+        "capability": "Acquérir la capacité des managers à encourager et accompagner l’utilisation de l’IA dans les activités quotidiennes de leurs équipes.",
+        "action": "Former les managers ; partager des cas concrets ; leur donner les moyens d’encourager et d’accompagner les expérimentations.",
+        "outcome": "Les managers soutiennent plus régulièrement les initiatives et encouragent les usages."
+      },
+      "action": "Former les managers ; partager des cas concrets ; leur donner les moyens d’encourager et d’accompagner les expérimentations."
+    },
+    {
+      "id": "Q10",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle des compétences internes nécessaires pour concevoir, développer, déployer et exploiter des solutions d’IA ?",
+      "axe": "Compétences",
+      "type": "Emergence",
+      "score": 2,
+      "label": "Partielles",
+      "description": "Une équipe ou plusieurs personnes disposent de compétences permettant de réaliser certains projets IA, mais des compétences importantes manquent.",
+      "analysis": {
+        "acquired": "L'entreprise a définit une équipe ou plusieurs personnes disposant de compétences qui  permettent de réaliser certains projets IA, mais des compétences importantes manquent.",
+        "blocker": "L'entreprise ne dispose pas des principales compétences techniques et métier nécessaires pour développer des projets IA.",
+        "capability": "Acquérir les compétences nécessaires pour couvrir les principales dimensions des projets IA.",
+        "action": "Cartographier les compétences manquantes ; compléter les expertises nécessaires aux projets prioritaires : data, IA/ML, ingénierie, intégration ou déploiement.",
+        "outcome": "Les principales compétences nécessaires aux projets prioritaires sont couvertes."
+      },
+      "action": "Cartographier les compétences manquantes ; compléter les expertises nécessaires aux projets prioritaires : data, IA/ML, ingénierie, intégration ou déploiement."
+    },
+    {
+      "id": "Q11",
+      "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
+      "axe": "Compétences",
+      "type": "Structuration",
+      "score": 2,
+      "label": "Formation ciblée",
+      "description": "Des formations sont proposées à certaines populations ou pour certains besoins.",
+      "analysis": {
+        "acquired": "L'entreprise propose des formations IA à certaines populations ou pour certains besoins.",
+        "blocker": "L'entreprise manque de dispositif structuré et évaluable des parcours de progression des compétences en IA.",
+        "capability": "Acquérir la capacité à structurer des formations IA adaptées aux différentes populations et aux besoins de l’entreprise.",
+        "action": "Définir des parcours de formations adaptées ; structurer contenus ; suivre participation et acquis.",
+        "outcome": "Des parcours de formations ciblées développent les compétences IA sur les besoins identifiés."
+      },
+      "action": "Définir des parcours de formations adaptées ; structurer contenus ; suivre participation et acquis."
+    }
+  ],
+  "mediumTermActions": [
+    {
+      "id": "Q02",
+      "axe": "Potentiel",
+      "type": "Structuration",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle de données accessibles, fiables et exploitables pour ses usages d’IA ?",
+      "currentScore": 3,
+      "targetScore": 3,
+      "action": "Structurer les données prioritaires ; traiter les problèmes de qualité ; préparer les données aux usages IA ciblés."
+    },
+    {
+      "id": "Q03",
+      "axe": "Potentiel",
+      "type": "Industrialisation",
+      "question": "Dans quelle mesure les activités de l’entreprise présentent-elles un potentiel d’application de l’IA ?",
+      "currentScore": 3,
+      "targetScore": 3,
+      "action": "Évaluer les cas d’usage selon valeur, faisabilité, données, risques et effort ; sélectionner les opportunités à expérimenter."
+    },
+    {
+      "id": "Q06",
+      "axe": "Stratégie",
+      "type": "Industrialisation",
+      "question": "Dans quelle mesure les initiatives et cas d’usage IA sont-ils priorisés en fonction des enjeux de l’entreprise ?",
+      "currentScore": 3,
+      "targetScore": 3,
+      "action": "Formaliser l’analyse de valeur, faisabilité, risques et effort ; préparer une première sélection."
+    },
+    {
+      "id": "Q05",
+      "axe": "Stratégie",
+      "type": "Structuration",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle d’une feuille de route pour mettre en œuvre son ambition IA ?",
+      "currentScore": 4,
+      "targetScore": 4,
+      "action": "Intégrer la roadmap aux plans de l’entreprise ; définir indicateurs, revues et arbitrages."
+    },
+    {
+      "id": "Q07",
+      "axe": "Culture",
+      "type": "Emergence",
+      "question": "Dans quelle mesure les dirigeants et managers favorisent-ils l’adoption de l’IA dans l’entreprise ?",
+      "currentScore": 2,
+      "targetScore": 3,
+      "action": "Former les managers ; partager des cas concrets ; leur donner les moyens d’encourager et d’accompagner les expérimentations."
+    },
+    {
+      "id": "Q08",
+      "axe": "Culture",
+      "type": "Structuration",
+      "question": "Dans quelle mesure les collaborateurs sont-ils prêts à adopter et utiliser l’IA dans leur activité ?",
+      "currentScore": 3,
+      "targetScore": 3,
+      "action": "Accompagner les expérimentations ; faciliter l’accès aux outils autorisés ; partager les retours et diffuser les usages utiles; présenter des cas d’usage liés aux activités ; organiser démonstrations et expérimentations."
+    },
+    {
+      "id": "Q10",
+      "axe": "Compétences",
+      "type": "Emergence",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle des compétences internes nécessaires pour concevoir, développer, déployer et exploiter des solutions d’IA ?",
+      "currentScore": 2,
+      "targetScore": 3,
+      "action": "Cartographier les compétences manquantes ; compléter les expertises nécessaires aux projets prioritaires : data, IA/ML, ingénierie, intégration ou déploiement."
+    },
+    {
+      "id": "Q11",
+      "axe": "Compétences",
+      "type": "Structuration",
+      "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
+      "currentScore": 2,
+      "targetScore": 3,
+      "action": "Définir des parcours de formations adaptées ; structurer contenus ; suivre participation et acquis."
+    },
+    {
+      "id": "Q14",
+      "axe": "Gouvernance",
+      "type": "Structuration",
+      "question": "Dans quelle mesure les projets et usages d’IA font-ils l’objet d’une évaluation et d’une validation avant leur mise en production ?",
+      "currentScore": 3,
+      "targetScore": 3,
+      "action": "Standardiser les critères d'évaluation et validation des projets et des risques ; définir seuils ou conditions de validation adaptés."
+    },
+    {
+      "id": "Q15",
+      "axe": "Gouvernance",
+      "type": "Industrialisation",
+      "question": "Dans quelle mesure les solutions IA déployées sont-elles surveillées et réévaluées pendant leur cycle de vie ?",
+      "currentScore": 3,
+      "targetScore": 3,
+      "action": "Standardiser le suivi des métriques et retours utilisateurs ; harmoniser indicateurs et responsabilités."
+    }
+  ]
 }

@@ -196,11 +196,10 @@ class ReportHandler(SimpleHTTPRequestHandler):
                     return
                 _, report = self._authorized_report(report_id, user)
                 if report:
-                    if not report.get('analysisVersion'):
-                        try:
-                            report = enrich_report(report, MATURITY_CONFIG)
-                        except ValueError:
-                            pass
+                    try:
+                        report = enrich_report(report, MATURITY_CONFIG)
+                    except ValueError:
+                        pass
                     self._send_json(200, {'report': report})
                 return
 

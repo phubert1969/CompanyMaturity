@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapport de maturité IA</title>
+<style>:root { --report-primary: var(--primary, #2f6fed); --report-primary-dark: var(--primary-dark, #1e4fc7); --report-accent: #d45b37; --report-ink: var(--text, #1f2a37); --report-muted: #64748b; --report-line: #d8e2ef; --report-soft: var(--bg, #edf4ff); }
+* { box-sizing: border-box; }
+body { margin: 0px; background: var(--report-soft); color: var(--report-ink); font-family: "Roboto", Arial, sans-serif; line-height: 1.55; }
+.rapport { max-width: 900px; margin: 0px auto; padding: 28px 18px 40px; }
+.bandeau { background: linear-gradient(125deg, var(--report-primary-dark), var(--report-primary) 68%, var(--report-accent)); color: rgb(255, 255, 255); border-radius: 18px; padding: 32px 34px; }
+.surtitre { display: flex; justify-content: space-between; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(199, 210, 254); }
+.niveau-titre { margin: 14px 0px 8px; font-size: 2rem; font-weight: 700; }
+.niveau-titre .niveau-symbole { height: 44px; width: auto; vertical-align: middle; margin-right: 12px; }
+.niveau-texte { max-width: 640px; color: rgb(224, 231, 255); margin: 0px; }
+.niveau-moyenne { margin-top: 18px; display: inline-block; background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 999px; padding: 6px 16px; font-weight: 600; }
+section.carte { background: rgb(255, 255, 255); border: 1px solid rgb(229, 231, 235); border-radius: 14px; padding: 26px 30px; margin-top: 22px; box-shadow: rgba(15, 23, 42, 0.06) 0px 1px 2px; }
+h2 { margin: 0px 0px 4px; font-size: 1.25rem; color: var(--report-ink); }
+.sous-titre { margin: 0px 0px 18px; color: var(--report-muted); font-size: 0.92rem; }
+.duo { display: flex; gap: 34px; flex-wrap: wrap; align-items: flex-start; }
+.duo > div { flex: 1 1 320px; min-width: 280px; }
+.barchart { display: flex; gap: 18px; align-items: flex-end; justify-content: center; margin-top: 8px; flex-wrap: wrap; }
+.barre-col { flex: 1 1 90px; max-width: 150px; text-align: center; }
+.barre-note { font-weight: 700; color: rgb(55, 65, 81); font-size: 0.9rem; margin-bottom: 4px; }
+.barre-v-cadre { height: 190px; background: rgb(229, 231, 235); border-radius: 10px 10px 4px 4px; overflow: hidden; display: flex; align-items: flex-end; }
+.barre-v-valeur { width: 100%; display: block; border-radius: 10px 10px 0px 0px; }
+.barre-lib { margin-top: 8px; font-weight: 600; color: rgb(55, 65, 81); font-size: 0.9rem; }
+.dim-desc { display: block; font-weight: 400; font-size: 0.8rem; color: rgb(107, 114, 128); margin-top: 3px; }
+.radar-cadre { text-align: center; }
+svg.radar { max-width: 420px; width: 100%; height: auto; }
+.radar-niveau { font-size: 9px; fill: var(--report-muted); }
+.radar-libelle { font-size: 12px; fill: var(--report-ink); font-weight: 600; }
+.radar-valeur { font-size: 10px; fill: var(--report-primary-dark); font-weight: 700; }
+.score-ligne { display: flex; align-items: center; gap: 14px; margin: 12px 0px; }
+.score-nom { flex: 0 0 150px; font-weight: 600; }
+.barre-fond { flex: 1 1 0%; height: 14px; background: rgb(229, 231, 235); border-radius: 999px; overflow: hidden; display: block; }
+.barre-valeur { height: 100%; display: block; border-radius: 999px; }
+.score-note { flex: 0 0 70px; text-align: right; font-variant-numeric: tabular-nums; color: rgb(55, 65, 81); }
+.axe-score-detail { margin-bottom: 14px; }
+.scores-questions-axe { display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 8px; margin-top: -5px; }
+.scores-questions-axe span { color: var(--report-muted); font-size: 0.82rem; text-align: center; }
+.scores-questions-axe strong { color: var(--report-ink); }
+ol.liste { margin: 0px; padding-left: 22px; }
+ol.liste li { margin: 9px 0px; }
+ol.liste strong { color: var(--report-primary-dark); }
+details.axe { border: 1px solid rgb(229, 231, 235); border-radius: 10px; margin-top: 12px; padding: 2px 16px; background: rgb(250, 250, 250); }
+details.axe summary { cursor: pointer; font-weight: 600; padding: 10px 0px; color: var(--report-ink); }
+details.axe summary .note { margin-left: 8px; color: var(--report-primary-dark); font-weight: 700; }
+table.roadmap { width: 100%; border-collapse: collapse; margin: 6px 0px 12px; font-size: 0.94rem; }
+table.roadmap th { width: 15%; text-align: left; padding: 8px 10px; background: var(--report-soft); color: var(--report-primary-dark); vertical-align: top; border: 1px solid rgb(229, 231, 235); }
+table.roadmap td { padding: 8px 10px; border: 1px solid rgb(229, 231, 235); vertical-align: top; }
+.niveau-acquis { max-width: 700px; margin: 12px 0px 0px; color: rgb(255, 255, 255); }
+.reponse-detail > p { margin: 6px 0px; }
+.analyse-lignes { margin: 12px 0px 0px; }
+.analyse-lignes > div { display: grid; grid-template-columns: minmax(50px, 1fr) 8fr; gap: 12px; padding: 8px 0px; border-top: 1px solid var(--report-line); }
+.analyse-lignes dt { padding: 8px; border-radius: 4px; background: rgb(234, 243, 255); color: var(--report-primary-dark); font-weight: 700; }
+.analyse-lignes dd { margin: 0px; }
+.analyse-fusionnee { margin: 0px; padding-left: 18px; }
+.analyse-fusionnee li + li { margin-top: 6px; }
+.analyse-fusionnee strong { color: var(--report-primary-dark); }
+.classement li { display: grid; gap: 3px; padding: 10px 0px; border-bottom: 1px solid var(--report-line); }
+.classement li > span, .classement li > small { color: var(--report-muted); }
+.priorites { margin-top: 24px; }
+.plan-axe h3 { margin: 14px 0px 4px; color: var(--report-primary-dark); font-size: 1rem; }
+p.vide { color: rgb(156, 163, 175); font-style: italic; margin: 8px 0px; }
+.conclusion p { margin: 0px; }
+footer { margin-top: 26px; text-align: center; color: rgb(156, 163, 175); font-size: 0.8rem; }
+@media print {
+  body { background: rgb(255, 255, 255); }
+  .rapport { max-width: none; padding: 0px; }
+  section.carte { box-shadow: none; border: medium; break-inside: avoid; }
+  .bandeau { border-radius: 0px; print-color-adjust: exact; }
+  details.axe:not([open]) > :not(summary) { display: block; }
+}
+@media (max-width: 600px) {
+  .analyse-lignes > div { grid-template-columns: 1fr; gap: 3px; }
+}
+</style>
+</head>
+<body><main class="rapport">
+    
+    
+    
+  
+    
+    <header class="bandeau">
+      <div class="surtitre"><span>Rapport de maturité IA</span><span>09/10/2026 11:16:50</span></div>
+      <h1 class="niveau-titre">Niveau 0 : Inexistant</h1>
+      <p class="niveau-texte">L'entreprise n'a entrepris aucune démarche et n'a pas de projet à court terme.
+Elle n'a engagé aucune réflexion sur l'IA. Pas ou très peu d'usage professionnel, voire l'entreprise a bloqué l'accès aux solutions d'IA génératives.</p>
+      
+      <div class="niveau-moyenne">Note moyenne : 0,0 / 5</div>
+    </header>
+
+    <section class="carte">
+      <div class="duo">
+        <div>
+          <h2>Vue radar des axes</h2>
+          <p class="sous-titre">Moyennes des cinq axes.</p>
+          <div class="radar-cadre"><svg class="radar" viewBox="0 0 380 330" role="img" aria-label="Diagramme radar des cinq axes"><polygon points="190,144 209.97218684219823,158.5106431181261 202.34349029814194,181.9893568818739 177.65650970185806,181.9893568818739 170.02781315780177,158.5106431181261" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><polygon points="190,123 229.94437368439645,152.0212862362522 214.68698059628386,198.9787137637478 165.31301940371614,198.9787137637478 150.05562631560355,152.02128623625222" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><polygon points="190,102 249.91656052659468,145.53192935437832 227.0304708944258,215.96807064562168 152.9695291055742,215.96807064562168 130.08343947340532,145.53192935437832" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><polygon points="190,81 269.8887473687929,139.04257247250442 239.37396119256775,232.95742752749558 140.62603880743228,232.95742752749558 110.1112526312071,139.04257247250442" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><polygon points="190,60 289.8609342109911,132.55321559063051 251.71745149070966,249.94678440936949 128.28254850929034,249.94678440936949 90.13906578900887,132.55321559063054" fill="none" stroke="#d1d5db" stroke-width="1"></polygon><line x1="190" y1="165" x2="190" y2="60" stroke="#d8e2ef"></line><text x="190" y="35.849999999999994" text-anchor="middle" class="radar-libelle">Potentiel</text><line x1="190" y1="165" x2="289.8609342109911" y2="132.55321559063051" stroke="#d8e2ef"></line><text x="312.8289490795191" y="125.09045517647554" text-anchor="middle" class="radar-libelle">Stratégie</text><line x1="190" y1="165" x2="251.71745149070966" y2="249.94678440936949" stroke="#d8e2ef"></line><text x="265.9124653335729" y="269.48454482352446" text-anchor="middle" class="radar-libelle">Culture</text><line x1="190" y1="165" x2="128.28254850929034" y2="249.94678440936949" stroke="#d8e2ef"></line><text x="114.0875346664271" y="269.48454482352446" text-anchor="middle" class="radar-libelle">Compétences</text><line x1="190" y1="165" x2="90.13906578900887" y2="132.55321559063054" stroke="#d8e2ef"></line><text x="67.17105092048091" y="125.09045517647556" text-anchor="middle" class="radar-libelle">Gouvernance</text><polygon points="190,165 190,165 190,165 190,165 190,165" fill="rgba(47,111,237,0.2)" stroke="#2f6fed" stroke-width="2" stroke-linejoin="round"></polygon><circle cx="190" cy="165" r="4" fill="#d45b37"></circle><text x="196" y="159" class="radar-valeur">0,0</text><circle cx="190" cy="165" r="4" fill="#d45b37"></circle><text x="196" y="159" class="radar-valeur">0,0</text><circle cx="190" cy="165" r="4" fill="#d45b37"></circle><text x="196" y="159" class="radar-valeur">0,0</text><circle cx="190" cy="165" r="4" fill="#d45b37"></circle><text x="196" y="159" class="radar-valeur">0,0</text><circle cx="190" cy="165" r="4" fill="#d45b37"></circle><text x="196" y="159" class="radar-valeur">0,0</text></svg></div>
+        </div>
+        <div>
+          <h2>Moyennes par stade</h2>
+          <p class="sous-titre">Moyennes des stades de maturité.</p>
+          <div class="barchart">
+            
+              <div class="barre-col">
+                <div class="barre-note">0,0 / 5</div>
+                <div class="barre-v-cadre"><div class="barre-v-valeur" style="height:0%;background:#94a3b8"></div></div>
+                <div class="barre-lib">Émergence</div>
+              </div>
+            
+              <div class="barre-col">
+                <div class="barre-note">0,0 / 5</div>
+                <div class="barre-v-cadre"><div class="barre-v-valeur" style="height:0%;background:#94a3b8"></div></div>
+                <div class="barre-lib">Structuration</div>
+              </div>
+            
+              <div class="barre-col">
+                <div class="barre-note">0,0 / 5</div>
+                <div class="barre-v-cadre"><div class="barre-v-valeur" style="height:0%;background:#94a3b8"></div></div>
+                <div class="barre-lib">Industrialisation</div>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="carte">
+      <h2>Scores détaillés par axe</h2>
+      <p class="sous-titre">Moyenne de chaque axe et note de ses trois questions.</p>
+      
+      <div class="axe-score-detail">
+        <div class="score-ligne">
+          <span class="score-nom">Potentiel</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:0%;background:#94a3b8"></span></span>
+          <span class="score-note">0,0 / 5</span>
+        </div>
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Potentiel">
+          
+            <span><strong>Émergence</strong> 0,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 0,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 0,0 / 5</span>
+          
+        </div>
+      </div>
+    
+      <div class="axe-score-detail">
+        <div class="score-ligne">
+          <span class="score-nom">Stratégie</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:0%;background:#94a3b8"></span></span>
+          <span class="score-note">0,0 / 5</span>
+        </div>
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Stratégie">
+          
+            <span><strong>Émergence</strong> 0,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 0,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 0,0 / 5</span>
+          
+        </div>
+      </div>
+    
+      <div class="axe-score-detail">
+        <div class="score-ligne">
+          <span class="score-nom">Culture</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:0%;background:#94a3b8"></span></span>
+          <span class="score-note">0,0 / 5</span>
+        </div>
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Culture">
+          
+            <span><strong>Émergence</strong> 0,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 0,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 0,0 / 5</span>
+          
+        </div>
+      </div>
+    
+      <div class="axe-score-detail">
+        <div class="score-ligne">
+          <span class="score-nom">Compétences</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:0%;background:#94a3b8"></span></span>
+          <span class="score-note">0,0 / 5</span>
+        </div>
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Compétences">
+          
+            <span><strong>Émergence</strong> 0,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 0,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 0,0 / 5</span>
+          
+        </div>
+      </div>
+    
+      <div class="axe-score-detail">
+        <div class="score-ligne">
+          <span class="score-nom">Gouvernance</span>
+          <span class="barre-fond"><span class="barre-valeur" style="width:0%;background:#94a3b8"></span></span>
+          <span class="score-note">0,0 / 5</span>
+        </div>
+        <div class="scores-questions-axe" aria-label="Notes des trois questions de l’axe Gouvernance">
+          
+            <span><strong>Émergence</strong> 0,0 / 5</span>
+          
+            <span><strong>Structuration</strong> 0,0 / 5</span>
+          
+            <span><strong>Industrialisation</strong> 0,0 / 5</span>
+          
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="carte">
+      <div class="duo">
+        <div>
+          <h2>Forces identifiées</h2>
+          <p class="sous-titre">Les trois réponses les mieux notées, tous axes et stades confondus.</p>
+          <ol class="liste classement">
+      <li>
+        <strong>Potentiel · Industrialisation</strong>
+        <span>Aucun potentiel identifié</span>
+        <p>Aucun cas d'usage pertinent.</p>
+      </li>
+    
+      <li>
+        <strong>Stratégie · Industrialisation</strong>
+        <span>Aucun cas d’usage</span>
+        <p>Aucun cas d'usage.</p>
+      </li>
+    
+      <li>
+        <strong>Culture · Industrialisation</strong>
+        <span>Aucun dispositif</span>
+        <p>Il n'y a aucun dispositif d'apprentissage au sein de l'entreprise, d'expérimentation ou de partage autour de l'IA.</p>
+      </li>
+    </ol>
+        </div>
+        <div>
+          <h2>Points de vigilance</h2>
+          <p class="sous-titre">Les trois réponses les moins bien notées, tous axes et stades confondus.</p>
+          <ol class="liste classement">
+      <li>
+        <strong>Potentiel · Emergence</strong>
+        <span>Absente</span>
+        <p>L'entreprise n'a pas de moyens techniques pour permettre l'expérimentation de solutions IA.</p>
+      </li>
+    
+      <li>
+        <strong>Stratégie · Emergence</strong>
+        <span>Absente</span>
+        <p>L'IA absente des réflexions stratégiques de l'entreprise.</p>
+      </li>
+    
+      <li>
+        <strong>Culture · Emergence</strong>
+        <span>Absence d'implication</span>
+        <p>Les managers ne sont pas sensibilisés à l'IA</p>
+      </li>
+    </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="carte">
+      <h2>Plan d’action à court terme</h2>
+      <ol class="liste classement">
+      <li>
+        <strong>Potentiel</strong>
+        <p>Recenser les besoins minimaux en calcul, stockage et environnements ; définir une architecture initiale et les moyens IT/cloud mobilisables.</p>
+      </li>
+    
+      <li>
+        <strong>Stratégie</strong>
+        <p>Sensibiliser les dirigeants aux possibilités et enjeux de l’IA ; organiser une première réflexion sur les ambitions possibles.</p>
+      </li>
+    
+      <li>
+        <strong>Culture</strong>
+        <p>Sensibiliser dirigeants et managers aux enjeux IA ; identifier les premiers sponsors et clarifier leur rôle.</p>
+      </li>
+    </ol>
+    </section>
+
+    <section class="carte">
+      <h2>Plan d’action à moyen terme</h2>
+      
+      <div class="plan-axe">
+        <h3>Potentiel</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Recenser les besoins minimaux en calcul, stockage et environnements ; définir une architecture initiale et les moyens IT/cloud mobilisables. <span>(score cible question Q01 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Identifier des sources pertinentes, leurs propriétaires et les règles d’accès ; définir les premières règles de qualité. <span>(score cible question Q02 : 1)</span></p>
+          </li>
+        </ol>
+      </div>
+    
+      <div class="plan-axe">
+        <h3>Stratégie</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Sensibiliser les dirigeants aux possibilités et enjeux de l’IA ; organiser une première réflexion sur les ambitions possibles. <span>(score cible question Q04 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Recenser initiatives et besoins IA ; définir premières étapes, responsables et échéances ; formaliser une trajectoire initiale. <span>(score cible question Q05 : 1)</span></p>
+          </li>
+        </ol>
+      </div>
+    
+      <div class="plan-axe">
+        <h3>Culture</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Sensibiliser dirigeants et managers aux enjeux IA ; identifier les premiers sponsors et clarifier leur rôle. <span>(score cible question Q07 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Expliquer enjeux et bénéfices ; partager la vision entreprise sur l'IA. <span>(score cible question Q08 : 1)</span></p>
+          </li>
+        </ol>
+      </div>
+    
+      <div class="plan-axe">
+        <h3>Compétences</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Identifier les compétences IA nécessaires ; recenser les compétences existantes et els personnes cibles ; définir les besoins de développement ou recrutement. <span>(score cible question Q10 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Identifier populations et compétences prioritaires ; définir un premier dispositif de sensibilisation et de développement. <span>(score cible question Q11 : 1)</span></p>
+          </li>
+        </ol>
+      </div>
+    
+      <div class="plan-axe">
+        <h3>Gouvernance</h3>
+        <ol class="liste classement">
+          <li>
+            <p>Identifier les principaux risques et besoins de contrôle liés aux usages de l'IA ; définir premières règles et responsabilités ; sensibiliser les équipes. <span>(score cible question Q13 : 1)</span></p>
+          </li>
+        
+          <li>
+            <p>Définir des critères minimaux ; identifier les projets soumis à validation ; formaliser une première revue avant mise en production. <span>(score cible question Q14 : 1)</span></p>
+          </li>
+        </ol>
+      </div>
+    
+    </section>
+
+    <section class="carte">
+      <h2>Profil de l’entreprise</h2>
+      <p class="sous-titre">Informations déclarées dans le questionnaire.</p>
+      <ol class="liste"><li class="profil-ligne"><strong>Motif de l’évaluation :</strong> J'aimerais connaître mon niveau avant de mettre en place de l'IA.</li><li class="profil-ligne"><strong>Effectif :</strong> Moins de 10</li><li class="profil-ligne"><strong>Secteur d’activité :</strong> Agriculture, pêche, énergie, environnement</li><li class="profil-ligne"><strong>Niveau hiérarchique :</strong> Direction</li><li class="profil-ligne"><strong>Département / métier :</strong> Direction</li><li class="profil-ligne"><strong>Objectifs prioritaires :</strong> Améliorer la connaissance, la satisfaction et l'expérience client, Transformer notre modèle économique</li></ol>
+    </section>
+
+    <section class="carte">
+      <h2>Analyse détaillée</h2>
+      <p class="sous-titre">Acquis, blocages, capacités à développer, actions et résultats attendus par axe.</p>
+      
+        <details class="axe">
+          <summary>Potentiel</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>Rien n'est acquis.</li>
+              
+                <li>Aucune donnée pertinente identifiée.</li>
+              
+                <li>Aucun cas d'usage pertinent.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>L'entreprise n'a pas de moyens techniques pour permettre l'expérimentation de solutions IA.</li>
+              
+                <li>L'entreprise n'a pas identifié les 1ères données à exploiter même si elles sont dispersées.</li>
+              
+                <li>Absence d'identification de cas d'usage IA</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir la capacité à disposer d’un socle technologique permettant de développer et déployer des solutions d’IA.</li>
+              
+                <li>Acquérir la capacité à identifier (inventaire) et rendre disponibles les données pertinentes pour les usages d’IA.</li>
+              
+                <li>Acquérir la capacité à identifier les opportunités dans lesquelles l’IA pourrait présenter un cas d’usage pertinent.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Recenser les besoins minimaux en calcul, stockage et environnements ; définir une architecture initiale et les moyens IT/cloud mobilisables.</li>
+              
+                <li>Identifier des sources pertinentes, leurs propriétaires et les règles d’accès ; définir les premières règles de qualité.</li>
+              
+                <li>Identifier les activités et processus susceptibles de bénéficier de l’IA ; recueillir les besoins métiers et documenter les opportunités.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>Une infrastructure minimale est disponible pour lancer les premiers projets IA.</li>
+              
+                <li>Les données pertinentes pour les premiers usages IA sont identifiées et accessibles.</li>
+              
+                <li>Un premier ensemble de cas d’usage IA pertinents est identifié.</li>
+              </ul></dd></div></dl>
+        </details>
+      
+        <details class="axe">
+          <summary>Stratégie</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>Aucune ambition.</li>
+              
+                <li>Aucune trajectoire.</li>
+              
+                <li>Aucun cas d'usage.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>L'IA absente des réflexions stratégiques de l'entreprise.</li>
+              
+                <li>Absence d'actions coordonnées pour structurer la feuille de route IA.</li>
+              
+                <li>L'entreprise n'a pas identifié de cas d'usage permettant un début de gestion de portefeuille projet IA.</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir la capacité à intégrer l’IA dans les réflexions et ambitions de l’entreprise auprès des managers.</li>
+              
+                <li>Acquérir la capacité à définir une première trajectoire d’actions permettant de mettre en œuvre l’ambition IA.</li>
+              
+                <li>Acquérir la capacité à identifier des cas d’usage IA répondant aux enjeux de l’entreprise.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Sensibiliser les dirigeants aux possibilités et enjeux de l’IA ; organiser une première réflexion sur les ambitions possibles.</li>
+              
+                <li>Recenser initiatives et besoins IA ; définir premières étapes, responsables et échéances ; formaliser une trajectoire initiale.</li>
+              
+                <li>Recenser les premiers cas d’usage IA en lien avec les enjeux métiers ; documenter opportunités et besoins.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>L’IA est intégrée aux réflexions de l’entreprise et une première ambition est exprimée.</li>
+              
+                <li>Une première trajectoire IA existe avec actions et responsabilités identifiées.</li>
+              
+                <li>Un portefeuille initial de cas d’usage IA est identifié.</li>
+              </ul></dd></div></dl>
+        </details>
+      
+        <details class="axe">
+          <summary>Culture</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>Absence d'implication</li>
+              
+                <li>Pas d'implication réelle.</li>
+              
+                <li>Il n'y a aucun dispositif d'apprentissage au sein de l'entreprise, d'expérimentation ou de partage autour de l'IA.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>Les managers ne sont pas sensibilisés à l'IA</li>
+              
+                <li>Manque de confiance et de légitimité managériale provoquant une forte résistance sur la mise en place de l'IA au sein de l'entreprise.</li>
+              
+                <li>Il n'y a pas de dispositifs d'apprentissage informels de l'IA en entreprise.</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir la capacité du leadership à comprendre les enjeux de l’IA et à identifier les premières opportunités d’utilisation dans l’entreprise.</li>
+              
+                <li>Acquérir la capacité à créer les conditions permettant aux collaborateurs d’accepter progressivement l’utilisation de l’IA.</li>
+              
+                <li>Acquérir la capacité à mettre en place un premier dispositif d’apprentissage et d’expérimentation.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Sensibiliser dirigeants et managers aux enjeux IA ; identifier les premiers sponsors et clarifier leur rôle.</li>
+              
+                <li>Expliquer enjeux et bénéfices ; partager la vision entreprise sur l'IA.</li>
+              
+                <li>Identifier les besoins d’apprentissage et d’expérimentation ; mettre en place un premier dispositif de sensibilisation et de partage.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>Les premiers sponsors comprennent les enjeux IA et commencent à soutenir le sujet.</li>
+              
+                <li>Les résistances sont identifiées et les collaborateurs disposent de premiers repères pour envisager l’IA.</li>
+              
+                <li>Un premier dispositif permet de découvrir, expérimenter et échanger autour de l’IA.</li>
+              </ul></dd></div></dl>
+        </details>
+      
+        <details class="axe">
+          <summary>Compétences</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>L'entreprise ne dispose pas de compétences internes identifiées en IA.</li>
+              
+                <li>Aucun dispositif de développement des compétences IA.</li>
+              
+                <li>L'entreprise n'a pas les capacité d'identifier les besoins et lacunes en compétences IA et aucun recours externe n'est organisé.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>L'entreprise ne dispose pas de compétences internes identifiées en IA. Elle peut avoir une dépendance totale à l'extérieur.</li>
+              
+                <li>L'entreprise n'a aucun dispositif permettant d'envisager une progression des compétences en IA.</li>
+              
+                <li>L'entreprise n'a pas de mécanisme d'identification au cas par cas des lacunes dans les compétences IA de ses équipes.</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir une première capacité interne à concevoir, développer, déployer ou exploiter des solutions d’IA.</li>
+              
+                <li>Acquérir la capacité à mettre en place un premier dispositif de développement des compétences IA des collaborateurs.</li>
+              
+                <li>Acquérir la capacité à identifier les besoins et lacunes en compétences et à les faire porter en externe.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Identifier les compétences IA nécessaires ; recenser les compétences existantes et els personnes cibles ; définir les besoins de développement ou recrutement.</li>
+              
+                <li>Identifier populations et compétences prioritaires ; définir un premier dispositif de sensibilisation et de développement.</li>
+              
+                <li>Identifier besoins critiques ; cartographier lacunes ; définir les premiers moyens internes ou externes pour les combler.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>Les compétences IA prioritaires et les premiers moyens pour les acquérir sont identifiés.</li>
+              
+                <li>Un dispositif initial de développement des compétences IA est défini.</li>
+              
+                <li>Les principales lacunes sont identifiées et font l’objet d’un premier plan de traitement.</li>
+              </ul></dd></div></dl>
+        </details>
+      
+        <details class="axe">
+          <summary>Gouvernance</summary>
+          <dl class="analyse-lignes"><div><dt>Déjà acquis</dt><dd><ul class="analyse-fusionnee">
+                <li>L'entreprise n'a aucun principe, règle ou responsabilité n'est défini pour l'utilisation de l'IA.</li>
+              
+                <li>Au sein de l'entreprise, les solutions IA peuvent être déployées sans processus d'évaluation ou de validation.</li>
+              
+                <li>L'entreprise n'a pas mis en place de suivit des solutions IA après leur déploiement.</li>
+              </ul></dd></div><div><dt>Blocage vers le niveau suivant</dt><dd><ul class="analyse-fusionnee">
+                <li>L'entreprise manque de cadrage informel pour commencer à définir certaines taches et responsabilités pour l'utilisation de l'IA.</li>
+              
+                <li>L'entreprise ne controle pas les déploiements des projets et usages IA.</li>
+              
+                <li>Le fonctionnement des solutions IA n'est pas vérifié ponctuellement, généralement en cas de problème et des dérive non détectées sont possibles.</li>
+              </ul></dd></div><div><dt>Capacités à construire</dt><dd><ul class="analyse-fusionnee">
+                <li>Acquérir la capacité à définir les premiers principes de la gouvernance IA avec des règles et responsabilités encadrant l’utilisation de l’IA.</li>
+              
+                <li>Acquérir la capacité à évaluer et valider certaines solutions IA avant leur mise en production.</li>
+              
+                <li>Acquérir la capacité à suivre les solutions IA ponctuellement après leur déploiement.</li>
+              </ul></dd></div><div><dt>Actions prioritaires</dt><dd><ul class="analyse-fusionnee">
+                <li>Identifier les principaux risques et besoins de contrôle liés aux usages de l'IA ; définir premières règles et responsabilités ; sensibiliser les équipes.</li>
+              
+                <li>Définir des critères minimaux ; identifier les projets soumis à validation ; formaliser une première revue avant mise en production.</li>
+              
+                <li>Identifier les solutions IA en exploitation ; définir indicateurs et responsabilités ; mettre en place un premier contrôle post-déploiement.</li>
+              </ul></dd></div><div><dt>Résultats attendus</dt><dd><ul class="analyse-fusionnee">
+                <li>Un premier cadre de principes, règles et responsabilités encadre les usages IA prioritaires.</li>
+              
+                <li>Les projets IA font l’objet d’une première évaluation avant déploiement.</li>
+              
+                <li>Les solutions IA déployées sont identifiées et font l’objet d’un premier suivi.</li>
+              </ul></dd></div></dl>
+        </details>
+      
+    </section>
+
+    <footer>Rapport généré à partir du référentiel V3-86870fbfc13c et de vos réponses au questionnaire de maturité IA.</footer>
+  </main></body>
+</html>

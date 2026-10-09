@@ -10,15 +10,15 @@
     "secteur": [
       "Conseil et services aux entreprises"
     ],
-    "departement": [
-      "94"
-    ],
     "role": [
-      "Directeur de Business Unit"
+      "de Business Unit"
     ],
     "objectifs": [
       "Mieux anticiper (prédire les ventes, organiser les stocks, maintenance prédictive...)",
       "Optimiser notre performance opérationnelle (logistique, achats, opérations, administrative...)"
+    ],
+    "responsabilite": [
+      "Direction"
     ]
   },
   "axes": {
@@ -284,12 +284,12 @@
     "html": "Rapport_Maturite_IA_2df3d9ceb8014cb2b4d9000449bc59f0.html",
     "pdf": "Rapport_Maturite_IA_2df3d9ceb8014cb2b4d9000449bc59f0.pdf"
   },
-  "analysisVersion": "V3-d99683108e78",
+  "analysisVersion": "V3-86870fbfc13c",
   "maturity": {
     "score": 3,
     "name": "En chantier",
-    "description": "A entrepris des actions ciblées mais la démarche n'est pas encore structurée (données non centralisées, commence à recruter, gouvernance peu travaillée).",
-    "acquired": "L'entreprise commence à développer ou intégrer des solutions IA et à former ses collaborateurs. La démarche n'est pas encore structurée : la gouvernance (charte IA, rôles & responsabilité, sécurité des données) est encore inexistante ou faiblement travaillée.",
+    "description": "L'entreprise a entrepris des actions ciblées mais la démarche n'est pas encore structurée (données non centralisées, commence à recruter, gouvernance peu travaillée).\nElle commence à développer ou intégrer des solutions IA et à former ses collaborateurs. La démarche n'est pas encore structurée : la gouvernance (charte IA, rôles & responsabilité, sécurité des données) est encore inexistante ou faiblement travaillée.",
+    "acquired": "",
     "symbol": ""
   },
   "axisAnalysis": [
@@ -598,19 +598,19 @@
       }
     },
     {
-      "id": "Q07",
-      "question": "Dans quelle mesure les dirigeants et managers favorisent-ils l’adoption de l’IA dans l’entreprise ?",
-      "axe": "Culture",
-      "type": "Emergence",
+      "id": "Q02",
+      "question": "Dans quelle mesure l’entreprise dispose-t-elle de données accessibles, fiables et exploitables pour ses usages d’IA ?",
+      "axe": "Potentiel",
+      "type": "Structuration",
       "score": 4,
-      "label": "Leadership actif",
-      "description": "Les dirigeants et managers portent activement l'adoption de l'IA et accompagnent sa diffusion dans l'entreprise.",
+      "label": "Industrialisée",
+      "description": "Données gouvernées, cataloguées, contrôlées et alimentées par des pipelines permettant des usages IA reproductibles.",
       "analysis": {
-        "acquired": "L'entreprise est active dans l'adoption de l'IA par les collaborateurs et accompagne sa diffusion dans l'entreprise",
-        "blocker": "Le leadership de l'entreprise n'incarne pas assez l'adoption de l'IA au quotidien, cela n'est pas assez visible auprès de ses collaborateurs",
-        "capability": "Acquérir la capacité des dirigeants et managers à incarner activement l’utilisation de l’IA et à en accompagner la diffusion dans l’ensemble de l’entreprise.",
-        "action": "Faire utiliser et promouvoir l’IA par dirigeants et managers ; intégrer les usages dans les pratiques managériales ; rendre l’exemplarité visible.",
-        "outcome": "Le leadership incarne activement l’adoption de l’IA et fournit un modèle visible aux collaborateurs."
+        "acquired": "L'entreprise a un processus de gouvernance de données dans un environnement industrialisé, permettant un usage IA reproductible.",
+        "blocker": "La mutualisation des processus data ne suffit pas à passer à l'échelle pour renforcer une usage des applications IA de qualité.",
+        "capability": "Acquérir la capacité à gouverner, cataloguer, contrôler et alimenter les données nécessaires aux usages IA au moyen de plateformes automatisées et reproductibles.",
+        "action": "Mettre en place catalogage, gouvernance et contrôles systématiques des sources de données ; industrialiser les pipelines et assurer la traçabilité.",
+        "outcome": "Les sources de données IA sont gouvernées, cataloguées et alimentées par des pipelines reproductibles."
       }
     }
   ],
@@ -725,7 +725,7 @@
       "question": "Dans quelle mesure les activités de l’entreprise présentent-elles un potentiel d’application de l’IA ?",
       "currentScore": 2,
       "targetScore": 2,
-      "action": "Évaluer les cas d’usage selon valeur, faisabilité, données, risques et effort ; sélectionner les opportunités à expérimenter."
+      "action": "Élargir l’analyse à plusieurs activités ; qualifier les opportunités selon bénéfices, faisabilité et contraintes."
     },
     {
       "id": "Q02",
@@ -734,7 +734,7 @@
       "question": "Dans quelle mesure l’entreprise dispose-t-elle de données accessibles, fiables et exploitables pour ses usages d’IA ?",
       "currentScore": 4,
       "targetScore": 4,
-      "action": "Mettre en place catalogage, gouvernance et contrôles systématiques des sources de données ; industrialiser les pipelines et assurer la traçabilité."
+      "action": "Industrialiser préparation et mise à disposition ; mettre en place contrôles qualité, processus reproductibles et documentation."
     },
     {
       "id": "Q06",
@@ -743,7 +743,7 @@
       "question": "Dans quelle mesure les initiatives et cas d’usage IA sont-ils priorisés en fonction des enjeux de l’entreprise ?",
       "currentScore": 2,
       "targetScore": 2,
-      "action": "Formaliser l’analyse de valeur, faisabilité, risques et effort ; préparer une première sélection."
+      "action": "Complèter les cas d'usage IA de l'entreprise ; définir des critères de comparaison ; analyser les cas selon intérêt, faisabilité et effort."
     },
     {
       "id": "Q05",
@@ -752,7 +752,7 @@
       "question": "Dans quelle mesure l’entreprise dispose-t-elle d’une feuille de route pour mettre en œuvre son ambition IA ?",
       "currentScore": 4,
       "targetScore": 4,
-      "action": "Construire une trajectoire pluriannuelle transversale ; coordonner investissements et passage à l’échelle au niveau de la direction de l'entreprise; adapter la roadmap aux résultats."
+      "action": "Intégrer la roadmap aux plans de l’entreprise ; définir indicateurs, revues et arbitrages."
     },
     {
       "id": "Q08",
@@ -761,7 +761,7 @@
       "question": "Dans quelle mesure les collaborateurs sont-ils prêts à adopter et utiliser l’IA dans leur activité ?",
       "currentScore": 2,
       "targetScore": 3,
-      "action": "Identifier les usages pertinents ; formaliser les bonnes pratiques ; accompagner les équipes dans l’intégration de l’IA au quotidien."
+      "action": "Accompagner les expérimentations ; faciliter l’accès aux outils autorisés ; partager les retours et diffuser les usages utiles; présenter des cas d’usage liés aux activités ; organiser démonstrations et expérimentations."
     },
     {
       "id": "Q09",
@@ -770,7 +770,7 @@
       "question": "Dans quelle mesure l’entreprise favorise-t-elle l’apprentissage, l’expérimentation et le partage autour de l’IA ?",
       "currentScore": 2,
       "targetScore": 2,
-      "action": "Planifier ateliers, formations, communautés ou expérimentations ; définir le socle de connaissace nécessaire à l'entreprise ; définir publics et objectifs ; capitaliser les retours."
+      "action": "Structurer les échanges formels au sein de communauté ; identifier les initiatives ; organiser des premiers ateliers et espaces de partage réguliers."
     },
     {
       "id": "Q11",
@@ -779,7 +779,7 @@
       "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
       "currentScore": 2,
       "targetScore": 3,
-      "action": "Construire une GPEC (La Gestion prévisionnelle des emplois et des compétences) au seind e l'entrepise ; construire des parcours par catégories ; définir niveaux, objectifs et modalités ; suivre la progression."
+      "action": "Définir des parcours de formations adaptées ; structurer contenus ; suivre participation et acquis."
     },
     {
       "id": "Q12",
@@ -788,7 +788,7 @@
       "question": "Dans quelle mesure l’entreprise sait-elle identifier et combler ses lacunes en compétences IA ?",
       "currentScore": 2,
       "targetScore": 2,
-      "action": "Analyser régulièrement les besoins ; définir un mix interne/externe ; sélectionner les partenaires nécessaires."
+      "action": "Formaliser le recours aux experts et prestataires ; capitaliser les compétences apportées ; identifier les besoins récurrents."
     },
     {
       "id": "Q15",
@@ -797,7 +797,7 @@
       "question": "Dans quelle mesure les solutions IA déployées sont-elles surveillées et réévaluées pendant leur cycle de vie ?",
       "currentScore": 1,
       "targetScore": 2,
-      "action": "Standardiser le suivi des métriques et retours utilisateurs ; harmoniser indicateurs et responsabilités."
+      "action": "Planifier des vérifications régulières ; définir seuils d’alerte ; documenter incidents et actions correctives (ouvir un portail de ticketing)."
     },
     {
       "id": "Q14",
@@ -806,7 +806,7 @@
       "question": "Dans quelle mesure les projets et usages d’IA font-ils l’objet d’une évaluation et d’une validation avant leur mise en production ?",
       "currentScore": 2,
       "targetScore": 2,
-      "action": "Standardiser les critères d'évaluation et validation des projets et des risques ; définir seuils ou conditions de validation adaptés."
+      "action": "Formaliser les évaluations ; définir responsabilités de validation ; conserver décisions et éléments d’analyse."
     }
   ]
 }

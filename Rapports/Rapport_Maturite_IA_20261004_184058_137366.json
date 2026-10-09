@@ -12,14 +12,14 @@
     "secteur": [
       "Santé et social"
     ],
-    "departement": [
-      "94"
-    ],
     "role": [
-      "Directeur Commercial"
+      "Commercial"
     ],
     "objectifs": [
       "Réduire les coûts"
+    ],
+    "responsabilite": [
+      "Direction"
     ]
   },
   "axes": {
@@ -287,12 +287,12 @@
     "json": "Rapport_Maturite_IA_20261004_184058_137366.json",
     "pdf": "Rapport_Maturite_IA_20261004_184058_137366.pdf"
   },
-  "analysisVersion": "V3-d99683108e78",
+  "analysisVersion": "V3-57df88bc3dfa",
   "maturity": {
     "score": 2,
-    "name": "En exploration",
-    "description": "A pris conscience du potentiel offert par les données. Commence à s'interroger, à tester, est à la recherche de solutions.",
-    "acquired": "A pris conscience du potentiel. Certains collaborateurs utilisent des outils individuellement (souvent sans supervision). La direction commence à s'interroger et à tester quelques outils sur étagère, sans stratégie définie.",
+    "name": "En friche",
+    "description": "L'entreprise initie des expérimentations techniques et informelles autour de l'IA, portées par un leadership sensibilisé et des compétences externes ponctuelles. Cependant, la démarche manque encore de stratégie globale, de gouvernance des données et d'adhésion collective pour structurer ces opportunités.",
+    "acquired": "",
     "symbol": ""
   },
   "axisAnalysis": [
@@ -585,22 +585,6 @@
       }
     },
     {
-      "id": "Q11",
-      "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
-      "axe": "Compétences",
-      "type": "Structuration",
-      "score": 4,
-      "label": "Gestion des compétences",
-      "description": "Les compétences IA sont identifiées, évaluées et développées en fonction des rôles et des besoins de l'entreprise.",
-      "analysis": {
-        "acquired": "L'entreprise possède une gestion de compétences de ses collaborateurs où les savoir faire en IA sont identifiées, évaluées et développées en fonction des rôles et des besoins de l'entreprise.",
-        "blocker": "L'entreprise manque d'une gouvernance complète des compétences en IA afin d'anticiper et actualiser les ressources des projets IA.",
-        "capability": "Acquérir la capacité à d'entretenir les complétences IA -  évaluer les acquis et adapter régulièrement les parcours de développement - en fonction des besoins de l'entreprise.",
-        "action": "Cartographier compétences à maintenir par rôle au sein de la GPEC ; évaluer niveaux ; relier écarts aux plans de développement.",
-        "outcome": "La GPEC IA est à jour. Les compétences IA sont identifiées, évaluées et développées selon les besoins."
-      }
-    },
-    {
       "id": "Q15",
       "question": "Dans quelle mesure les solutions IA déployées sont-elles surveillées et réévaluées pendant leur cycle de vie ?",
       "axe": "Gouvernance",
@@ -614,6 +598,22 @@
         "capability": "Acquérir la capacité à surveiller et réévaluer les solutions IA sur l’ensemble de leur cycle de vie et à les adapter, suspendre ou retirer lorsque les conditions ou les risques évoluent.",
         "action": "Étendre le suivi à performance, qualité, sécurité, coûts, dérive et retours utilisateurs ; mettre en place alertes.",
         "outcome": "L’entreprise dispose d’un suivi continu permettant de détecter les dérives et d’agir rapidement."
+      }
+    },
+    {
+      "id": "Q11",
+      "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
+      "axe": "Compétences",
+      "type": "Structuration",
+      "score": 4,
+      "label": "Gestion des compétences",
+      "description": "Les compétences IA sont identifiées, évaluées et développées en fonction des rôles et des besoins de l'entreprise.",
+      "analysis": {
+        "acquired": "L'entreprise possède une gestion de compétences de ses collaborateurs où les savoir faire en IA sont identifiées, évaluées et développées en fonction des rôles et des besoins de l'entreprise.",
+        "blocker": "L'entreprise manque d'une gouvernance complète des compétences en IA afin d'anticiper et actualiser les ressources des projets IA.",
+        "capability": "Acquérir la capacité à d'entretenir les complétences IA -  évaluer les acquis et adapter régulièrement les parcours de développement - en fonction des besoins de l'entreprise.",
+        "action": "Cartographier compétences à maintenir par rôle au sein de la GPEC ; évaluer niveaux ; relier écarts aux plans de développement.",
+        "outcome": "La GPEC IA est à jour. Les compétences IA sont identifiées, évaluées et développées selon les besoins."
       }
     }
   ],
@@ -791,7 +791,7 @@
       "question": "Dans quelle mesure l’entreprise développe-t-elle les compétences IA de ses collaborateurs ?",
       "currentScore": 4,
       "targetScore": 4,
-      "action": "Construire une GPEC (La Gestion prévisionnelle des emplois et des compétences) au seind e l'entrepise ; construire des parcours par catégories ; définir niveaux, objectifs et modalités ; suivre la progression."
+      "action": "Construire une GPEC (La Gestion prévisionnelle des emplois et des compétences) au sein de l'entreprise ; construire des parcours par catégories ; définir niveaux, objectifs et modalités ; suivre la progression."
     },
     {
       "id": "Q13",

@@ -178,17 +178,17 @@ function renderMissingReport() {
 // Les calculs (moyennes, classement, actions) sont déjà présents dans l’objet `report` ;
 // cette fonction orchestre les composants de rendu et relie les boutons d’export/impression.
 function renderReport() {
-  const level = report.maturity?.score ?? Math.max(0, Math.min(5, Math.round(report.overall)));
-  const levelNames = ['À initier', 'En friche', 'En exploration', 'En chantier', 'En exploitation', 'En pilotage'];
+  const level = Math.max(0, Math.min(5, Math.floor(Number(report.overall) + 0.5)));
+  const levelNames = ['Inexistant', 'En friche', 'En exploration', 'En chantier', 'En exploitation', 'En pilotage'];
   const levelDescriptions = [
-    'Aucun niveau de maturité défini dans le référentiel V3.',
-    'N’a entrepris aucune démarche et n’a pas de projet à court terme.',
-    'A pris conscience du potentiel offert par les données et commence à tester des solutions.',
-    'A entrepris des actions ciblées, sans démarche encore structurée.',
-    'Est engagé dans une approche structurée et a déployé des outils ou une infrastructure.',
-    'Dispose d’une architecture data, de compétences internalisées et d’une culture data ancrée.'
+    'L’entreprise n’a entrepris aucune démarche et n’a pas de projet à court terme.',
+    'L’entreprise initie des expérimentations autour de l’IA, sans stratégie globale ni gouvernance structurée.',
+    'L’entreprise a pris conscience du potentiel des données et commence à tester des solutions.',
+    'L’entreprise a entrepris des actions ciblées, mais sa démarche n’est pas encore structurée.',
+    'L’entreprise a structuré sa démarche et déployé des outils ou une infrastructure.',
+    'L’IA est pilotée au niveau stratégique, avec des usages généralisés et des résultats mesurés.'
   ];
-  const maturity = report.maturity || {
+  const maturity = report.maturity?.name === levelNames[level] ? report.maturity : {
     name: levelNames[level],
     description: levelDescriptions[level],
     acquired: ''

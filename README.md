@@ -2,20 +2,20 @@
 
 Ce projet est un outil de diagnostic de maturité IA destiné à évaluer la posture d’une entreprise sur plusieurs axes (données, organisation, compétences, usage de l’IA, etc.).
 
-Le système repose sur une architecture simple et robuste :
+Le système repose sur l'architecture suivante :
 
 - un backend Python qui sert les pages HTML et les API,
 - un classeur Excel qui contient la grille de questions et le référentiel de maturité,
 - des scripts JavaScript qui rendent les rapports et les plans d’action,
 - des pages statiques HTML qui composent l’interface utilisateur.
 
+Le questionnaire commence par un profil du répondant, composé de questions sur le motif de l’évaluation, la taille de l’entreprise, le secteur d’activité, le niveau hiérarchique et le métier / département. La question de localisation n’a pas été conservée car elle n’apporte pas de valeur ajoutée pour le diagnostic.
+
 ## 1. Vue d’ensemble de l’architecture
 
 ### Backend
 
-Le point d’entrée principal est [serve.py](serve.py).
-
-Il gère :
+Le point d’entrée principal est [serve.py](serve.py) qui gère :
 - l’authentification utilisateur,
 - la création / connexion des comptes,
 - la récupération des rapports enregistrés,
@@ -28,9 +28,7 @@ Le backend nous donne deux types de services :
 
 ### Référentiel métier
 
-Le cœur métier est dans [maturity_config.py](maturity_config.py).
-
-Ce module :
+Le cœur métier est dans le module [maturity_config.py](maturity_config.py) qui :
 - ouvre le classeur Excel [Data/Matrice_Roadmap_Maturite_IA_V3.xlsm](Data/Matrice_Roadmap_Maturite_IA_V3.xlsm),
 - extrait les questions, les options de score et les niveaux de maturité,
 - transforme les réponses d’un questionnaire en rapport enrichi,
@@ -55,6 +53,7 @@ Les composants principaux sont :
 1. L’utilisateur ouvre le questionnaire depuis la page [maturityIA.html](maturityIA.html).
 2. Le navigateur demande les questions depuis le référentiel Excel ou à partir d’un fichier de configuration généré côté backend.
 3. L’utilisateur répond au questionnaire.
+   - Le profil de réponse est enrichi avec le niveau hiérarchique et le métier / département du répondant.
 4. Les réponses sont envoyées au serveur via une API JSON.
 5. Le backend envoie les réponses à `enrich_report()` dans [maturity_config.py](maturity_config.py).
 6. Cette fonction calcule :
@@ -149,6 +148,8 @@ Il contient :
 - les analyses de chaque niveau de score,
 - les recommandations liées à chaque question.
 
+La correspondance des scores globaux est : 0 « Inexistant », 1 « En friche », 2 « En exploration », 3 « En chantier », 4 « En exploitation » et 5 « En pilotage ». La moyenne est arrondie à l’entier le plus proche ; lorsqu’elle atteint exactement un demi-point, elle est affectée au niveau supérieur.
+
 Le code Python lit le fichier .xlsm avec `zipfile` et parse les XML internes du document Office.
 
 C’est une architecture robuste car elle permet :
@@ -190,7 +191,7 @@ http://127.0.0.1:8765
 
 ## 10. Conclusion
 
-Le projet illustre bien un schéma classique :
+Le projet illustre un schéma classique :
 
 - données source dans un fichier métier Excel,
 - logique métier calculée côté serveur,
