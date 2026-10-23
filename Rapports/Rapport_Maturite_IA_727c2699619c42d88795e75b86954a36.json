@@ -274,11 +274,11 @@
       }
     }
   ],
-  "analysisVersion": "V3-57df88bc3dfa",
+  "analysisVersion": "V3-ecc65748c04f",
   "maturity": {
     "score": 5,
-    "name": "En exploitation",
-    "description": "L'entreprise est engagée dans une approche structurée et a déployé des outils ou une infrastructure.\nElle est engagée dans une approche structurée. A défini des règles d'usage claires et intégré l'IA dans le quotidiens des métiers.",
+    "name": "En pilotage",
+    "description": "L'IA est un moteur de croissance piloté au niveau stratégique. L'usage est généralisé pour tous les collaborateurs. L'entreprise dispose de compétences internes et crée ses propres solutions. Le ROI est mesuré.",
     "acquired": "",
     "symbol": ""
   },
